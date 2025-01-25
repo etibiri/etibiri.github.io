@@ -1,7 +1,6 @@
-# Introduction  la Bioinformatique
+# Introduction  la bioinformatique
 
-Bienvenue au cours d'introduction  la bioinformatique. Ce dpt contient toutes les informations et ressources ncessaires pour suivre ce cours. **La prsence physique  ce cours est fortement recommande, voire obligatoire.**
-
+Bienvenue au cours d'introduction  la Bioinformatique. Vous trouverez sur ce dpt toutes les informations et ressources ncessaires. A noter que la prsence physique  ce cours est plus que ncessaire voir obligatoire.
 ---
 
 ## Intervenants
