@@ -1,4 +1,4 @@
-# 🌟 Introduction à la Bioinformatique
+#  Introduction à la Bioinformatique
 
 Bienvenue dans le dépôt officiel du **cours d'introduction à la bioinformatique**. Ce cours a pour but de vous initier aux concepts fondamentaux, outils pratiques, et méthodologies modernes de la bioinformatique, indispensables pour l'analyse et la gestion des données biologiques.
 
