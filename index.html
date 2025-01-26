@@ -10,88 +10,101 @@
 
 <body>
   <header class="main-header">
-    <h1>Introduction à la Bioinformatique</h1>
-    <p>Bienvenue au cours d'introduction à la Bioinformatique. Vous trouverez ici toutes les informations et ressources nécessaires.</p>
+    <h1>🌟 Introduction à la Bioinformatique</h1>
+    <p>Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.</p>
     <p><strong>Note :</strong> La présence physique à ce cours est obligatoire.</p>
   </header>
 
   <main class="content">
-    <!-- Section Intervenants -->
+    <!-- Objectifs -->
+    <section id="objectifs">
+      <h2>🚀 Objectifs du cours</h2>
+      <ul>
+        <li>Comprendre les bases de la biologie moléculaire, de la génomique et du séquençage.</li>
+        <li>Explorer les outils bioinformatiques essentiels à l'analyse des données.</li>
+        <li>Installer et configurer un environnement de développement pour la bioinformatique.</li>
+        <li>S'initier à la programmation appliquée à la bioinformatique.</li>
+      </ul>
+    </section>
+
+    <!-- Intervenants -->
     <section id="intervenants">
-      <h2>Intervenants</h2>
-      <ul>
-        <li>
-          <strong>Ezechiel B. TIBIRI</strong>, INERA/CNRST<br>
-          Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a>
-        </li>
-      </ul>
+      <h2>👨‍🏫 Intervenant</h2>
+      <p><strong>Ezechiel B. TIBIRI</strong></p>
+      <p>Chercheur à l'INERA/CNRST</p>
+      <p>Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></p>
     </section>
 
-    <!-- Section Prérequis -->
+    <!-- Prérequis -->
     <section id="prerequis">
-      <h2>Prérequis</h2>
-      <p>Dans un premier temps, il est recommandé d'acquérir les bases suivantes :</p>
+      <h2>🛠️ Prérequis</h2>
+      <p>Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :</p>
       <ul>
-        <li>Biologie moléculaire</li>
-        <li>Génomique</li>
-        <li>Séquençage d'ADN</li>
-      </ul>
-      <p><strong>Temps estimé :</strong> 4 heures</p>
-      <p><strong>Configuration minimale requise :</strong></p>
-      <ul>
-        <li>Processeur avec 4 cœurs minimum</li>
-        <li>8 Go de mémoire vive (RAM)</li>
-        <li>250 Go d'espace de stockage disponible</li>
+        <li>Des notions de biologie moléculaire et génomique.</li>
+        <li>Une connaissance de base en informatique.</li>
+        <li>Une machine avec les spécifications suivantes :</li>
+        <ul>
+          <li>Processeur : 4 cœurs minimum</li>
+          <li>RAM : 8 Go ou plus</li>
+          <li>Stockage : 250 Go disponibles</li>
+        </ul>
       </ul>
     </section>
 
-    <!-- Section Programmation en Bioinformatique -->
-    <section id="programmation">
-      <h2>Introduction à la Programmation en Bioinformatique</h2>
-      <p>La programmation est devenue essentielle pour analyser et gérer les données biologiques. Ce cours explique comment installer un environnement de développement adapté.</p>
-      
-      <!-- Sous-section Ubuntu -->
-      <h3>1. Installer Ubuntu 22.04 LTS sous Windows 10+</h3>
-      <h4>1.1. Installer Bash pour Windows</h4>
-      <p>Pour installer Bash pour Windows, suivez les tutoriels ci-dessous :</p>
+    <!-- Contenu du cours -->
+    <section id="contenu">
+      <h2>📋 Contenu du cours</h2>
+      <ol>
+        <li><strong>Introduction à la Bioinformatique :</strong> Définition et concepts clés.</li>
+        <li><strong>Installation de l'environnement de travail :</strong> Utilisation de WSL (Windows Subsystem for Linux) et d'outils comme Jupyter Notebook.</li>
+        <li><strong>Programmation en bioinformatique :</strong> Introduction à Python et à l'automatisation avec Bash.</li>
+        <li><strong>Études de cas :</strong> Analyse de séquences ADN et exploration de données métagénomiques.</li>
+      </ol>
+    </section>
+
+    <!-- Ressources -->
+    <section id="ressources">
+      <h2>📚 Ressources</h2>
       <ul>
-        <li><a href="https://www.youtube.com/watch?v=CyG16N3GJWo" target="_blank">Installer le shell Bash Linux sous Windows 10 avec WSL (YouTube, 2020)</a></li>
-        <li><a href="https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/" target="_blank">Everything You Can Do With Windows 10’s New Bash Shell (HowToGeek, 2018)</a></li>
+        <li><a href="https://www.ncbi.nlm.nih.gov" target="_blank">NCBI (National Center for Biotechnology Information)</a></li>
+        <li><a href="https://www.ensembl.org" target="_blank">Ensembl Genome Browser</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Guide WSL pour Windows</a></li>
+        <li><a href="https://jupyter.org/documentation" target="_blank">Jupyter Notebook Documentation</a></li>
       </ul>
-      <p>Ensuite, ouvrez Bash et exécutez les commandes suivantes :</p>
-      <pre>
-sudo apt update && sudo apt upgrade -y
-sudo apt install python3 python3-pip python3-dev python3-setuptools
-sudo apt install git
-      </pre>
+    </section>
 
-      <h4>1.2. Installer Jupyter Notebook</h4>
-      <p>Exécutez la commande suivante pour installer Jupyter Notebook :</p>
-      <pre>
-sudo pip3 install jupyter
-      </pre>
+    <!-- Installation -->
+    <section id="installation">
+      <h2>🧑‍💻 Installation</h2>
+      <p>Pour commencer avec ce cours :</p>
+      <ol>
+        <li>Clonez ce dépôt :</li>
+        <pre><code>git clone https://github.com/etibiri/cours-bioinformatique.git</code></pre>
+        <li>Installez les dépendances nécessaires via Bash :</li>
+        <pre><code>sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip git
+pip3 install jupyter bash_kernel
+</code></pre>
+        <li>Lancez Jupyter Notebook :</li>
+        <pre><code>jupyter notebook</code></pre>
+      </ol>
+    </section>
 
-      <h4>1.3. Vérification de l'installation</h4>
-      <p>Pour vérifier que Jupyter Notebook a été installé avec succès, lancez cette commande :</p>
-      <pre>
-jupyter notebook
-      </pre>
-
-      <h4>1.4. Installer le kernel Bash</h4>
-      <p>Pour ajouter le kernel Bash, exécutez :</p>
-      <pre>
-pip install bash_kernel
-python3 -m pip install --upgrade pip
-python3 -m pip install bash_kernel
-jupyter notebook
-      </pre>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>📬 Contact et Feedback</h2>
+      <p>Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter :</p>
+      <ul>
+        <li><strong>Email :</strong> <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></li>
+        <li><strong>GitHub Issues :</strong> <a href="https://github.com/etibiri/cours-bioinformatique/issues" target="_blank">Ouvrir une issue</a></li>
+      </ul>
     </section>
   </main>
 
   <footer class="main-footer">
     <p>&copy; 2025 Ezechiel B. TIBIRI. Tous droits réservés.</p>
+    <p>Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>.</p>
   </footer>
 </body>
 
 </html>
-
