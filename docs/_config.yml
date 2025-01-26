@@ -1,0 +1,30 @@
+# Dependencies
+# markdown:         redcarpet
+# highlighter:      pygments
+
+# Permalinks
+# permalink:        pretty
+# relative_permalinks: true
+
+# Setup
+title:            Introduction  la Bioinformatique
+tagline:          'La prsence physique  ce cours est obligatoire'
+description:      'Bienvenue dans le cours d'introduction  la bioinformatique. Ce site vous fournira toutes les informations et ressources ncessaires pour comprendre les bases et outils essentiels de la bioinformatique.'
+#baseurl: ""
+url:              'etibiri.github.io'
+author:
+  name:           'Ezechiel Bionimian TIBIRI'
+  mail:            ezechiel.tibiri@ujkz.bf'
+
+
+#paginate:         5
+
+# Custom vars
+#version:          2.1.0
+
+github:
+  repo:           https://github.com/etibiri/etibiri.github.io
+
+# Exclude specific pages and files from the site build
+exclude:
+  - course_materials/*
