@@ -130,3 +130,77 @@ footer {
   color: #333;
 }
 
+/* Styles pour l'article */
+.post {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+}
+
+.post-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Styles pour les articles lis */
+.related {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.related h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.related-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related-posts li {
+  margin-bottom: 15px;
+}
+
+.related-post-link {
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.related-post-link:hover {
+  text-decoration: underline;
+}
+
+.related-post-date {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
