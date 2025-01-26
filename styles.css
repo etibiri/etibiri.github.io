@@ -204,3 +204,34 @@ footer {
   margin-top: 5px;
 }
 
+/* Styles pour les articles */
+.post {
+  margin-bottom: 40px;
+}
+
+.post h1, .post h2, .post h3 {
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.post p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.post blockquote {
+  font-style: italic;
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border-left: 4px solid #007bff;
+  margin: 20px 0;
+}
+
