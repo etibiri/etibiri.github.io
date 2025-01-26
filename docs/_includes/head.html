@@ -1,0 +1,38 @@
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    {% if page.title == "Home" %}
+      {{ site.title }} &middot; {{ site.tagline }}
+    {% else %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% endif %}
+  </title>
+
+  <!-- SEO and Social Media -->
+  <meta name="description" content="Cours de bioinformatique - Une introduction aux bases et aux outils avancs de la bioinformatique.">
+  <meta property="og:title" content="{{ page.title }} - {{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:image" content="{{ site.baseurl }}public/logo1.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl }}public/logo1.webp">
+  <link rel="icon" href="{{ site.baseurl }}public/favicon.webp">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="{{ site.baseurl }}manifest.json">
+</head>
+
