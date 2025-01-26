@@ -19,7 +19,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* En-tte */
+/* En-tête */
 header {
   background: #333;
   color: #fff;
@@ -68,7 +68,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Barre latrale */
+/* Barre latérale */
 .sidebar {
   background-color: #f8f9fa;
   padding: 20px;
@@ -115,7 +115,7 @@ footer {
 
 /* Conteneur des pages */
 .page-container {
-  margin-left: 270px; /* Espace pour la barre latrale */
+  margin-left: 270px; /* Espace pour la barre latérale */
   padding: 20px;
 }
 
@@ -206,7 +206,7 @@ footer {
   margin: 20px 0;
 }
 
-/* Articles lis */
+/* Articles liés */
 .related {
   max-width: 800px;
   margin: 20px auto;
