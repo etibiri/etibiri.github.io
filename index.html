@@ -1,12 +1,97 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="fr">
+
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Cours de Bioinformatique</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction  la Bioinformatique</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>Bienvenue sur le cours de Bioinformatique</h1>
-    <p>Ce site contient toutes les ressources pour apprendre la bioinformatique.</p>
+  <header class="main-header">
+    <h1>Introduction  la Bioinformatique</h1>
+    <p>Bienvenue au cours d'introduction  la Bioinformatique. Vous trouverez ici toutes les informations et ressources ncessaires.</p>
+    <p><strong>Note :</strong> La prsence physique  ce cours est obligatoire.</p>
+  </header>
+
+  <main class="content">
+    <!-- Section Intervenants -->
+    <section id="intervenants">
+      <h2>Intervenants</h2>
+      <ul>
+        <li>
+          <strong>Ezechiel B. TIBIRI</strong>, INERA/CNRST<br>
+          Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section Prrequis -->
+    <section id="prerequis">
+      <h2>Prrequis</h2>
+      <p>Dans un premier temps, il est recommand d'acqurir les bases suivantes :</p>
+      <ul>
+        <li>Biologie molculaire</li>
+        <li>Gnomique</li>
+        <li>Squenage d'ADN</li>
+      </ul>
+      <p><strong>Temps estim :</strong> 4 heures</p>
+      <p><strong>Configuration minimale requise :</strong></p>
+      <ul>
+        <li>Processeur avec 4 curs minimum</li>
+        <li>8 Go de mmoire vive (RAM)</li>
+        <li>250 Go d'espace de stockage disponible</li>
+      </ul>
+    </section>
+
+    <!-- Section Programmation en Bioinformatique -->
+    <section id="programmation">
+      <h2>Introduction  la Programmation en Bioinformatique</h2>
+      <p>La programmation est devenue essentielle pour analyser et grer les donnes biologiques. Ce cours explique comment installer un environnement de dveloppement adapt.</p>
+      
+      <!-- Sous-section Ubuntu -->
+      <h3>1. Installer Ubuntu 22.04 LTS sous Windows 10+</h3>
+      <h4>1.1. Installer Bash pour Windows</h4>
+      <p>Pour installer Bash pour Windows, suivez les tutoriels ci-dessous :</p>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=CyG16N3GJWo" target="_blank">Installer le shell Bash Linux sous Windows 10 avec WSL (YouTube, 2020)</a></li>
+        <li><a href="https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/" target="_blank">Everything You Can Do With Windows 10s New Bash Shell (HowToGeek, 2018)</a></li>
+      </ul>
+      <p>Ensuite, ouvrez Bash et excutez les commandes suivantes :</p>
+      <pre>
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip python3-dev python3-setuptools
+sudo apt install git
+      </pre>
+
+      <h4>1.2. Installer Jupyter Notebook</h4>
+      <p>Excutez la commande suivante pour installer Jupyter Notebook :</p>
+      <pre>
+sudo pip3 install jupyter
+      </pre>
+
+      <h4>1.3. Vrification de l'installation</h4>
+      <p>Pour vrifier que Jupyter Notebook a t install avec succs, lancez cette commande :</p>
+      <pre>
+jupyter notebook
+      </pre>
+
+      <h4>1.4. Installer le kernel Bash</h4>
+      <p>Pour ajouter le kernel Bash, excutez :</p>
+      <pre>
+pip install bash_kernel
+python3 -m pip install --upgrade pip
+python3 -m pip install bash_kernel
+jupyter notebook
+      </pre>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Ezechiel B. TIBIRI. Tous droits rservs.</p>
+  </footer>
 </body>
+
 </html>
+
