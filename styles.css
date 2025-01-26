@@ -19,7 +19,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* En-tête */
+/* En-t??te */
 header {
   background: #333;
   color: #fff;
@@ -68,7 +68,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Barre latérale */
+/* Barre lat??rale */
 .sidebar {
   background-color: #f8f9fa;
   padding: 20px;
@@ -115,7 +115,7 @@ footer {
 
 /* Conteneur des pages */
 .page-container {
-  margin-left: 270px; /* Espace pour la barre latérale */
+  margin-left: 270px; /* Espace pour la barre lat??rale */
   padding: 20px;
 }
 
@@ -206,7 +206,7 @@ footer {
   margin: 20px 0;
 }
 
-/* Articles liés */
+/* Articles li??s */
 .related {
   max-width: 800px;
   margin: 20px auto;
@@ -246,5 +246,19 @@ footer {
   font-size: 0.9rem;
   color: #666;
   margin-top: 5px;
+}
+
+.centered-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 80%;
+  height: auto;
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: -10px;
 }
 
