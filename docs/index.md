@@ -1,3 +1,17 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="brand">📚 Bioinformatique</a>
+    <ul class="nav-links">
+      <li><a href="#objectifs">Objectifs</a></li>
+      <li><a href="#intervenants">Intervenants</a></li>
+      <li><a href="#prerequis">Prérequis</a></li>
+      <li><a href="#contenu">Contenu</a></li>
+      <li><a href="#ressources">Ressources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 ---
 layout: default
 title: Introduction à la Bioinformatique
