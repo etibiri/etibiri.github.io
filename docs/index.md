@@ -6,7 +6,7 @@ description: Introduction au cours de bioinformatique - Objectifs, contenu, ress
 
 # Introduction  la Bioinformatique
 
-Bienvenue dans le cours d'introduction  la bioinformatique. Ce site vous fournira toutes les informations et ressources ncessaires pour comprendre les bases et outils essentiels de la bioinformatique.
+Bienvenue dans le cours d'introduction  la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.
 
 **Note :** La prsence physique  ce cours est obligatoire.
 
@@ -14,7 +14,7 @@ Bienvenue dans le cours d'introduction  la bioinformatique. Ce site vous fournir
 
 ##  Objectifs du cours
 
-- Comprendre les bases de la gnomique et du squenage.
+- Comprendre les bases de la génomique et du séquençage.
 - Explorer les outils bioinformatiques essentiels  l'analyse des donnes.
 - Installer et configurer un environnement de dveloppement pour la bioinformatique.
 - S'initier  la programmation applique  la bioinformatique.
