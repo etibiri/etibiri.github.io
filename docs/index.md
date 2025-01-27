@@ -4,13 +4,15 @@ title: Introduction à la Bioinformatique
 description: Introduction au cours de bioinformatique - Objectifs, contenu, ressources et outils.
 ---
 
-# Introduction à la Bioinformatique
+<br />
+<div>
+  <p align="justify">
+    Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.
+  </p>
+  <p><strong>Note :</strong> La présence physique à ce cours est obligatoire.</p>
+</div>
 
-Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.
-
-**Note :** La présence physique à ce cours est obligatoire.
-
----
+<hr />
 
 ## 🚀 Objectifs du cours
 
@@ -19,7 +21,7 @@ Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fourn
 - Installer et configurer un environnement de développement pour la bioinformatique.
 - S'initier à la programmation appliquée à la bioinformatique.
 
----
+<hr />
 
 ## 👨‍🏫 Intervenant
 
@@ -27,7 +29,7 @@ Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fourn
 Chercheur à l'INERA/CNRST  
 Email : [ezechiel.tibiri@ujkz.bf](mailto:ezechiel.tibiri@ujkz.bf)
 
----
+<hr />
 
 ## 🛠️ Prérequis
 
@@ -40,7 +42,7 @@ Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :
   - RAM : 8 Go ou plus.
   - Stockage : 250 Go disponibles.
 
----
+<hr />
 
 ## 📋 Contenu du cours
 
@@ -49,7 +51,7 @@ Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :
 3. **Programmation en bioinformatique :** Introduction à Python et à l'automatisation avec Bash.
 4. **Études de cas :** Analyse de séquences ADN et exploration de données métagénomiques.
 
----
+<hr />
 
 ## 📚 Ressources
 
@@ -58,32 +60,36 @@ Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :
 - [Guide WSL pour Windows](https://learn.microsoft.com/en-us/windows/wsl/)
 - [Jupyter Notebook Documentation](https://jupyter.org/documentation)
 
----
+<hr />
 
 ## 🧑‍💻 Installation
 
 Pour commencer avec ce cours :
 
 1. Clonez ce dépôt :
-
    ```bash
    git clone https://github.com/etibiri/cours-bioinformatique.git
    ```
-
 2. Installez les dépendances nécessaires via Bash :
-
    ```bash
    sudo apt update && sudo apt upgrade -y
    sudo apt install python3 python3-pip git
    pip3 install jupyter bash_kernel
    ```
-3. Lancez Jupyter Notebook :
 
+3. Lancez Jupyter Notebook :
    ```bash
    jupyter notebook
    ```
+
+<hr />
+
 ## 📬 Contact et Feedback
 
 Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter :
-   - *Email* : [ezechiel.tibiri@ujkz.bf](mailto:ezechiel.tibiri@ujkz.bf)
-   - *GitHub Issues* : [Ouvrir une issue](https://github.com/etibiri/cours-bioinformatique/issues)
+- Email : [ezechiel.tibiri@ujkz.bf]
+- GitHub Issues : [Ouvrir une issue](https://github.com/etibiri/cours-bioinformatique/issues)
+
+<p align="center"> &copy; 2025 **Ezechiel B. TIBIRI**. Tous droits réservés. Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>. </p> ```
+
+
