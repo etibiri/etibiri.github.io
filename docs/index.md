@@ -65,10 +65,12 @@ Pour tirer le meilleur parti de ce cours, il est recommand d'avoir :
 Pour commencer avec ce cours :
 
 1. Clonez ce dpt :
-   ```bash
-   git clone https://github.com/etibiri/cours-bioinformatique.git
 
+```bash
+   git clone https://github.com/etibiri/cours-bioinformatique.git
+```
 2. Installez les dpendances ncessaires via Bash :
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install python3 python3-pip git
@@ -76,6 +78,7 @@ pip3 install jupyter bash_kernel
 ```
 
 3. Lancez Jupyter Notebook :
+
 ````bash
 jupyter notebook
 ```
