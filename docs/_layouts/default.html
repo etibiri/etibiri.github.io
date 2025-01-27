@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-  {% include head.html %}
+  <head>
+    <!-- Inclusion du fichier head.html -->
+    {% include head.html %}
+    
+    <!-- Lien vers la feuille de style personnalisée -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+  </head>
 
   <body class="theme-base-0c">
-
+    <!-- Inclusion de la barre latérale -->
     {% include sidebar.html %}
 
+    <!-- Contenu principal -->
     <div class="content container">
       {{ content }}
     </div>
-
   </body>
 </html>
