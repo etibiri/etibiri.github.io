@@ -1,57 +1,57 @@
 ---
 layout: default
-title: Introduction  la Bioinformatique
+title: Introduction à la Bioinformatique
 description: Introduction au cours de bioinformatique - Objectifs, contenu, ressources et outils.
 ---
 
-# Introduction  la Bioinformatique
+# Introduction à la Bioinformatique
 
-Bienvenue dans le cours d'introduction  la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.
+Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.
 
-**Note :** La prsence physique  ce cours est obligatoire.
+**Note :** La présence physique à ce cours est obligatoire.
 
 ---
 
-##  Objectifs du cours
+## 🚀 Objectifs du cours
 
 - Comprendre les bases de la génomique et du séquençage.
-- Explorer les outils bioinformatiques essentiels  l'analyse des donnes.
-- Installer et configurer un environnement de dveloppement pour la bioinformatique.
-- S'initier  la programmation applique  la bioinformatique.
+- Explorer les outils bioinformatiques essentiels à l'analyse des données.
+- Installer et configurer un environnement de développement pour la bioinformatique.
+- S'initier à la programmation appliquée à la bioinformatique.
 
 ---
 
-##  Intervenant
+## 👨‍🏫 Intervenant
 
 **Ezechiel B. TIBIRI**  
-Chercheur  l'INERA/CNRST  
+Chercheur à l'INERA/CNRST  
 Email : [ezechiel.tibiri@ujkz.bf](mailto:ezechiel.tibiri@ujkz.bf)
 
 ---
 
-##  Prrequis
+## 🛠️ Prérequis
 
-Pour tirer le meilleur parti de ce cours, il est recommand d'avoir :
+Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :
 
-- Des notions de biologie molculaire et gnomique.
+- Des notions de biologie moléculaire et génomique.
 - Une connaissance de base en informatique.
-- Une machine avec les spcifications suivantes :
-  - Processeur : 4 curs minimum.
+- Une machine avec les spécifications suivantes :
+  - Processeur : 4 cœurs minimum.
   - RAM : 8 Go ou plus.
   - Stockage : 250 Go disponibles.
 
 ---
 
-##  Contenu du cours
+## 📋 Contenu du cours
 
-1. **Introduction  la Bioinformatique :** Dfinition et concepts cls.
+1. **Introduction à la Bioinformatique :** Définition et concepts clés.
 2. **Installation de l'environnement de travail :** Utilisation de WSL (Windows Subsystem for Linux) et d'outils comme Jupyter Notebook.
-3. **Programmation en bioinformatique :** Introduction  Python et  l'automatisation avec Bash.
-4. **tudes de cas :** Analyse de squences ADN et exploration de donnes mtagnomiques.
+3. **Programmation en bioinformatique :** Introduction à Python et à l'automatisation avec Bash.
+4. **Études de cas :** Analyse de séquences ADN et exploration de données métagénomiques.
 
 ---
 
-##  Ressources
+## 📚 Ressources
 
 - [NCBI (National Center for Biotechnology Information)](https://www.ncbi.nlm.nih.gov)
 - [Ensembl Genome Browser](https://www.ensembl.org)
@@ -60,25 +60,30 @@ Pour tirer le meilleur parti de ce cours, il est recommand d'avoir :
 
 ---
 
-##  Installation
+## 🧑‍💻 Installation
 
 Pour commencer avec ce cours :
 
-1. Clonez ce dpt :
+1. Clonez ce dépôt :
 
-```bash
+   ```bash
    git clone https://github.com/etibiri/cours-bioinformatique.git
-```
-2. Installez les dpendances ncessaires via Bash :
+   ```
 
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install python3 python3-pip git
-pip3 install jupyter bash_kernel
-```
+2. Installez les dépendances nécessaires via Bash :
 
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   sudo apt install python3 python3-pip git
+   pip3 install jupyter bash_kernel
+   ```
 3. Lancez Jupyter Notebook :
 
-````bash
-jupyter notebook
-```
+   ```bash
+   jupyter notebook
+   ```
+## 📬 Contact et Feedback
+
+Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter :
+   - *Email* : [ezechiel.tibiri@ujkz.bf](mailto:ezechiel.tibiri@ujkz.bf)
+   - *GitHub Issues* : [Ouvrir une issue](https://github.com/etibiri/cours-bioinformatique/issues)
