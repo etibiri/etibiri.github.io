@@ -11,6 +11,7 @@ La bioinformatique est l'application des outils informatiques et des méthodes s
 ## Concepts clés
 - **Génomique et séquençage** : Étude complète du matériel génétique d'un organisme.
 - **Alignement de séquences** : Comparaison de deux ou plusieurs séquences d'ADN, ARN ou protéines.
+- **Banques de données biologiques** : Rechercher et télécharger des séquences
 - **Analyse métagénomique** : Exploration de l'ensemble des génomes présents dans un échantillon environnemental.
 
 Pour plus d'informations, consultez les ressources :
