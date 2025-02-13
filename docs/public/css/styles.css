@@ -1,6 +1,6 @@
 /* Général */
 body {
-  margin: 5px;
+  margin: 10px;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #f4f4f9;
@@ -45,7 +45,7 @@ body {
   text-decoration: none;
   padding: 10px;
   display: block;
-  border-radiuwhites: 5px;
+  border-radiuwhites: 10px;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -58,8 +58,8 @@ body {
 
 /* Contenu principal */
 .content {
-  margin-left: 250px;
-  padding: 15px;
+  margin-left: 200px;
+  padding: 10px;
   flex: 1;
 }
 
@@ -76,7 +76,7 @@ pre {
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 10px;
   overflow-x: auto;
 }
 
