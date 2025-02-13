@@ -62,7 +62,7 @@ body {
   margin-left: 220px; /* Ajustement en fonction de la nouvelle largeur de la barre latérale */
   padding: 10px;
   flex: 1;
-  text-align: center; /* Centre le texte du contenu */
+  text-align: justify; /* Justifie le texte du contenu */
 }
 
 /* Section */
