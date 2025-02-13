@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes de base de LINUX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #0077cc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #0077cc;
+            color: white;
+        }
+        code {
+            background-color: #eee;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Les Commandes de Base de LINUX</h1>
+        <p>La maîtrise des commandes de base de Linux est essentielle pour les bioinformaticiens. Voici un guide simplifié et illustré pour vous aider à comprendre et utiliser efficacement ces commandes.</p>
+        
+        <h2>1. Gestion des répertoires et des fichiers</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+            <tr>
+                <td><code>pwd</code></td>
+                <td>Affiche le chemin absolu du répertoire courant.</td>
+                <td><code>pwd</code> → /home/user/Documents</td>
+            </tr>
+            <tr>
+                <td><code>ls</code></td>
+                <td>Liste les fichiers et dossiers du répertoire actuel.</td>
+                <td><code>ls</code> → file1, file2, etc.</td>
+            </tr>
+            <tr>
+                <td><code>cd</code></td>
+                <td>Change de répertoire.</td>
+                <td><code>cd Documents</code></td>
+            </tr>
+            <tr>
+                <td><code>mkdir -p</code></td>
+                <td>Crée un répertoire, y compris les sous-dossiers.</td>
+                <td><code>mkdir -p bioinfo/data</code></td>
+            </tr>
+            <tr>
+                <td><code>touch</code></td>
+                <td>Crée un fichier vide ou met à jour la date de modification.</td>
+                <td><code>touch fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>cp</code></td>
+                <td>Copie des fichiers.</td>
+                <td><code>cp fichier.txt /home/user/Desktop</code></td>
+            </tr>
+            <tr>
+                <td><code>cp -r</code></td>
+                <td>Copie un répertoire et son contenu.</td>
+                <td><code>cp -r dossier1 dossier2</code></td>
+            </tr>
+            <tr>
+                <td><code>mv</code></td>
+                <td>Déplace ou renomme des fichiers.</td>
+                <td><code>mv fichier.txt nouveau_nom.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>rm</code></td>
+                <td>Supprime des fichiers (irréversible).</td>
+                <td><code>rm fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>rm -R</code></td>
+                <td>Supprime un répertoire et tout son contenu.</td>
+                <td><code>rm -R dossier</code></td>
+            </tr>
+        </table>
+        
+        <h2>2. Commandes d'édition</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+            <tr>
+                <td><code>cat</code></td>
+                <td>Affiche le contenu d’un fichier.</td>
+                <td><code>cat fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>more</code></td>
+                <td>Affiche le contenu d’un fichier page par page (sans retour arrière).</td>
+                <td><code>more fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>less</code></td>
+                <td>Comme <code>more</code>, mais permet un défilement arrière.</td>
+                <td><code>less fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>head</code></td>
+                <td>Affiche les premières lignes d’un fichier.</td>
+                <td><code>head -n 5 fichier.txt</code> → Affiche 5 premières lignes.</td>
+            </tr>
+            <tr>
+                <td><code>tail</code></td>
+                <td>Affiche les dernières lignes d’un fichier.</td>
+                <td><code>tail -n 5 fichier.txt</code> → Affiche 5 dernières lignes.</td>
+            </tr>
+            <tr>
+                <td><code>nano</code></td>
+                <td>Éditeur de texte simple en terminal.</td>
+                <td><code>nano fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>gedit</code></td>
+                <td>Éditeur graphique pour les fichiers texte.</td>
+                <td><code>gedit fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>grep</code></td>
+                <td>Recherche une chaîne dans un fichier.</td>
+                <td><code>grep "motif" fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>echo</code></td>
+                <td>Répète une chaîne de caractères dans le terminal.</td>
+                <td><code>echo "Bonjour!"</code></td>
+            </tr>
+        </table>
+
+        
+        <h2>3. Commandes diverses</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+            <tr>
+                <td><code>cal</code></td>
+                <td>Affiche le calendrier du mois courant.</td>
+                <td><code>cal</code></td>
+            </tr>
+            <tr>
+                <td><code>date</code></td>
+                <td>Affiche la date et l’heure actuelles.</td>
+                <td><code>date</code></td>
+            </tr>
+            <tr>
+                <td><code>wc</code></td>
+                <td>Compte le nombre de lignes, mots et caractères dans un fichier.</td>
+                <td><code>wc fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>grep</code></td>
+                <td>Recherche une chaîne dans des fichiers ou répertoires.</td>
+                <td><code>grep "motif" fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>spell</code></td>
+                <td>Vérifie l'orthographe dans un fichier.</td>
+                <td><code>cat texte.txt | spell > erreurs.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>read</code></td>
+                <td>Lit une entrée utilisateur (dans les scripts).</td>
+                <td><code>read nom</code> → Attend que l’utilisateur tape un texte.</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
