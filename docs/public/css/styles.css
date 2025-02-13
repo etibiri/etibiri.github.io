@@ -13,7 +13,7 @@ body {
 
 /* Barre latérale */
 .sidebar {
-  width: 200px; /* Réduction de la largeur */
+  width: 150px; /* Réduction de la largeur */
   background-color: #2c3e50;
   color: #fff;
   height: 100vh;
@@ -47,7 +47,7 @@ body {
   display: block;
   border-radius: 10px;
   transition: background 0.3s, color 0.3s;
-  margin-left: 0.5cm; /* Espacement de 0.5 cm */
+  margin-left: 1cm; /* Espacement de 1 cm */
 }
 
 .sidebar ul li a:hover,
@@ -59,7 +59,7 @@ body {
 
 /* Contenu principal */
 .content {
-  margin-left: 220px; /* Ajustement en fonction de la nouvelle largeur de la barre latérale */
+  margin-left: 200px; /* Ajustement en fonction de la nouvelle largeur de la barre latérale */
   padding: 10px;
   flex: 1;
   text-align: justify; /* Justifie le texte du contenu */
