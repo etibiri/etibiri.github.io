@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étude de Cas : Analyse de Séquences ADN</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Étude de Cas : Analyse de Séquences ADN et Exploration de Données Métagénomiques</h1>
+    
+    <h2>Contexte</h2>
+    <p>Vous êtes un bioinformaticien travaillant sur l’analyse de séquences ADN issues d’un séquençage métagénomique à l’aide de la technologie Nanopore. Votre objectif est de détecter la présence de virus potentiellement pathogènes dans un échantillon environnemental.</p>
+    
+    <h2>Objectifs pédagogiques</h2>
+    <ul>
+        <li>Comprendre le format FASTQ et manipuler des séquences ADN.</li>
+        <li>Apprendre à filtrer les lectures et à évaluer leur qualité.</li>
+        <li>Effectuer un alignement des lectures sur une base de données de référence.</li>
+        <li>Explorer et visualiser les résultats sous forme de graphiques.</li>
+        <li>Interpréter des résultats d’analyse métagénomique.</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>Les étudiants travailleront principalement avec <b>Bash</b> et des outils de bioinformatique tels que :</p>
+    <ul>
+        <li><b>FastQC</b> : Contrôle qualité des séquences</li>
+        <li><b>Minimap2</b> : Alignement des lectures sur une base de données</li>
+        <li><b>Samtools</b> : Manipulation et filtrage des fichiers d’alignement</li>
+    </ul>
+    
+    <h2>Exercice en ligne de commande (Bash)</h2>
+    <h3>1. Contrôle qualité des lectures</h3>
+    <pre><code>
+    fastqc data/sample_reads.fastq -o output/
+    </code></pre>
+    
+    <h3>2. Filtrage des séquences de mauvaise qualité</h3>
+    <pre><code>
+    seqtk trimfq -q 20 data/sample_reads.fastq > data/filtered_reads.fastq
+    </code></pre>
+    
+    <h3>3. Alignement avec Minimap2</h3>
+    <pre><code>
+    minimap2 -ax map-ont reference_database.mmi data/filtered_reads.fastq > data/alignment.sam
+    </code></pre>
+    
+    <h3>4. Conversion et tri du fichier SAM en BAM</h3>
+    <pre><code>
+    samtools view -S -b data/alignment.sam | samtools sort -o data/alignment_sorted.bam
+    </code></pre>
+    
+    <h3>5. Comptage des lectures alignées</h3>
+    <pre><code>
+    samtools idxstats data/alignment_sorted.bam
+    </code></pre>
+    
+    <h2>Analyse avancée avec Python (Jupyter Notebook)</h2>
+    <p>Pour les étudiants souhaitant approfondir l’analyse et la visualisation des résultats, un <b>Jupyter Notebook</b> est fourni :</p>
+    <pre><code>
+    import os
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from Bio import SeqIO
+
+    # Chemin vers le fichier FASTQ d'exemple
+    data_path = "data/sample_reads.fastq"
+    
+    # Étape 1 : Contrôle qualité avec Biopython
+    def quality_distribution(fastq_file):
+        qualities = []
+        for record in SeqIO.parse(fastq_file, "fastq"):
+            qualities.extend(record.letter_annotations["phred_quality"])
+        return qualities
+    
+    # Chargement des scores de qualité
+    qualities = quality_distribution(data_path)
+    
+    # Affichage de la distribution des scores de qualité
+    plt.hist(qualities, bins=50, alpha=0.7, color='blue')
+    plt.xlabel("Score de qualité Phred")
+    plt.ylabel("Fréquence")
+    plt.title("Distribution des scores de qualité des lectures")
+    plt.show()
+    </code></pre>
+    
+    <p>Les étudiants sont encouragés à comparer les résultats obtenus avec Bash et Python.</p>
+    
+    <h2>Conclusion</h2>
+    <p>Ce projet permet aux étudiants d'acquérir une expérience pratique dans l'analyse de données métagénomiques, tout en renforçant leurs compétences en ligne de commande Bash et en Python pour les analyses avancées.</p>
+</body>
+</html>
