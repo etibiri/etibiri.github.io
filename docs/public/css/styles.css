@@ -53,12 +53,13 @@ body {
 .sidebar ul li a.active {
   background: #007bff;
   color: #fff;
+  border-radius: 5px;
 }
 
 /* Contenu principal */
 .content {
-  margin-left: 270px;
-  padding: 20px;
+  margin-left: 250px;
+  padding: 15px;
   flex: 1;
 }
 
