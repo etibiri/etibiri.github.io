@@ -22,7 +22,7 @@ body {
   left: 0;
   top: 0;
   overflow-y: auto;
-  text-align: center; /* Centre le texte */
+  text-align: justify; /* Justifie le texte */
 }
 
 .sidebar h2 {
