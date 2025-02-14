@@ -53,18 +53,25 @@
         <h3>Mise à jour et installation des outils essentiels</h3>
         <p>Ouvrez votre terminal WSL et exécutez :</p>
         <div class="code-block">sudo apt update && sudo apt upgrade -y</div>
-        <p>Ensuite, installez les outils :</p>
+        <p>Ensuite, installez les autres outils python, jupyter notebook et les packages bioinformatique : FastQC, Minimap2, Samtools :</p>
         <div class="code-block">sudo apt install -y python3 python3-pip git<br>pip3 install jupyter bash_kernel</div>
-
+        
+        <p>Installation des packages bioinformatique :</p>
+        <div class="code-block">sudo apt update<br>sudo apt install fastqc</div>
+        <div class="code-block">sudo apt update<br>sudo apt install minimap2</div>
+        <div class="code-block">sudo apt update<br>sudo apt install samtools</div>
         <h3>Vérification de l'installation</h3>
         <p>Exécutez les commandes suivantes :</p>
-        <div class="code-block">python3 --version<br>git --version<br>jupyter --version</div>
+        <div class="code-block">python3 --version<br>git --version<br>jupyter --version<br>fastqc --version<br>minimap2<br>samtools</div>
         <p>Si les versions s'affichent, votre environnement est prêt ! 🎉</p>
 
         <h3>Ressources supplémentaires</h3>
         <ul>
             <li><a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Documentation officielle de WSL</a></li>
             <li><a href="https://jupyter.org/install" target="_blank">Guide de démarrage avec Jupyter Notebook</a></li>
+            <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">Documentation de FastQC, outil de contrôle qualité pour les données NGS</a></li>
+            <li><a href="https://lh3.github.io/minimap2/minimap2.html" target="_blank">Documentation de Minimap2</a></li>
+            <li><a href="http://www.htslib.org/doc/" target="_blank">Documentation de Samtools</a></li>
         </ul>
 
         <p class="text-center">🚀 Vous êtes maintenant prêt à commencer vos analyses bioinformatiques !</p>
