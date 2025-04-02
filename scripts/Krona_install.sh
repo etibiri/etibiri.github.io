@@ -34,7 +34,7 @@ cd "$KRONA_TAX_DIR"
 
 if [ ! -f taxdump.tar.gz ]; then
   echo "Téléchargement de la taxonomie NCBI..."
-  wget https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
+  wget --no-check-certificate https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
 fi
 
 echo "Extraction de la taxonomie..."
