@@ -1,97 +1,387 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Étude de Cas : Analyse de Séquences ADN</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-        h1, h2 { color: #2c3e50; }
-        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
-    </style>
+  <meta charset="UTF-8">
+  <title>TP Bioinformatique : Classification taxonomique de séquences 16S rDNA</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #222;
+    }
+    p {
+      color: #444;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    pre, code {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      padding: 10px;
+      display: block;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    blockquote {
+      border-left: 4px solid #ccc;
+      padding-left: 1em;
+      margin: 1em 0;
+      color: #666;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #ccc;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>Étude de Cas : Analyse de Séquences ADN et Exploration de Données Métagénomiques</h1>
-    
-    <h2>Contexte</h2>
-    <p>Vous êtes un bioinformaticien travaillant sur l’analyse de séquences ADN issues d’un séquençage métagénomique à l’aide de la technologie Nanopore. Votre objectif est de détecter la présence de virus potentiellement pathogènes dans un échantillon environnemental.</p>
-    
-    <h2>Objectifs pédagogiques</h2>
-    <ul>
-        <li>Comprendre le format FASTQ et manipuler des séquences ADN.</li>
-        <li>Apprendre à filtrer les lectures et à évaluer leur qualité.</li>
-        <li>Effectuer un alignement des lectures sur une base de données de référence.</li>
-        <li>Explorer et visualiser les résultats sous forme de graphiques.</li>
-        <li>Interpréter des résultats d’analyse métagénomique.</li>
-    </ul>
-    
-    <h2>Instructions</h2>
-    <p>Les étudiants travailleront principalement avec <b>Bash</b> et des outils de bioinformatique tels que :</p>
-    <ul>
-        <li><b>FastQC</b> : Contrôle qualité des séquences</li>
-        <li><b>Minimap2</b> : Alignement des lectures sur une base de données</li>
-        <li><b>Samtools</b> : Manipulation et filtrage des fichiers d’alignement</li>
-    </ul>
-    
-    <h2>Exercice en ligne de commande (Bash)</h2>
-    <h3>1. Contrôle qualité des lectures</h3>
-    <pre><code>
-    fastqc data/sample_reads.fastq -o output/
-    </code></pre>
-    
-    <h3>2. Filtrage des séquences de mauvaise qualité</h3>
-    <pre><code>
-    seqtk trimfq -q 20 data/sample_reads.fastq > data/filtered_reads.fastq
-    </code></pre>
-    
-    <h3>3. Alignement avec Minimap2</h3>
-    <pre><code>
-    minimap2 -ax map-ont reference_database.mmi data/filtered_reads.fastq > data/alignment.sam
-    </code></pre>
-    
-    <h3>4. Conversion et tri du fichier SAM en BAM</h3>
-    <pre><code>
-    samtools view -S -b data/alignment.sam | samtools sort -o data/alignment_sorted.bam
-    </code></pre>
-    
-    <h3>5. Comptage des lectures alignées</h3>
-    <pre><code>
-    samtools idxstats data/alignment_sorted.bam
-    </code></pre>
-    
-    <h2>Analyse avancée avec Python (Jupyter Notebook)</h2>
-    <p>Pour les étudiants souhaitant approfondir l’analyse et la visualisation des résultats, un <b>Jupyter Notebook</b> est fourni :</p>
-    <pre><code>
-    import os
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from Bio import SeqIO
+  <h1>🧬 TP Bioinformatique : Classification taxonomique de séquences 16S rDNA</h1>
+  <hr/>
 
-    # Chemin vers le fichier FASTQ d'exemple
-    data_path = "data/sample_reads.fastq"
-    
-    # Étape 1 : Contrôle qualité avec Biopython
-    def quality_distribution(fastq_file):
-        qualities = []
-        for record in SeqIO.parse(fastq_file, "fastq"):
-            qualities.extend(record.letter_annotations["phred_quality"])
-        return qualities
-    
-    # Chargement des scores de qualité
-    qualities = quality_distribution(data_path)
-    
-    # Affichage de la distribution des scores de qualité
-    plt.hist(qualities, bins=50, alpha=0.7, color='blue')
-    plt.xlabel("Score de qualité Phred")
-    plt.ylabel("Fréquence")
-    plt.title("Distribution des scores de qualité des lectures")
-    plt.show()
-    </code></pre>
-    
-    <p>Les étudiants sont encouragés à comparer les résultats obtenus avec Bash et Python.</p>
-    
-    <h2>Conclusion</h2>
-    <p>Ce projet permet aux étudiants d'acquérir une expérience pratique dans l'analyse de données métagénomiques, tout en renforçant leurs compétences en ligne de commande Bash et en Python pour les analyses avancées.</p>
+  <h2>🎯 Objectifs pédagogiques</h2>
+  <p>Dans ce TP, vous allez apprendre à :</p>
+  <ul>
+    <li>Utiliser des outils bioinformatiques pour analyser des données de séquençage 16S rDNA.</li>
+    <li>Identifier les microorganismes présents dans des échantillons alimentaires.</li>
+    <li>Visualiser la composition microbienne à l'aide d'outils comme <strong>Kraken2</strong> et <strong>Krona</strong>.</li>
+  </ul>
+  <hr/>
+
+  <h2>🧪 Contexte</h2>
+  <p>Les séquences 16S rDNA sont des marqueurs moléculaires très utilisés pour identifier les bactéries dans des échantillons environnementaux, cliniques ou alimentaires.<br/>
+  Ici, nous étudions <strong>trois échantillons alimentaires suspects de contamination microbienne</strong>.<br/>
+  L’analyse 16S permet de :</p>
+  <ul>
+    <li>Révéler la <strong>diversité bactérienne</strong> dans un produit</li>
+    <li>Mettre en évidence des <strong>contaminations</strong> d’origine alimentaire</li>
+    <li>Contribuer au <strong>contrôle qualité</strong> dans l’industrie agroalimentaire</li>
+  </ul>
+  <hr/>
+
+  <h2>🧬 Pourquoi le gène 16S rDNA ?</h2>
+  <p>Le gène 16S rDNA code pour une sous-unité du ribosome chez les procaryotes. Il possède :</p>
+  <ul>
+    <li>🔒 Des régions conservées (identiques entre espèces) → pour l’alignement</li>
+    <li>🧩 Des régions variables (différentes selon les espèces) → pour l’identification</li>
+  </ul>
+  <p>Cela en fait un excellent marqueur moléculaire pour l’identification des bactéries.</p>
+  <hr/>
+
+  <h2>🧰 Comment fait-on la classification taxonomique à partir d’une séquence 16S ?</h2>
+  <p>Voici les étapes clés :</p>
+  <ol>
+    <li>🔬 Extraction de l’ADN et séquençage des amplicons 16S (ex. : via Oxford Nanopore, Illumina…)</li>
+    <li>💻 Nettoyage et préparation des données</li>
+    <li>🧠 Comparaison des séquences avec une base de données de référence (ex : SILVA, Greengenes, RDP)</li>
+    <li>📊 Attribution d’un taxon (nom scientifique) à chaque séquence selon sa similarité</li>
+    <li>🌐 Visualisation des résultats (ex. : diagrammes, Krona)</li>
+  </ol>
+  <hr/>
+
+  <h2>📦 Prérequis</h2>
+  <p>Avant de commencer, assurez-vous que les outils suivants sont installés sur votre système (Linux ou WSL recommandé) :</p>
+  <h3>🔧 Installation des outils</h3>
+  <pre><code># Mise à jour système
+sudo apt update && sudo apt upgrade -y
+
+# Installation des outils nécessaires
+sudo apt install -y minimap2 samtools kraken2 python3-pip git wget curl
+
+# Installation de Krona (outil de visualisation interactive)
+wget https://raw.githubusercontent.com/etibiri/etibiri.github.io/main/scripts/Krona_install.sh
+bash Krona_install.sh
+source ~/.bashrc
+  </code></pre>
+  <hr/>
+
+  <h2>📁 Étape 1 : Préparation des données</h2>
+  <p>Téléchargez les données de démonstration fournies par Oxford Nanopore.</p>
+  <pre><code>wget -c https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-16s/wf-16s-demo.tar.gz
+tar -xzvf wf-16s-demo.tar.gz
+
+# Organisation du projet
+mkdir -p ~/TP-G0/DATA
+cp -r ~/wf-flu-demo/test_data ~/TP-G0/DATA
+  </code></pre>
+  <hr/>
+
+  <h2>🧬 Étape 2 : Préparer la base de données taxonomique</h2>
+  <h3>🧠 Comprendre la classification taxonomique</h3>
+  <p><em>🔍 Qu’est-ce que la classification taxonomique ?</em></p>
+  <p>La classification taxonomique est une méthode utilisée pour organiser les êtres vivants (plantes, animaux, micro-organismes, etc.) en groupes hiérarchiques basés sur leurs caractéristiques génétiques et évolutives.<br/>
+  Elle permet de nommer, identifier et regrouper les organismes selon des catégories standardisées.</p>
+  <p>Dans le cadre de la bioinformatique, cette classification est faite à partir des séquences d’ADN. L’analyse du gène 16S rDNA, présent dans toutes les bactéries, est une méthode très puissante pour :</p>
+  <ul>
+    <li>Identifier les espèces présentes dans un échantillon complexe (ex. : sol, intestin, aliment contaminé)</li>
+    <li>Comparer les communautés microbiennes entre différents environnements</li>
+    <li>Étudier la diversité microbienne</li>
+  </ul>
+  <hr/>
+
+  <h3>💡 Exemple simple d’arbre taxonomique</h3>
+  <pre><code>Règne       : Bacteria  
+└── Phylum : Proteobacteria  
+     └── Classe : Gammaproteobacteria  
+          └── Ordre : Enterobacterales  
+               └── Famille : Enterobacteriaceae  
+                    └── Genre : Escherichia  
+                         └── Espèce : Escherichia coli
+  </code></pre>
+  <hr/>
+
+  <h3>🔹 Télécharger une base 16S (SILVA) compatible minimap2</h3>
+  <pre><code>mkdir -p ~/TP-G0/DB
+cd ~/TP-G0/DB
+
+# Téléchargement de la base SILVA 16S avec annotation taxonomique
+wget https://zenodo.org/record/3986799/files/silva_nr99_v138_wSpecies_train_set.fa.gz
+gunzip -k silva_nr99_v138_wSpecies_train_set.fa.gz
+
+# Nettoyage des headers pour minimap2
+awk '/^>/{split($0,a," "); print a[1]; next} {print}' silva_nr99_v138_wSpecies_train_set.fa | sed 's/[>;]//g' > database_clean.fasta
+  </code></pre>
+  <h3>🔹 Construire une base Kraken2</h3>
+  <pre><code>cd ~/TP-G0/DB
+kraken2-build --special silva --db kraken2_16S_db
+kraken2-build --build --db kraken2_16S_db
+  </code></pre>
+  <p>⏳ <strong>Note :</strong> Cette étape peut prendre du temps (~20–30 minutes selon votre machine).</p>
+  <hr/>
+
+  <h2>🔍 Étape 3 : Alignement et classification</h2>
+  <h3>Alignement de séquences</h3>
+  <p>🧠 <strong>Définition :</strong></p>
+  <p>L’alignement est une technique bioinformatique qui permet de comparer une séquence d’ADN à une ou plusieurs séquences de référence (généralement issues d’une base de données).
+  L’objectif est de trouver les régions similaires entre les séquences afin d’identifier leur origine biologique.</p>
+  <p><strong>Pourquoi aligner une séquence ?</strong></p>
+  <ul>
+    <li>Pour identifier un micro-organisme à partir de son ADN.</li>
+    <li>Pour localiser des mutations ou des régions variables.</li>
+    <li>Pour comparer des séquences d'espèces différentes ou d'individus.</li>
+  </ul>
+  <p><strong>Exemple d’outil : minimap2</strong></p>
+  <ul>
+    <li>Utilisé pour aligner rapidement des lectures longues (ONT, PacBio) sur une base de données.</li>
+    <li>Produit un fichier .sam ou .bam contenant les positions des alignements.</li>
+  </ul>
+  <p><strong>Analogie :</strong> Imaginez que vous ayez un mot inconnu et un dictionnaire : l’alignement revient à chercher le mot qui ressemble le plus dans le dictionnaire.</p>
+  <h3>💠 Approche 1 : Alignement avec Minimap2</h3>
+  <pre><code>mkdir -p ~/TP-G0/MAPPING
+cd ~/TP-G0/MAPPING
+
+# Indexation de la base
+minimap2 -d database_clean.mmi ~/TP-G0/DB/database_clean.fasta
+
+# Alignement des séquences des 3 échantillons
+minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz > barcode01_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz > barcode02_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz > barcode03_alignment.sam
+
+# Conversion SAM en BAM et tri
+samtools view -Sb barcode02_alignment.sam | samtools sort > barcode02_alignment.sorted.bam
+samtools view -Sb barcode03_alignment.sam | samtools sort > barcode03_alignment.sorted.bam
+
+samtools index barcode01_alignment.sorted.bam
+samtools index barcode02_alignment.sorted.bam
+samtools index barcode03_alignment.sorted.bam
+  </code></pre>
+  <h3>💠 Approche 2 : Classification avec Kraken2</h3>
+  <pre><code>mkdir -p ~/TP-G0/KRAKEN2
+cd ~/TP-G0/KRAKEN2
+
+# Analyse de chaque échantillon avec Kraken2
+kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode01_kraken_report.txt --output barcode01_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode02_kraken_report.txt --output barcode02_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode03_kraken_report.txt --output barcode03_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+  </code></pre>
+  <hr/>
+
+  <h2>📊 Étape 4 : Générer un profil taxonomique</h2>
+  <h3>Générer les fichiers complets avec zéros</h3>
+  <pre><code>kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode01_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode02_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode03_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+  </code></pre>
+  <hr/>
+
+  <h2>🌐 Étape 5 : Visualisation avec Krona</h2>
+  <p>Krona génère une page HTML interactive montrant les taxons détectés.</p>
+  <pre><code>ktImportTaxonomy barcode01_kraken_report.txt -o barcode01_krona_output.html
+ktImportTaxonomy barcode02_kraken_report.txt -o barcode02_krona_output.html
+ktImportTaxonomy barcode03_kraken_report.txt -o barcode03_krona_output.html
+  </code></pre>
+  <p>Ouvrez les fichiers <code>.html</code> dans un navigateur pour explorer la diversité microbienne par échantillon.</p>
+  <hr/>
+
+  <h2>✅ Résultats attendus</h2>
+  <ul>
+    <li>Fichiers d’alignement <code>.bam</code> par échantillon</li>
+    <li>Fichiers Kraken2 : <code>.tsv</code>, <code>.txt</code></li>
+    <li>Graphiques Krona interactifs : <code>barcode0X_krona_output.html</code></li>
+  </ul>
+  <hr/>
+
+  <h2>📚 Ressources utiles</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Titre / Lien</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🌍 Site</td>
+        <td><a href="https://www.ncbi.nlm.nih.gov/taxonomy" target="_blank">NCBI Taxonomy Database</a></td>
+        <td>Base de données taxonomique utilisée par les outils bioinformatiques</td>
+      </tr>
+      <tr>
+        <td>🧠 Tutoriel</td>
+        <td><a href="https://www.ebi.ac.uk/training/online/course/introduction-taxonomy" target="_blank">Introduction to Taxonomic Classification – EMBL-EBI</a></td>
+        <td>Cours en ligne interactif pour débutants</td>
+      </tr>
+      <tr>
+        <td>📘 Livre</td>
+        <td>*Bioinformatics for Beginners* – Wiley (2016)</td>
+        <td>Introduction aux bases de la bioinformatique (chapitres sur la classification 16S)</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1128/AEM.01541-09" target="_blank">Schloss et al., 2009 – Introducing mothur</a></td>
+        <td>Article fondamental sur l’analyse 16S et la communauté microbienne</td>
+      </tr>
+      <tr>
+        <td>🎓 MOOC</td>
+        <td><a href="https://www.coursera.org/specializations/genomic-data-science" target="_blank">Coursera - Genomic Data Science</a></td>
+        <td>Cours incluant l’analyse 16S et outils de classification</td>
+      </tr>
+      <tr>
+        <td>📘 Livre</td>
+        <td>*Bioinformatics Algorithms* – Phillip Compeau &amp; Pavel Pevzner (<a href="https://www.coursera.org/specializations/bioinformatics" target="_blank">Coursera/UCSD</a>)</td>
+        <td>Couvre l’alignement, les arbres phylogénétiques et la taxonomie</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1093/bioinformatics/bty191" target="_blank">Minimap2: pairwise alignment for nucleotide sequences – Li, 2018</a></td>
+        <td>Article scientifique de référence sur minimap2</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1186/gb-2014-15-3-r46" target="_blank">Kraken: Ultrafast Metagenomic Sequence Classification – Wood et Salzberg, 2014</a></td>
+        <td>Base méthodologique de Kraken/Kraken2</td>
+      </tr>
+      <tr>
+        <td>🧠 Tutoriel</td>
+        <td><a href="https://www.ebi.ac.uk/training/online/course/introduction-sequence-search-and-alignment" target="_blank">EBI Training – Sequence alignment</a></td>
+        <td>Cours interactif pour débuter avec l’alignement</td>
+      </tr>
+      <tr>
+        <td>🎓 MOOC</td>
+        <td><a href="https://www.mooc-list.com/tags/metagenomics" target="_blank">Coursera – Metagenomics</a></td>
+        <td>Couvre alignement, classification, diversité microbienne</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr/>
+
+  <h2>💡 Astuce pour aller plus loin</h2>
+  <p>Vous pouvez également explorer :</p>
+  <ul>
+    <li>L’export de vos résultats au format <code>.csv</code> pour analyse sous Excel/R ou Python</li>
+    <li>La comparaison des profils microbiens entre les trois échantillons</li>
+    <li>L’application du même pipeline sur le 4ème échantillon ou d'autres données 16S disponibles dans les banques de données</li>
+  </ul>
+  <hr/>
+
+  <h2>📚 Ressources pédagogiques pour approfondir</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Titre / Lien</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🌍 Site</td>
+        <td><a href="https://www.ncbi.nlm.nih.gov/taxonomy" target="_blank">NCBI Taxonomy Database</a></td>
+        <td>Base de données taxonomique utilisée par les outils bioinformatiques</td>
+      </tr>
+      <tr>
+        <td>🧠 Tutoriel</td>
+        <td><a href="https://www.ebi.ac.uk/training/online/course/introduction-taxonomy" target="_blank">Introduction to Taxonomic Classification – EMBL-EBI</a></td>
+        <td>Cours en ligne interactif pour débutants</td>
+      </tr>
+      <tr>
+        <td>📘 Livre</td>
+        <td>*Bioinformatics for Beginners* – Wiley (2016)</td>
+        <td>Introduction aux bases de la bioinformatique (chapitres sur la classification 16S)</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1128/AEM.01541-09" target="_blank">Schloss et al., 2009 – Introducing mothur</a></td>
+        <td>Article fondamental sur l’analyse 16S et la communauté microbienne</td>
+      </tr>
+      <tr>
+        <td>🎓 MOOC</td>
+        <td><a href="https://www.coursera.org/specializations/genomic-data-science" target="_blank">Coursera - Genomic Data Science</a></td>
+        <td>Cours incluant l’analyse 16S et outils de classification</td>
+      </tr>
+      <tr>
+        <td>📘 Livre</td>
+        <td>*Bioinformatics Algorithms* – Phillip Compeau &amp; Pavel Pevzner (<a href="https://www.coursera.org/specializations/bioinformatics" target="_blank">Coursera/UCSD</a>)</td>
+        <td>Couvre l’alignement, les arbres phylogénétiques et la taxonomie</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1093/bioinformatics/bty191" target="_blank">Minimap2: pairwise alignment for nucleotide sequences – Li, 2018</a></td>
+        <td>Article scientifique de référence sur minimap2</td>
+      </tr>
+      <tr>
+        <td>📄 Article</td>
+        <td><a href="https://doi.org/10.1186/gb-2014-15-3-r46" target="_blank">Kraken: Ultrafast Metagenomic Sequence Classification – Wood et Salzberg, 2014</a></td>
+        <td>Base méthodologique de Kraken/Kraken2</td>
+      </tr>
+      <tr>
+        <td>🧠 Tutoriel</td>
+        <td><a href="https://www.ebi.ac.uk/training/online/course/introduction-sequence-search-and-alignment" target="_blank">EBI Training – Sequence alignment</a></td>
+        <td>Cours interactif pour débuter avec l’alignement</td>
+      </tr>
+      <tr>
+        <td>🎓 MOOC</td>
+        <td><a href="https://www.mooc-list.com/tags/metagenomics" target="_blank">Coursera – Metagenomics</a></td>
+        <td>Couvre alignement, classification, diversité microbienne</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
+
