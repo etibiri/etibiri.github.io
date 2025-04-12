@@ -41,7 +41,6 @@ Pour plus d'informations, consultez le guide officiel de [WSL pour Windows](http
    
    ```bash
    sudo apt install -y python3 python3-pip git
-   pip3 install jupyter bash_kernel
    ```
 
 ### Vérification de l'installation
@@ -50,14 +49,19 @@ Pour vérifier que tout est bien installé, exécutez :
 ```bash
 python3 --version
 git --version
-jupyter --version
 ```
 
 Si vous voyez les versions respectives s'afficher, votre environnement est prêt ! 🎉
 
 ### Ressources supplémentaires
 - [Documentation officielle de WSL](https://learn.microsoft.com/en-us/windows/wsl/)
-- [Guide de démarrage avec Jupyter Notebook](https://jupyter.org/install)
 
 ---
 Avec cette configuration, vous êtes maintenant prêt à commencer vos analyses bioinformatiques ! 🚀
+---
+<!-- Pied de page -->
+
+© 2025 **Ezechiel B. TIBIRI. Tous droits réservés.**
+
+Site hébergé sur [GitHub](https://github.com/etibiri).
+---
