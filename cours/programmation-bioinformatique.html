@@ -253,6 +253,12 @@ EOF</code></pre>
     <p><strong>Exemple :</strong></p>
     <pre><code>grep "motif" &lt;&lt;&lt; "Ceci est un texte contenant le motif."</code></pre>
 
+    <h2>7. Utilisation des Pipes</h2>
+    <p>Les pipes, représentés par le symbole <code>|</code>, permettent de prendre la sortie d'une commande et de la transmettre comme entrée à une autre commande. Cela permet de chaîner plusieurs commandes pour réaliser des opérations complexes.</p>
+    <pre><code>commande1 | commande2</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>ls -l | grep ".txt"</code></pre>
+
     <h2>Récapitulatif</h2>
     <ul>
       <li><code>&gt;</code> : Redirige la sortie standard vers un fichier (écrase le fichier).</li>
@@ -262,6 +268,7 @@ EOF</code></pre>
       <li><code>&amp;&gt;</code> ou <code>&gt; fichier 2>&amp;1</code> : Redirige à la fois la sortie standard et la sortie d'erreur.</li>
       <li>Here Document : Fournit plusieurs lignes comme entrée.</li>
       <li>Here String : Fournit une chaîne de caractères comme entrée.</li>
+      <li><code>|</code> : Permet de chaîner des commandes via un pipe.</li>
     </ul>
   </div>
 
