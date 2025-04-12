@@ -199,9 +199,9 @@ cd ~/TP-G0/MAPPING
 minimap2 -d database_clean.mmi ~/TP-G0/DB/database_clean.fasta
 
 # Alignement des séquences des 3 échantillons
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz > barcode01_alignment.sam
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz > barcode02_alignment.sam
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz > barcode03_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-G0/DATA/test_data/barcode01/*.fastq.gz > barcode01_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-G0/DATA/test_data/barcode02/*.fastq.gz > barcode02_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-G0/DATA/test_data/barcode03/*.fastq.gz > barcode03_alignment.sam
 
 # Conversion SAM en BAM et tri
 samtools view -Sb barcode02_alignment.sam | samtools sort > barcode02_alignment.sorted.bam
@@ -216,17 +216,17 @@ samtools index barcode03_alignment.sorted.bam
 cd ~/TP-G0/KRAKEN2
 
 # Analyse de chaque échantillon avec Kraken2
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode01_kraken_report.txt --output barcode01_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode02_kraken_report.txt --output barcode02_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode03_kraken_report.txt --output barcode03_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report barcode01_kraken_report.txt --output barcode01_kraken_output.tsv ~/TP-G0/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report barcode02_kraken_report.txt --output barcode02_kraken_output.tsv ~/TP-G0/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report barcode03_kraken_report.txt --output barcode03_kraken_output.tsv ~/TP-G0/DATA/test_data/barcode03/*.fastq.gz
   </code></pre>
   <hr/>
 
   <h2>📊 Étape 4 : Générer un profil taxonomique</h2>
   <h3>Générer les fichiers complets avec zéros</h3>
-  <pre><code>kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode01_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode02_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode03_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+  <pre><code>kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report-zero-counts --output barcode01_output.tsv ~/TP-G0/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report-zero-counts --output barcode02_output.tsv ~/TP-G0/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-G0/DB/kraken2_16S_db --report-zero-counts --output barcode03_output.tsv ~/TP-G0/DATA/test_data/barcode03/*.fastq.gz
   </code></pre>
   <hr/>
 
