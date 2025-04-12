@@ -202,7 +202,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Commandes de redirection Bash pour débutants</h1>
+    <h1>Commandes de redirection Bash</h1>
     <p>Les redirections en Bash permettent de gérer l'entrée et la sortie des commandes. Voici quelques commandes de base :</p>
     
     <h2>1. Redirection de la sortie standard</h2>
@@ -271,6 +271,57 @@ EOF</code></pre>
       <li><code>|</code> : Permet de chaîner des commandes via un pipe.</li>
     </ul>
   </div>
+
+ <h1>Métacaractères Bash</h1>
+    <p>Les métacaractères en Bash sont des symboles qui ont une signification spéciale pour l'interpréteur de commandes. Ils permettent d'effectuer des opérations d'expansion de chaînes, de filtrage, et bien plus encore. Voici une présentation des métacaractères essentiels avec leurs explications et exemples.</p>
+
+    <h2>1. Escapement</h2>
+    <p>L'antislash <code>\</code> permet d'échapper un caractère afin de le traiter comme un caractère normal, et non comme un métacaractère.</p>
+    <pre><code>echo "Le signe dollar \$ n'est pas interprété"</code></pre>
+
+    <h2>2. Substitution de commande</h2>
+    <p>Elle permet d'exécuter une commande et d'insérer sa sortie dans une autre commande ou variable.</p>
+    <ul>
+      <li>Avec les backticks :  
+        <pre><code>DATE=`date`</code></pre>
+      </li>
+      <li>Avec <code>$( )</code> (préféré pour la lisibilité) :  
+        <pre><code>DATE=$(date)</code></pre>
+      </li>
+    </ul>
+
+    <h2>3. Expansion de variables</h2>
+    <p>Utilisez le signe dollar <code>$</code> pour référencer une variable. Pour une syntaxe plus claire, vous pouvez utiliser des accolades.</p>
+    <pre><code>echo "La valeur de HOME est $HOME"  
+echo "La valeur de HOME est ${HOME}"</code></pre>
+
+    <h2>4. Opérateurs conditionnels et séparateurs</h2>
+    <ul>
+      <li><strong>&amp;&amp;</strong> : Exécute la seconde commande uniquement si la première réussit.  
+        <pre><code>commande1 && commande2</code></pre>
+      </li>
+      <li><strong>||</strong> : Exécute la seconde commande uniquement si la première échoue.  
+        <pre><code>commande1 || commande2</code></pre>
+      </li>
+      <li><strong>;</strong> : Permet de séparer plusieurs commandes sur une même ligne.  
+        <pre><code>commande1; commande2; commande3</code></pre>
+      </li>
+    </ul>
+
+    <h2>Récapitulatif</h2>
+    <ul>
+      <li><code>*</code>, <code>?</code>, <code>[ ]</code> : Opérateurs de globbing.</li>
+      <li><code>\</code> : Caractère d'échappement.</li>
+      <li><code>$</code> et <code>${}</code> : Expansion de variables.</li>
+      <li><code>&amp;&amp;</code>, <code>||</code>, <code>;</code> : Opérateurs conditionnels et séparateurs.</li>
+    </ul>
+  </div>
+
+<footer class="footer">
+    <p>&copy; 2025 Ezechiel B. TIBIRI. Tous droits réservés.</p>
+    <p> BURKINA FASO<p>
+    <p>Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>.</p>
+  </footer>
 
 </body>
 </html>
