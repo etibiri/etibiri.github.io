@@ -58,7 +58,7 @@ Pour tirer le meilleur parti de ce cours, il est recommandé d'avoir :
 
 <hr />
 
-## 📋 Contenu du cours
+## 📋 Contenu
 
 1. **Introduction à la Bioinformatique :** Définition et concepts clés.
 2. **Installation de l'environnement de travail :** Utilisation de WSL (Windows Subsystem for Linux) et d'outils comme Jupyter Notebook.
