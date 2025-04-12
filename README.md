@@ -16,7 +16,8 @@ Bienvenue dans le dépôt officiel du **cours d'introduction à la bioinformatiq
 
 ## 👨‍🏫 Intervenant
 - **Ezechiel B. TIBIRI**  
-  Chercheur à l'INERA/CNRST  
+  Chercheur au CNRST/INERA
+  BURKINA FASO  
   Email : [ezechiel.tibiri@ujkz.bf](mailto:ezechiel.tibiri@ujkz.bf)
 
 ---
@@ -40,16 +41,16 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 ### 2. Installation de l'environnement de travail
 - **Windows + Ubuntu 24.04 LTS** :
   - Installation de WSL (Windows Subsystem for Linux).
-  - Installation des outils Python et Jupyter Notebook.
 - **Autres systèmes d'exploitation** :
   - Instructions spécifiques pour Linux et macOS.
 
 ### 3. Programmation en bioinformatique
-- Scripts Bash pour l'automatisation.
-- Introduction à Python appliqué à la bioinformatique.
+- Les Commandes de Base de LINUX
+- Commandes de redirection 
+- Métacaractères
 
 ### 4. Études de cas pratiques
-- Analyse des séquences ADN.
+- Analyse des séquences ADN et ARN.
 - Exploration des données métagénomiques.
 - Exploration des données protéomiques
 
@@ -59,13 +60,16 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 - [NCBI (National Center for Biotechnology Information)](https://www.ncbi.nlm.nih.gov)
 - [Ensembl Genome Browser](https://www.ensembl.org)
 - [Guide WSL pour Windows](https://learn.microsoft.com/en-us/windows/wsl/)
-- [Jupyter Notebook Documentation](https://jupyter.org/documentation)
 
 ---
 
 ## 🧑‍💻 Installation
-Pour commencer avec ce cours :
+Pour commencer avec ce cours en ligne de commande :
 1. Clonez ce dépôt :
    ```bash
-   git clone https://github.com/etibiri/cours-bioinformatique.git
+   git clone https://github.com/etibiri/etibiri.github.io.git
 
+---
+© 2025 **Ezechiel B. TIBIRI. BURKINA FASO Tous droits réservés.**
+
+Site hébergé sur [GitHub](https://github.com/etibiri).
