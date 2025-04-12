@@ -199,5 +199,71 @@
             </tr>
         </table>
     </div>
+</head>
+<body>
+  <div class="container">
+    <h1>Commandes de redirection Bash pour débutants</h1>
+    <p>Les redirections en Bash permettent de gérer l'entrée et la sortie des commandes. Voici quelques commandes de base :</p>
+    
+    <h2>1. Redirection de la sortie standard</h2>
+    <p>Pour envoyer la sortie d'une commande vers un fichier en écrasant son contenu :</p>
+    <pre><code>commande > fichier.txt</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>echo "Bonjour" > salut.txt</code></pre>
+    
+    <p>Pour ajouter (append) la sortie d'une commande à la fin d'un fichier sans écraser son contenu :</p>
+    <pre><code>commande >> fichier.txt</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>echo "Au revoir" >> salut.txt</code></pre>
+
+    <h2>2. Redirection de l'entrée standard</h2>
+    <p>Pour utiliser le contenu d'un fichier comme entrée d'une commande :</p>
+    <pre><code>commande &lt; fichier.txt</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>sort &lt; unsorted.txt</code></pre>
+
+    <h2>3. Redirection de la sortie d'erreur</h2>
+    <p>Pour rediriger les messages d'erreur d'une commande vers un fichier :</p>
+    <pre><code>commande 2&gt; erreurs.txt</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>ls dossier_inexistant 2&gt; erreurs.txt</code></pre>
+
+    <h2>4. Redirection de la sortie standard et d'erreur</h2>
+    <p>Pour rediriger à la fois la sortie standard (stdout) et la sortie d'erreur (stderr) vers un même fichier :</p>
+    <pre><code>commande &amp;&gt; sortie.txt</code></pre>
+    <p>Ou en utilisant la syntaxe équivalente :</p>
+    <pre><code>commande &gt; sortie.txt 2>&amp;1</code></pre>
+
+    <h2>5. Here Document (redirection multi-ligne)</h2>
+    <p>La redirection "Here Document" permet de fournir plusieurs lignes de texte en entrée à une commande :</p>
+    <pre><code>commande << EOF
+ligne 1
+ligne 2
+...
+EOF</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>cat << EOF
+Bonjour,
+Ceci est un exemple.
+EOF</code></pre>
+
+    <h2>6. Here String</h2>
+    <p>Utilisez "Here String" pour envoyer une chaîne de caractères comme entrée à une commande :</p>
+    <pre><code>commande &lt;&lt;&lt; "texte"</code></pre>
+    <p><strong>Exemple :</strong></p>
+    <pre><code>grep "motif" &lt;&lt;&lt; "Ceci est un texte contenant le motif."</code></pre>
+
+    <h2>Récapitulatif</h2>
+    <ul>
+      <li><code>&gt;</code> : Redirige la sortie standard vers un fichier (écrase le fichier).</li>
+      <li><code>&gt;&gt;</code> : Ajoute la sortie standard à un fichier (sans écraser).</li>
+      <li><code>&lt;</code> : Utilise le contenu d'un fichier comme entrée.</li>
+      <li><code>2&gt;</code> : Redirige la sortie d'erreur vers un fichier.</li>
+      <li><code>&amp;&gt;</code> ou <code>&gt; fichier 2>&amp;1</code> : Redirige à la fois la sortie standard et la sortie d'erreur.</li>
+      <li>Here Document : Fournit plusieurs lignes comme entrée.</li>
+      <li>Here String : Fournit une chaîne de caractères comme entrée.</li>
+    </ul>
+  </div>
+
 </body>
 </html>
