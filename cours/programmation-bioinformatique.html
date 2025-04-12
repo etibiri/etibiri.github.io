@@ -308,12 +308,25 @@ echo "La valeur de HOME est ${HOME}"</code></pre>
       </li>
     </ul>
 
+    <h2>4. Caractères de correspondance (Globbing)</h2>
+    <ul>
+      <li><strong>*</strong> : Correspond à zéro ou plusieurs caractères.  
+        <pre><code>ls *.txt</code></pre>
+      </li>
+      <li><strong>?</strong> : Correspond à un seul caractère.  
+        <pre><code>ls fichier?.txt</code></pre>
+      </li>
+      <li><strong>[ ]</strong> : Correspond à un ensemble ou une plage de caractères.  
+        <pre><code>ls fichier[0-9].txt</code></pre>
+      </li>
+    </ul>
     <h2>Récapitulatif</h2>
     <ul>
       <li><code>*</code>, <code>?</code>, <code>[ ]</code> : Opérateurs de globbing.</li>
       <li><code>\</code> : Caractère d'échappement.</li>
       <li><code>$</code> et <code>${}</code> : Expansion de variables.</li>
       <li><code>&amp;&amp;</code>, <code>||</code>, <code>;</code> : Opérateurs conditionnels et séparateurs.</li>
+      <li><code>*</code>, <code>?</code>, <code>[ ]</code> : Opérateurs de globbing.</li>
     </ul>
   </div>
 
