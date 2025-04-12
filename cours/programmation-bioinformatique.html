@@ -198,7 +198,75 @@
                 <td><code>read nom</code> → Attend que l’utilisateur tape un texte.</td>
             </tr>
         </table>
-    </div>
+
+        <h2>4. Commandes d'Administrateur</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+            <tr>
+                <td><code>sudo</code></td>
+                <td>Exécute une commande avec les privilèges du superutilisateur.</td>
+                <td><code>sudo apt update</code></td>
+            </tr>
+            <tr>
+                <td><code>su</code></td>
+                <td>Permet de passer temporairement en mode superutilisateur (root).</td>
+                <td><code>su -</code></td>
+            </tr>
+            <tr>
+                <td><code>systemctl</code></td>
+                <td>Gère les services (démarrer, arrêter, redémarrer des services système).</td>
+                <td><code>sudo systemctl restart apache2</code></td>
+            </tr>
+            <tr>
+                <td><code>useradd</code></td>
+                <td>Crée un nouvel utilisateur sur le système.</td>
+                <td><code>sudo useradd -m nouvel_utilisateur</code></td>
+            </tr>
+            <tr>
+                <td><code>passwd</code></td>
+                <td>Modifie le mot de passe d'un utilisateur.</td>
+                <td><code>sudo passwd utilisateur</code></td>
+            </tr>
+        </table>
+
+        <h2>5. Commandes d'Archivage et de Compression de Fichiers</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemple</th>
+            </tr>
+            <tr>
+                <td><code>tar</code></td>
+                <td>Crée une archive regroupant plusieurs fichiers ou répertoires.</td>
+                <td><code>tar -cvf archive.tar dossier/</code></td>
+            </tr>
+            <tr>
+                <td><code>gzip</code></td>
+                <td>Compresse un fichier en utilisant l'algorithme gzip.</td>
+                <td><code>gzip fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>gunzip</code></td>
+                <td>Décompresse un fichier compressé avec gzip.</td>
+                <td><code>gunzip fichier.txt.gz</code></td>
+            </tr>
+            <tr>
+                <td><code>zip</code></td>
+                <td>Crée une archive compressée au format zip.</td>
+                <td><code>zip archive.zip fichier1.txt fichier2.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>unzip</code></td>
+                <td>Extrait le contenu d'une archive zip.</td>
+                <td><code>unzip archive.zip</code></td>
+            </tr>
+        </table>
+
 </head>
 <body>
   <div class="container">
