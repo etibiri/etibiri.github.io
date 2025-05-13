@@ -80,8 +80,8 @@ wget -c https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-16s/wf-16s
 tar -xzvf wf-16s-demo.tar.gz
 
 # Organisation du projet
-mkdir -p ~/TP-G0/DATA
-cp -r ~/wf-flu-demo/test_data ~/TP-G0/DATA
+mkdir -p ~/TP-BMGB/DATA
+cp -r ~/wf-flu-demo/test_data ~/TP-BMGB/DATA
 ```
 
 ---
@@ -118,8 +118,8 @@ Règne       : Bacteria
 ### 🔹 Télécharger une base 16S (SILVA) compatible minimap2
 
 ```bash
-mkdir -p ~/TP-G0/DB
-cd ~/TP-G0/DB
+mkdir -p ~/TP-BMGB/DB
+cd ~/TP-BMGB/DB
 
 # Téléchargement de la base SILVA 16S avec annotation taxonomique
 wget https://zenodo.org/record/3986799/files/silva_nr99_v138_wSpecies_train_set.fa.gz
@@ -132,7 +132,7 @@ awk '/^>/{split($0,a," "); print a[1]; next} {print}' silva_nr99_v138_wSpecies_t
 ### 🔹 Construire une base Kraken2
 
 ```bash
-cd ~/TP-G0/DB
+cd ~/TP-BMGB/DB
 kraken2-build --special silva --db kraken2_16S_db
 kraken2-build --build --db kraken2_16S_db
 ```
@@ -170,16 +170,16 @@ Imaginez que vous ayez un mot inconnu et un dictionnaire : l’alignement revien
 ### 💠 Approche 1 : Alignement avec Minimap2
 
 ```bash
-mkdir -p ~/TP-G0/MAPPING
-cd ~/TP-G0/MAPPING
+mkdir -p ~/TP-BMGB/MAPPING
+cd ~/TP-BMGB/MAPPING
 
 # Indexation de la base
-minimap2 -d database_clean.mmi ~/TP-G0/DB/database_clean.fasta
+minimap2 -d database_clean.mmi ~/TP-BMGB/DB/database_clean.fasta
 
 # Alignement des séquences des 3 échantillons
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz > barcode01_alignment.sam
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz > barcode02_alignment.sam
-minimap2 -ax map-ont database_clean.mmi ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz > barcode03_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-BMGB/DATA/test_data/barcode01/*.fastq.gz > barcode01_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-BMGB/DATA/test_data/barcode02/*.fastq.gz > barcode02_alignment.sam
+minimap2 -ax map-ont database_clean.mmi ~/TP-BMGB/DATA/test_data/barcode03/*.fastq.gz > barcode03_alignment.sam
 
 # Conversion SAM en BAM et tri
 samtools view -Sb barcode02_alignment.sam | samtools sort > barcode02_alignment.sorted.bam
@@ -194,13 +194,13 @@ samtools index barcode03_alignment.sorted.bam
 ### 💠 Approche 2 : Classification avec Kraken2
 
 ```bash
-mkdir -p ~/TP-G0/KRAKEN2
-cd ~/TP-G0/KRAKEN2
+mkdir -p ~/TP-BMGB/KRAKEN2
+cd ~/TP-BMGB/KRAKEN2
 
 # Analyse de chaque échantillon avec Kraken2
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode01_kraken_report.txt --output barcode01_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode02_kraken_report.txt --output barcode02_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode03_kraken_report.txt --output barcode03_kraken_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report barcode01_kraken_report.txt --output barcode01_kraken_output.tsv ~/TP-BMGB/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report barcode02_kraken_report.txt --output barcode02_kraken_output.tsv ~/TP-BMGB/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report barcode03_kraken_report.txt --output barcode03_kraken_output.tsv ~/TP-BMGB/DATA/test_data/barcode03/*.fastq.gz
 ```
 
 ---
@@ -210,9 +210,9 @@ kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report barcode03_kraken_report.txt --ou
 ### 🧾 Générer les fichiers complets avec zéros
 
 ```bash
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode01_output.tsv ~/TP-G5/DATA/test_data/barcode01/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode02_output.tsv ~/TP-G5/DATA/test_data/barcode02/*.fastq.gz
-kraken2 --db ~/TP-G5/DB/kraken2_16S_db --report-zero-counts --output barcode03_output.tsv ~/TP-G5/DATA/test_data/barcode03/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report-zero-counts --output barcode01_output.tsv ~/TP-BMGB/DATA/test_data/barcode01/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report-zero-counts --output barcode02_output.tsv ~/TP-BMGB/DATA/test_data/barcode02/*.fastq.gz
+kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report-zero-counts --output barcode03_output.tsv ~/TP-BMGB/DATA/test_data/barcode03/*.fastq.gz
 ```
 
 ---
