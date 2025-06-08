@@ -69,6 +69,18 @@
         <p>Exécutez les commandes suivantes pour installer python et jupyter :</p>
         <div class="code-block">python3 --version<br>git --version<br>jupyter --version<br>fastqc --version<br>minimap2 --version<br>samtools --version</div>
         <p>Si les versions s'affichent, votre environnement est prêt ! 🎉</p>
+        <h3>🔧 Installation des outils</h3>
+        <pre><code># Mise à jour système
+sudo apt update && sudo apt upgrade -y
+
+# Installation des outils nécessaires
+sudo apt install -y minimap2 samtools kraken2 python3-pip git wget curl
+
+# Installation de Krona (outil de visualisation interactive)
+wget https://raw.githubusercontent.com/etibiri/etibiri.github.io/main/scripts/Krona_install.sh
+bash Krona_install.sh
+source ~/.bashrc
+        </code></pre>
 
         <h3>Ressources supplémentaires</h3>
         <ul>
