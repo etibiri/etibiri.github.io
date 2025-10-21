@@ -33,7 +33,7 @@
       <li>Appliquer ces techniques à des cas réels en bioinformatique.</li>
     </ul>
 
-    <h2>1) Fondamentaux I/O : redirections et pipes</h2>
+    <h2>1. Fondamentaux I/O : redirections et pipes</h2>
     <table>
       <tr><th>Construction</th><th>Effet</th><th>Exemple</th></tr>
       <tr><td><code>cmd &gt; out.txt</code></td><td>Écrit/écrase <code>out.txt</code></td><td><code>echo hello &gt; hello.txt</code></td></tr>
@@ -44,7 +44,7 @@
       <tr><td><code>cmd1 | cmd2</code></td><td>Pipe (sortie → entrée)</td><td><code>grep -v '^#' file | wc -l</code></td></tr>
     </table>
 
-    <h2>2) <code>sort</code> &amp; amis</h2>
+    <h2>2. <code>sort</code> </h2>
     <div class="two-col">
       <div>
         <h3>Options clés</h3>
@@ -59,7 +59,7 @@
         </table>
       </div>
       <div>
-        <h3>Exemples rapides</h3>
+        <h3>Exemples </h3>
         <pre><code># Tri TSV par gène (col1) puis par score (col3 numérique décroissant)
 sort -t $'\t' -k1,1 -k3,3nr genes.tsv &gt; genes.sorted.tsv
 
@@ -71,7 +71,7 @@ sort samples.txt | uniq -c | sort -nr | head</code></pre>
       </div>
     </div>
 
-    <h2>3) <code>cut</code>, <code>paste</code>, <code>column</code></h2>
+    <h2>3. <code>cut</code>, <code>paste</code>, <code>column</code></h2>
     <table>
       <tr><th>Commande</th><th>Usage</th><th>Exemples</th></tr>
       <tr>
@@ -102,7 +102,7 @@ paste -d $'\t' a.tsv b.tsv &gt; ab.tsv</code></pre>
       </tr>
     </table>
 
-    <h2>4) <code>sed</code> — Éditeur de flux</h2>
+    <h2>4. <code>sed</code> - Éditeur de flux</h2>
     <div class="two-col">
       <div>
         <h3>Patrons utiles</h3>
@@ -125,7 +125,7 @@ sed -E 's/^&gt;([^ \t|]+).*$/&gt;\1/' seqs.fasta &gt; seqs.norm.fasta</code></pr
       </div>
     </div>
 
-    <h2>5) <code>awk</code> — Filtrer, calculer, agréger</h2>
+    <h2>5. <code>awk</code> - Filtrer, calculer, agréger</h2>
     <table>
       <tr><th>Concept</th><th>Explication</th><th>Exemples</th></tr>
       <tr>
@@ -165,7 +165,7 @@ awk -F '\t' '{c[$2]++} END{for(k in c) print k, c[k]}' table.tsv | sort -k2,2nr<
       Astuce performance : pour de très gros fichiers, combinez <code>LC_ALL=C</code>, <code>sort --parallel</code>, et des pipes pour éviter des écritures intermédiaires.
     </div>
 
-    <h2>6) Cas bioinfo guidés</h2>
+    <h2>6. Cas bioinfo guidés</h2>
     <h3>6.1 FASTA : dédoublonner et compter</h3>
 <pre><code># Garder 1er token des en-têtes
 sed -E 's/^&gt;([^ \t|]+).*$/&gt;\1/' seqs.fasta |
@@ -186,7 +186,7 @@ sort -k4,4nr | head | column -t</code></pre>
 awk 'BEGIN{FS=OFS="\t"} NR==1 || ($6&gt;=200 &amp;&amp; $5 ~ /A|T|C|G/)' |
 cut -f1-8 | column -t | less -S</code></pre>
 
-    <h2>7) Exercices</h2>
+    <h2>7. Exercices</h2>
     <ol>
       <li><strong>Histogramme d’occurrences :</strong> à partir de <code>samples.txt</code>, produire le top 10 des identifiants les plus fréquents.</li>
       <li><strong>Filtrage multi-critères :</strong> dans un TSV avec <em>pval</em>, <em>logFC</em>, extraire les lignes avec <code>pval &lt; 1e-3</code> et <code>|logFC| &gt;= 2</code>.</li>
@@ -194,7 +194,7 @@ cut -f1-8 | column -t | less -S</code></pre>
       <li><strong>GFF3 :</strong> lister les 20 transcrits les plus longs avec coordonnés.</li>
     </ol>
 
-    <h2>8) Fiches mémo (cheatsheet)</h2>
+    <h2>8. Fiches mémo (cheatsheet)</h2>
     <table>
       <tr><th>Besoin</th><th>Commande</th></tr>
       <tr><td>Trier multi-clés TSV</td><td><code>sort -t $'\t' -k1,1 -k3,3nr file.tsv</code></td></tr>
