@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outils texte Unix pour la bioinformatique : sort, cut, sed, awk</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f9f9f9; }
+    h1, h2, h3 { color: #0077cc; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+    th { background-color: #0077cc; color: white; }
+    code { background-color: #eee; padding: 2px 4px; border-radius: 4px; }
+    pre { background: #eee; padding: 12px; border-radius: 6px; overflow: auto; }
+    .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .note { background:#e8f5ff; border-left:4px solid #0077cc; padding:10px 12px; margin:12px 0; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 900px){ .two-col { grid-template-columns: 1fr; } }
+    footer { margin-top: 40px; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Outils texte Unix pour la bioinformatique : <code>sort</code>, <code>cut</code>, <code>sed</code>, <code>awk</code></h1>
+    <p>Cette page suit le style demandé et propose un fil conducteur pratique pour manipuler des fichiers tabulaires et formats biologiques (FASTA, GFF/GTF, VCF) avec les outils Unix de base. Les exemples sont minimalistes, reproductibles et prêts à copier-coller.</p>
+
+    <h2>Objectifs</h2>
+    <ul>
+      <li>Savoir trier et fusionner des grandes tables (<code>sort</code>, <code>uniq</code>, <code>join</code>).</li>
+      <li>Extraire / réordonner des colonnes (<code>cut</code>, <code>paste</code>, <code>column</code>).</li>
+      <li>Éditer des flux texte (<code>sed</code>) et réaliser des filtrages/calculs (<code>awk</code>).</li>
+      <li>Chaîner ces outils avec les redirections, pipes et métacaractères Bash.</li>
+      <li>Appliquer ces techniques à des cas réels en bioinformatique.</li>
+    </ul>
+
+    <h2>1) Fondamentaux I/O : redirections et pipes</h2>
+    <table>
+      <tr><th>Construction</th><th>Effet</th><th>Exemple</th></tr>
+      <tr><td><code>cmd &gt; out.txt</code></td><td>Écrit/écrase <code>out.txt</code></td><td><code>echo hello &gt; hello.txt</code></td></tr>
+      <tr><td><code>cmd &gt;&gt; out.txt</code></td><td>Ajoute à la fin</td><td><code>date &gt;&gt; log.txt</code></td></tr>
+      <tr><td><code>cmd &lt; in.txt</code></td><td>Lit depuis un fichier</td><td><code>sort &lt; genes.tsv</code></td></tr>
+      <tr><td><code>cmd 2&gt; err.txt</code></td><td>Redirige erreurs</td><td><code>ls /nope 2&gt; errs.log</code></td></tr>
+      <tr><td><code>cmd &gt; all.txt 2&gt;&amp;1</code></td><td>Fusion stdout+stderr</td><td><code>pipeline &gt; run.log 2&gt;&amp;1</code></td></tr>
+      <tr><td><code>cmd1 | cmd2</code></td><td>Pipe (sortie → entrée)</td><td><code>grep -v '^#' file | wc -l</code></td></tr>
+    </table>
+
+    <h2>2) <code>sort</code> &amp; amis</h2>
+    <div class="two-col">
+      <div>
+        <h3>Options clés</h3>
+        <table>
+          <tr><th>Option</th><th>Signification</th><th>Exemple</th></tr>
+          <tr><td><code>-k i[,j]</code></td><td>Clé de tri (colonnes i..j)</td><td><code>sort -k1,1</code></td></tr>
+          <tr><td><code>-t</code></td><td>Séparateur (par défaut espace)</td><td><code>-t $'\t'</code> pour TSV</td></tr>
+          <tr><td><code>-n</code></td><td>Numérique</td><td><code>sort -n -k3,3</code></td></tr>
+          <tr><td><code>-r</code></td><td>Ordre décroissant</td><td><code>sort -r</code></td></tr>
+          <tr><td><code>-u</code></td><td>Unique (garde la 1ère)</td><td><code>sort -u</code></td></tr>
+          <tr><td><code>--parallel=64</code></td><td>Threads</td><td><code>sort --parallel=64</code></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Exemples rapides</h3>
+        <pre><code># Tri TSV par gène (col1) puis par score (col3 numérique décroissant)
+sort -t $'\t' -k1,1 -k3,3nr genes.tsv &gt; genes.sorted.tsv
+
+# Supprimer les doublons exacts (lignes identiques)
+sort file.txt | uniq &gt; file.uniq.txt
+
+# Compter les occurrences (histogramme)
+sort samples.txt | uniq -c | sort -nr | head</code></pre>
+      </div>
+    </div>
+
+    <h2>3) <code>cut</code>, <code>paste</code>, <code>column</code></h2>
+    <table>
+      <tr><th>Commande</th><th>Usage</th><th>Exemples</th></tr>
+      <tr>
+        <td><code>cut</code></td>
+        <td>Extraire colonnes/bytes</td>
+        <td>
+<pre><code># Colonnes 1 et 3 (TSV)
+cut -f1,3 table.tsv
+
+# Colonnes non contiguës
+cut -f1,5-7 table.tsv</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td><code>paste</code></td>
+        <td>Fusionner colonnes (côte à côte)</td>
+        <td>
+<pre><code># Concaténer deux fichiers ligne à ligne
+paste -d $'\t' a.tsv b.tsv &gt; ab.tsv</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td><code>column</code></td>
+        <td>Aligner joliment pour lecture</td>
+        <td>
+<pre><code>column -t -s $'\t' table.tsv | less -S</code></pre>
+        </td>
+      </tr>
+    </table>
+
+    <h2>4) <code>sed</code> — Éditeur de flux</h2>
+    <div class="two-col">
+      <div>
+        <h3>Patrons utiles</h3>
+        <table>
+          <tr><th>Action</th><th>Commande</th></tr>
+          <tr><td>Remplacer globalement</td><td><code>sed -E 's/ancien/nouveau/g'</code></td></tr>
+          <tr><td>Supprimer lignes</td><td><code>sed '/^#/d'</code></td></tr>
+          <tr><td>Conserver lignes (inverser)</td><td><code>sed -n '/regex/p'</code></td></tr>
+          <tr><td>Modifier séparateur</td><td><code>sed 's/,/\t/g'</code></td></tr>
+          <tr><td>Captures</td><td><code>sed -E 's/chr([0-9]+)/\1/'</code></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Exemples</h3>
+        <pre><code># Nettoyer commentaires et lignes vides
+sed -E '/^\s*#/d; /^\s*$/d' data.tsv &gt; clean.tsv
+
+# Normaliser IDs FASTA (garder 1er token)
+sed -E 's/^&gt;([^ \t|]+).*$/&gt;\1/' seqs.fasta &gt; seqs.norm.fasta</code></pre>
+      </div>
+    </div>
+
+    <h2>5) <code>awk</code> — Filtrer, calculer, agréger</h2>
+    <table>
+      <tr><th>Concept</th><th>Explication</th><th>Exemples</th></tr>
+      <tr>
+        <td>Champs</td>
+        <td><code>$1</code>, <code>$2</code>, … (séparés par <code>-F</code>)</td>
+        <td>
+<pre><code># TSV : montrer gène et moyenne de colonnes 3..5
+awk -F '\t' '{m=($3+$4+$5)/3; print $1, m}' genes.tsv</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>Filtres</td>
+        <td>Expression vraie → imprime la ligne</td>
+        <td>
+<pre><code># pval &lt; 1e-5 et logFC &gt;= 1
+awk -F '\t' 'NR==1 || ($5&lt;1e-5 &amp;&amp; $6&gt;=1)' de.tsv &gt; sig.tsv</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>Agrégation</td>
+        <td>Associatifs pour regrouper/compter</td>
+        <td>
+<pre><code># Compter par catégorie (col2)
+awk -F '\t' '{c[$2]++} END{for(k in c) print k, c[k]}' table.tsv | sort -k2,2nr</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td>Reformatage</td>
+        <td>Construire des colonnes</td>
+        <td>
+<pre><code>awk -F '\t' 'BEGIN{OFS="\t"} {print $2, $1 ":" $3 "-" $4}' peaks.tsv</code></pre>
+        </td>
+      </tr>
+    </table>
+
+    <div class="note">
+      Astuce performance : pour de très gros fichiers, combinez <code>LC_ALL=C</code>, <code>sort --parallel</code>, et des pipes pour éviter des écritures intermédiaires.
+    </div>
+
+    <h2>6) Cas bioinfo guidés</h2>
+    <h3>6.1 FASTA : dédoublonner et compter</h3>
+<pre><code># Garder 1er token des en-têtes
+sed -E 's/^&gt;([^ \t|]+).*$/&gt;\1/' seqs.fasta |
+awk 'BEGIN{RS=">"; ORS=""} NR&gt;1{gsub(/\n/,"",$2); print "&gt;"$1"\n"$2"\n"}' |
+awk 'BEGIN{RS=">"; ORS=""} NR&gt;1{if(!seen[$1]++){print "&gt;"$1"\n"$2"\n"}}' &gt; seqs.uniq.fasta
+
+# Compter les longueurs
+awk 'BEGIN{RS=">", ORS=""} NR&gt;1{len=length($0)-length($1)-1; print $1"\t"len"\n"}' seqs.uniq.fasta |
+sort -k2,2nr | column -t</code></pre>
+
+    <h3>6.2 GFF/GTF : gènes les plus longs</h3>
+<pre><code>grep -v '^#' annot.gff3 |
+awk -F '\t' '$3=="gene"{len=$5-$4+1; print $1,$4,$5,len,$9}' |
+sort -k4,4nr | head | column -t</code></pre>
+
+    <h3>6.3 VCF : variants à haute qualité</h3>
+<pre><code>grep -v '^##' variants.vcf |
+awk 'BEGIN{FS=OFS="\t"} NR==1 || ($6&gt;=200 &amp;&amp; $5 ~ /A|T|C|G/)' |
+cut -f1-8 | column -t | less -S</code></pre>
+
+    <h2>7) Exercices</h2>
+    <ol>
+      <li><strong>Histogramme d’occurrences :</strong> à partir de <code>samples.txt</code>, produire le top 10 des identifiants les plus fréquents.</li>
+      <li><strong>Filtrage multi-critères :</strong> dans un TSV avec <em>pval</em>, <em>logFC</em>, extraire les lignes avec <code>pval &lt; 1e-3</code> et <code>|logFC| &gt;= 2</code>.</li>
+      <li><strong>FASTA :</strong> normaliser les en-têtes, dédoublonner, et sortir un TSV <code>id\tlength</code> trié par longueur décroissante.</li>
+      <li><strong>GFF3 :</strong> lister les 20 transcrits les plus longs avec coordonnés.</li>
+    </ol>
+
+    <h2>8) Fiches mémo (cheatsheet)</h2>
+    <table>
+      <tr><th>Besoin</th><th>Commande</th></tr>
+      <tr><td>Trier multi-clés TSV</td><td><code>sort -t $'\t' -k1,1 -k3,3nr file.tsv</code></td></tr>
+      <tr><td>Colonnes 1,3,5</td><td><code>cut -f1,3,5 file.tsv</code></td></tr>
+      <tr><td>Remplacements</td><td><code>sed -E 's/old/new/g' in.txt &gt; out.txt</code></td></tr>
+      <tr><td>Filtrer par seuil</td><td><code>awk -F '\t' 'NR==1 || $5&lt;1e-5' data.tsv</code></td></tr>
+      <tr><td>Compter par catégorie</td><td><code>awk -F '\t' '{c[$2]++} END{for(k in c) print k,c[k]}' file.tsv</code></td></tr>
+    </table>
+
+    <footer>
+      <p>&copy; 2025 <strong>Ezechiel B. TIBIRI</strong>. Tous droits réservés. Burkina Faso. Hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>
