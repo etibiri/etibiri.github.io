@@ -5,4 +5,5 @@
 .local
 .data
 /.quarto/
-.old
+*.old
+*.fastq.gz
