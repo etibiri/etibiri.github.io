@@ -6,4 +6,5 @@
 .data
 /.quarto/
 *.old
+*.tar.gz
 *.fastq.gz
