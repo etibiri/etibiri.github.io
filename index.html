@@ -1,58 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introduction à la Bioinformatique</title>
-  
-  <!-- Import Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction à la Bioinformatique | Ezechiel B. TIBIRI</title>
+  <meta name="description" content="Cours d'introduction à la bioinformatique : concepts fondamentaux, technologies de séquençage, formats de données, bases de données biologiques, pipelines d'analyse et applications en génomique." />
 
-  <!-- Styles intégrés pour une personnalisation moderne et responsive -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    /* Reset et configuration globale */
+    :root {
+      --primary: #0f4c81;
+      --primary-dark: #0b3558;
+      --accent: #1f9d8b;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1d2939;
+      --muted: #667085;
+      --border: #dbe3ec;
+      --shadow: 0 10px 30px rgba(15, 76, 129, 0.08);
+      --radius: 16px;
+      --max-width: 1200px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
     a {
-      color: #3498db;
+      color: var(--primary);
       text-decoration: none;
-      transition: color 0.3s ease;
     }
 
     a:hover {
       text-decoration: underline;
-      color: #217dbb;
     }
 
-    /* Conteneur principal */
-    .container {
-      display: flex;
+    .layout {
+      display: grid;
+      grid-template-columns: 290px 1fr;
       min-height: 100vh;
     }
 
-    /* Barre de navigation latérale */
     .sidebar {
-      width: 250px;
-      background: #34495e;
-      color: #ecf0f1;
-      padding: 20px;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
     }
 
-    .sidebar h2 {
-      text-align: center;
-      margin-bottom: 20px;
+    .brand {
+      margin-bottom: 28px;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+      line-height: 1.4;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .brand p {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .nav-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 22px 0 12px;
       font-weight: 700;
     }
 
@@ -60,215 +99,549 @@
       list-style: none;
     }
 
-    .sidebar ul li {
-      margin: 15px 0;
+    .sidebar li {
+      margin-bottom: 10px;
     }
 
-    .sidebar ul li a {
-      font-size: 1.1em;
-      color: #bdc3c7;
+    .sidebar a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.96rem;
+      transition: background 0.25s ease, transform 0.2s ease;
     }
 
-    .sidebar ul li a:hover {
-      color: #fff;
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.12);
+      text-decoration: none;
+      transform: translateX(2px);
     }
 
-    /* Contenu principal */
-    .content {
-      flex: 1;
-      padding: 40px;
+    .main {
+      padding: 36px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eef5fb 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(31, 157, 139, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(31, 157, 139, 0.2);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .hero-card {
       background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
     }
 
-    .content section {
-      margin-bottom: 40px;
+    .hero-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 4px;
     }
 
-    .content h1,
-    .content h2 {
-      color: #2c3e50;
-      margin-bottom: 20px;
+    .hero-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .content h1 {
-      font-size: 2em;
+    section {
+      margin-bottom: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .content h2 {
-      font-size: 1.6em;
+    section h3 {
+      font-size: 1.45rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
     }
 
-    .content p,
-    .content ul,
-    .content ol {
-      margin-bottom: 20px;
+    section h4 {
+      font-size: 1.08rem;
+      color: var(--primary);
+      margin: 18px 0 10px;
     }
 
-    pre {
-      background: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: #fbfdff;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .card h4 {
+      margin-top: 0;
+    }
+
+    .course-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .course-list li {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #fcfdff;
+    }
+
+    .course-list li strong {
+      color: var(--primary-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .note {
+      background: #fff9e8;
+      border: 1px solid #f2df9b;
+      color: #6b5b18;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 14px;
+    }
+
+    .code-block {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
       overflow-x: auto;
+      font-family: "Courier New", monospace;
+      font-size: 0.94rem;
+      line-height: 1.6;
     }
 
-    code {
-      font-family: 'Courier New', monospace;
-    }
-
-    /* Pied de page */
     .footer {
-      background: #34495e;
-      color: #ecf0f1;
       text-align: center;
-      padding: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding: 24px 8px 10px;
     }
 
-    /* Responsive : Pour les écrans jusqu'à 768px, la sidebar passe en haut */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
+    .footer a {
+      color: var(--primary);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
       }
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
       .sidebar {
-        width: 100%;
-        padding: 10px;
-        text-align: center;
+        position: relative;
+        height: auto;
+        border-radius: 0 0 20px 20px;
       }
-      .sidebar ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .sidebar ul li {
-        margin: 10px;
-      }
-      .content {
+
+      .main {
         padding: 20px;
+      }
+
+      .hero {
+        padding: 26px;
+      }
+
+      .hero h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 22px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <!-- Barre latérale (ou navigation sur mobile) -->
-    <nav class="sidebar">
-      <h2>Menu</h2>
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Introduction à la Bioinformatique</h1>
+        <p>Cours, ressources, activités pratiques et informations pédagogiques</p>
+      </div>
+
+      <div class="nav-title">Navigation</div>
       <ul>
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#objectifs">Objectifs</a></li>
-        <li><a href="#intervenants">Intervenant</a></li>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#presentation">Présentation</a></li>
+        <li><a href="#objectifs">Objectifs pédagogiques</a></li>
+        <li><a href="#organisation">Organisation du cours</a></li>
+        <li><a href="#contenu">Contenu détaillé</a></li>
+        <li><a href="#competences">Compétences visées</a></li>
         <li><a href="#prerequis">Prérequis</a></li>
-        <li><a href="#contenu">Contenu</a></li>
+        <li><a href="#evaluation">Évaluation</a></li>
         <li><a href="#ressources">Ressources</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#intervenant">Intervenant</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-    </nav>
+    </aside>
 
-    <!-- Contenu principal -->
-    <main class="content">
-      <!-- Section Accueil -->
-      <section id="home">
-        <h1>Introduction à la Bioinformatique</h1>
-        <p>Bienvenue dans le cours d'introduction à la bioinformatique. Ce site vous fournira toutes les informations et ressources nécessaires pour comprendre les bases et outils essentiels de la bioinformatique.</p>
-        <p><strong>Note :</strong> La présence physique à ce cours est obligatoire.</p>
-      </section>
+    <!-- Main -->
+    <main class="main">
+      <div class="container">
 
-      <!-- Section Objectifs -->
-      <section id="objectifs">
-        <h2>🚀 Objectifs du cours</h2>
-        <ul>
-          <li>Comprendre les bases de la génomique et du séquençage.</li>
-          <li>Explorer les outils bioinformatiques essentiels à l'analyse des données.</li>
-          <li>Installer et configurer un environnement de développement pour la bioinformatique.</li>
-          <li>S'initier à la programmation appliquée à la bioinformatique.</li>
-        </ul>
-      </section>
+        <!-- Hero -->
+        <section class="hero" id="accueil">
+          <span class="badge">Cours fondamental</span>
+          <h2>Introduction à la bioinformatique</h2>
+          <p>
+            Ce cours propose une introduction rigoureuse à la bioinformatique moderne, en mettant l’accent sur
+            l’analyse des données biologiques issues des technologies de séquençage à haut débit, des bases de données publiques,
+            des pipelines bioinformatiques et des applications en génomique, transcriptomique et métagénomique.
+          </p>
 
-      <!-- Section Intervenant -->
-      <section id="intervenants">
-        <h2>👨🏿‍💼 Intervenant</h2>
-        <p><strong>Ezechiel B. TIBIRI</strong></p>
-        <p>Chercheur à l'INERA/CNRST</p>
-        <p>Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></p>
-      </section>
+          <div class="hero-grid">
+            <div class="hero-card">
+              <strong>Niveau</strong>
+              <span>Master / formation avancée</span>
+            </div>
+            <div class="hero-card">
+              <strong>Format</strong>
+              <span>Cours + TP + projet appliqué</span>
+            </div>
+            <div class="hero-card">
+              <strong>Thématiques</strong>
+              <span>NGS, données, pipelines, annotation</span>
+            </div>
+            <div class="hero-card">
+              <strong>Approche</strong>
+              <span>Conceptuelle, pratique et reproductible</span>
+            </div>
+          </div>
 
-      <!-- Section Prérequis -->
-      <section id="prerequis">
-        <h2>🛠️ Prérequis</h2>
-        <ul>
-          <li>Des notions de biologie moléculaire et génomique.</li>
-          <li>Une connaissance de base en informatique.</li>
-          <li>Une machine avec :
-            <ul>
-              <li>Processeur : 4 cœurs minimum</li>
-              <li>RAM : 8 Go ou plus</li>
-              <li>Stockage : 250 Go disponibles</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+          <div class="note">
+            <strong>Important :</strong> la présence et l’implication active des étudiants sont fortement recommandées.
+            Le cours repose sur une articulation étroite entre concepts théoriques, manipulation de données et interprétation biologique.
+          </div>
+        </section>
 
-      <!-- Section Contenu -->
-      <section id="contenu">
-        <h2>📋 Contenu</h2>
-        <ol>
-          <li>
-            <a href="cours/introduction-bioinformatique.html">Introduction à la Bioinformatique : Définition et concepts clés.</a>
-          </li>
-          <li>
-            <a href="cours/installation-environnement.html">Installation de l'environnement de travail : Utilisation.</a>
-          </li>
-          <li>
-            <a href="cours/programmation-bioinformatique.html">Programmation en bioinformatique : Introduction à Bash.</a>
-          </li>
-          <li>
-            <a href="cours/Linux_advanced_command.html">Programmation en bioinformatique : Commandes avancées pour le traitement de texte.</a>
-          </li>
-          <li>
-            <a href="cours/etudes-de-cas.html">Études de cas : Analyse de séquences 16S ADNr.</a>
-          </li>
-        </ol>
-      </section>
+        <!-- Presentation -->
+        <section id="presentation">
+          <h3>1. Présentation générale du cours</h3>
+          <p>
+            La bioinformatique occupe aujourd’hui une place centrale dans les sciences du vivant. Elle permet de stocker,
+            organiser, analyser et interpréter des volumes massifs de données issues de la génomique, de la transcriptomique,
+            de la protéomique, de la métagénomique et d’autres approches omiques.
+          </p>
+          <p>
+            Ce cours vise à fournir aux étudiants une compréhension intégrée des concepts, outils et stratégies analytiques
+            mobilisés pour transformer des données biologiques brutes en connaissances utiles pour la recherche en santé,
+            agriculture, environnement et biodiversité.
+          </p>
+        </section>
 
-      <!-- Section Ressources -->
-      <section id="ressources">
-        <h2>📚 Ressources</h2>
-        <ul>
-          <li><a href="https://www.ncbi.nlm.nih.gov" target="_blank">NCBI</a></li>
-          <li><a href="https://www.ensembl.org" target="_blank">Ensembl Genome Browser</a></li>
-          <li><a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Guide WSL</a></li>
-        </ul>
-      </section>
+        <!-- Objectives -->
+        <section id="objectifs">
+          <h3>2. Objectifs pédagogiques</h3>
+          <ul>
+            <li>Comprendre les fondements conceptuels de la bioinformatique et son rôle dans les sciences du vivant</li>
+            <li>Interpréter les principaux types de données biologiques : ADN, ARN, protéines</li>
+            <li>Identifier et manipuler les formats standards de données (FASTA, FASTQ, SAM/BAM, VCF, GFF, BED)</li>
+            <li>Comprendre les principes, avantages et limites des technologies de séquençage</li>
+            <li>Concevoir une stratégie bioinformatique adaptée à une question biologique</li>
+            <li>Utiliser des bases de données biologiques et des ressources publiques</li>
+            <li>Comprendre la logique des pipelines d’analyse en génomique</li>
+            <li>Développer un esprit critique vis-à-vis des outils et des résultats bioinformatiques</li>
+          </ul>
+        </section>
 
-      <!-- Section Installation -->
-      <section id="installation">
-        <h2>👨🏿‍💻 Installation</h2>
-        <ol>
-          <li>Clonez ce dépôt :
-            <pre><code>git clone https://github.com/etibiri/cours-bioinformatique.git</code></pre>
-          </li>
-          <li>Installez les dépendances :
-            <pre><code>sudo apt update && sudo apt upgrade -y
-sudo apt install python3 python3-pip git</code></pre>
-          </li>
-        </ol>
-      </section>
+        <!-- Organization -->
+        <section id="organisation">
+          <h3>3. Organisation du cours</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>3.1 Cours théoriques</h4>
+              <p>Introduction aux concepts, méthodes, algorithmes et infrastructures de la bioinformatique moderne.</p>
+            </div>
+            <div class="card">
+              <h4>3.2 Travaux pratiques</h4>
+              <p>Manipulation de formats de données, exploration de bases publiques, contrôle qualité et analyse de séquences.</p>
+            </div>
+            <div class="card">
+              <h4>3.3 Projet appliqué</h4>
+              <p>Analyse d’un jeu de données réelles et mise en place d’une stratégie bioinformatique reproductible.</p>
+            </div>
+          </div>
+        </section>
 
-      <!-- Section Contact -->
-      <section id="contact">
-        <h2>📬 Contact et Feedback</h2>
-        <p>Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></p>
-        <p>GitHub : <a href="https://github.com/etibiri/cours-bioinformatique/issues" target="_blank">Ouvrir une issue</a></p>
-      </section>
+        <!-- Content -->
+        <section id="contenu">
+          <h3>4. Contenu détaillé du cours</h3>
+
+          <ol class="course-list">
+            <li>
+              <strong>4.1 Introduction à la bioinformatique</strong>
+              Définition, interdisciplinarité, approche <em>in silico</em>, complémentarité avec les approches expérimentales.
+            </li>
+            <li>
+              <strong>4.2 De la génétique à la bioinformatique</strong>
+              Jalons historiques : lois de Mendel, structure de l’ADN, code génétique, algorithmes d’alignement.
+            </li>
+            <li>
+              <strong>4.3 Technologies de séquençage</strong>
+              Sanger, Illumina, Oxford Nanopore Technologies (ONT), PacBio HiFi, comparaisons short reads vs long reads.
+            </li>
+            <li>
+              <strong>4.4 Big Data en biologie</strong>
+              Données omiques, calcul haute performance, clusters, stockage et gestion de données.
+            </li>
+            <li>
+              <strong>4.5 Bases de données biologiques</strong>
+              NCBI, ENA, UniProt, Pfam, PDB, ressources spécialisées et science ouverte.
+            </li>
+            <li>
+              <strong>4.6 Formats de données en bioinformatique</strong>
+              FASTA, FASTQ, SAM/BAM/CRAM, VCF/BCF, GFF/GTF, BED, données et métadonnées.
+            </li>
+            <li>
+              <strong>4.7 Design expérimental et pipeline d’analyse</strong>
+              Question scientifique, stratégie d’échantillonnage, préparation des librairies, séquençage, contrôle qualité.
+            </li>
+            <li>
+              <strong>4.8 Stratégies d’analyse</strong>
+              Mapping, alignement, assemblage de novo, annotation structurale et fonctionnelle.
+            </li>
+            <li>
+              <strong>4.9 Analyses downstream</strong>
+              Génomique des populations, GWAS, phylogénie, métagénomique, pangénomique.
+            </li>
+            <li>
+              <strong>4.10 Reproductibilité et science ouverte</strong>
+              Partage des données, principes FAIR, bonnes pratiques analytiques.
+            </li>
+          </ol>
+
+          <h4>Liens vers les modules / pages du cours</h4>
+          <ol>
+            <li><a href="cours/introduction-bioinformatique.html">Introduction à la bioinformatique</a></li>
+            <li><a href="cours/installation-environnement.html">Installation de l’environnement de travail</a></li>
+            <li><a href="cours/programmation-bioinformatique.html">Programmation en bioinformatique : Bash</a></li>
+            <li><a href="cours/Linux_advanced_command.html">Commandes Linux avancées pour le traitement de texte</a></li>
+            <li><a href="cours/etudes-de-cas.html">Études de cas : analyse de séquences 16S ADNr</a></li>
+          </ol>
+        </section>
+
+        <!-- Skills -->
+        <section id="competences">
+          <h3>5. Compétences visées</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Compétences scientifiques</h4>
+              <ul>
+                <li>Comprendre la logique des analyses omiques</li>
+                <li>Interpréter les résultats bioinformatiques dans un cadre biologique</li>
+                <li>Choisir une stratégie adaptée à une question scientifique</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Compétences techniques</h4>
+              <ul>
+                <li>Manipuler des formats standards de données</li>
+                <li>Explorer des bases de données biologiques</li>
+                <li>Appliquer les premières étapes d’un pipeline bioinformatique</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Prerequisites -->
+        <section id="prerequis">
+          <h3>6. Prérequis</h3>
+          <ul>
+            <li>Notions de base en biologie moléculaire, génétique ou génomique</li>
+            <li>Connaissances élémentaires en informatique</li>
+            <li>Motivation pour l’analyse de données biologiques</li>
+            <li>Ordinateur personnel recommandé avec :
+              <ul>
+                <li>Processeur : 4 cœurs minimum</li>
+                <li>Mémoire RAM : 8 Go ou plus</li>
+                <li>Espace disque disponible : au moins 100–250 Go</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Evaluation -->
+        <section id="evaluation">
+          <h3>7. Évaluation</h3>
+          <p>L’évaluation pourra inclure, selon l’organisation du cours :</p>
+          <ul>
+            <li>Participation active aux séances</li>
+            <li>Travaux pratiques</li>
+            <li>Mini-projets ou études de cas</li>
+            <li>Analyse et interprétation de jeux de données</li>
+            <li>Présentation orale ou restitution écrite</li>
+          </ul>
+        </section>
+
+        <!-- Resources -->
+        <section id="ressources">
+          <h3>8. Ressources pédagogiques</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Bases de données</h4>
+              <ul>
+                <li><a href="https://www.ncbi.nlm.nih.gov" target="_blank">NCBI</a></li>
+                <li><a href="https://www.ebi.ac.uk/ena/browser/home" target="_blank">ENA</a></li>
+                <li><a href="https://www.uniprot.org" target="_blank">UniProt</a></li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Navigateurs génomiques</h4>
+              <ul>
+                <li><a href="https://www.ensembl.org" target="_blank">Ensembl</a></li>
+                <li><a href="https://genome.ucsc.edu" target="_blank">UCSC Genome Browser</a></li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Documentation utile</h4>
+              <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Guide WSL</a></li>
+                <li><a href="https://snakemake.readthedocs.io" target="_blank">Snakemake</a></li>
+                <li><a href="https://quarto.org" target="_blank">Quarto</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Installation -->
+        <section id="installation">
+          <h3>9. Installation de l’environnement</h3>
+          <p>Exemple minimal pour préparer un environnement Linux / bioinformatique :</p>
+
+          <div class="code-block">
+git clone https://github.com/etibiri/cours-bioinformatique.git
+cd cours-bioinformatique
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip git wget curl -y
+          </div>
+
+          <p>Selon les activités du cours, des dépendances complémentaires pourront être ajoutées.</p>
+        </section>
+
+        <!-- Intervenant -->
+        <section id="intervenant">
+          <h3>10. Intervenant</h3>
+          <p><strong>Dr Ezechiel B. TIBIRI</strong></p>
+          <p>Chercheur en bioinformatique, génomique et virologie végétale</p>
+          <p>INERA / CNRST – Burkina Faso</p>
+          <p>Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+          <h3>11. Contact et feedback</h3>
+          <p>Pour toute question, suggestion ou retour concernant le cours :</p>
+          <ul>
+            <li>Email : <a href="mailto:ezechiel.tibiri@ujkz.bf">ezechiel.tibiri@ujkz.bf</a></li>
+            <li>GitHub : <a href="https://github.com/etibiri/cours-bioinformatique/issues" target="_blank">Ouvrir une issue</a></li>
+          </ul>
+
+          <div class="note">
+            <strong>Esprit du cours :</strong> les logiciels ne “font” pas la biologie à votre place.
+            Ils calculent, parfois très vite, mais l’interprétation scientifique reste une responsabilité humaine.
+          </div>
+        </section>
+
+        <div class="footer">
+          <p>&copy; 2025 Ezechiel B. TIBIRI — Tous droits réservés</p>
+          <p>Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a></p>
+        </div>
+
+      </div>
     </main>
   </div>
-
-  <!-- Pied de page -->
-  <footer class="footer">
-    <p>&copy; 2025 Ezechiel B. TIBIRI. Tous droits réservés.</p>
-    <p>Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>.</p>
-  </footer>
 </body>
-
 </html>
