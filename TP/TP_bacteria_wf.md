@@ -58,7 +58,7 @@ conda install -c conda-forge sourmash-minimal
 conda create -n resfinder_env bioconda::resfinder
 conda install -c bioconda abricate -y
 ```
-installer chekm2
+installer checkm2
 
 ```bash
 git clone --recursive https://github.com/chklovski/checkm2.git && cd checkm2
