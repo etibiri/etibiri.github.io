@@ -47,6 +47,7 @@ conda create -n bacterial_tp -y
 conda activate bacterial_tp
 ```
 ## 3. Installation outils d’analyse génomique
+3.1 Installer les logiciel seqkit, mlst, sourmash, abricate dans l'environnement bacterial_tp
 
 ```bash
 conda install -c bioconda seqkit=2.13 -y
@@ -60,6 +61,12 @@ conda install -c conda-forge sourmash-minimal -y
 ```bash
 conda install -c bioconda abricate -y
 ```
+```bash
+conda deactivate
+```
+
+3.2. Installer les autres environnement quast_env, bakta_env, flye_env, busco_env, resfinder_env separement
+
 ```bash
 conda create -n quast_env -c bioconda quast -y
 ```
@@ -76,7 +83,7 @@ conda create -n busco_env  -c conda-forge -c bioconda busco=6.0.0 sepp=4.5.5 -y
 conda create -n resfinder_env bioconda::resfinder -y 
 ```
 
-installer checkm2
+3.3. installer checkm2
 
 ```bash
 git clone --recursive https://github.com/chklovski/checkm2.git && cd checkm2
