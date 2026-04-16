@@ -18,11 +18,15 @@ Compétences visées :
 * interprétation biologique
 
 ## 2. Installation des logiciels
-Installation via Conda via Miniconda
+Installation de Conda via Miniconda
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+```bash
 bash Miniconda3-latest-Linux-x86_64.sh
+```
+```bash
 source ~/.bashrc
 ```
 Configuration de l'environnement conda
@@ -46,18 +50,32 @@ conda activate bacterial_tp
 
 ```bash
 conda install -c bioconda seqkit=2.13 -y
-conda create -n quast_env -c bioconda quast -y
-conda create -n bakta_env -c conda-forge -c bioconda python>=3.10 bakta -y
-conda create -n flye_env -c bioconda flye=2.9 -y
-#conda create -n mobsuite_env -c bioconda mob_suite -y
-##conda create -n medaka -c conda-forge -c nanoporetech -c bioconda medaka
-##conda create -n ckeckm2_env -c bioconda -c conda-forge checkm2
-conda create -n busco_env  -c conda-forge -c bioconda busco=6.0.0 sepp=4.5.5
-conda install -c conda-forge -c bioconda  mlst
-conda install -c conda-forge sourmash-minimal
-conda create -n resfinder_env bioconda::resfinder
+```
+```bahs
+conda install -c conda-forge -c bioconda  mlst -y
+```
+```bash
+conda install -c conda-forge sourmash-minimal -y
+```
+```bash
 conda install -c bioconda abricate -y
 ```
+```bash
+conda create -n quast_env -c bioconda quast -y
+```
+```bash
+conda create -n bakta_env -c conda-forge -c bioconda python>=3.10 bakta -y
+```
+```bash
+conda create -n flye_env -c bioconda flye=2.9 -y
+```
+```bash
+conda create -n busco_env  -c conda-forge -c bioconda busco=6.0.0 sepp=4.5.5 -y
+```
+```bash
+conda create -n resfinder_env bioconda::resfinder -y 
+```
+
 installer checkm2
 
 ```bash
