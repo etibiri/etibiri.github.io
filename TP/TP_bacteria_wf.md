@@ -109,10 +109,26 @@ TP_AMR/
 │   
 └── metadata.tsv
 ```
+### 4.1. Creation des repertoires de travail suivant l'arborescence ci-dessus
 
 ```bash
+# Commande pour créer les differents repertoires
+...
+```
+### 4.2. Téléchargement des données brute
+
+```bash
+# Commande pour télécharger une archive
+## Deplacez vous dans le repertoire *data* puis lancer la commande ci-dessous
 wget https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-bacterial-genomes/wf-bacterial-genomes-demo.tar.gz
+# Commande pour decompresser une archive
 tar -xzvf wf-bacterial-genomes-demo.tar.gz
+# Lister le contenu du repertoire
+....
+# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoir barcode01
+....
+....
+# Compter le nombre de ligne
 ```
 
-
+### 4.2. Evaluer les QC des sequences
