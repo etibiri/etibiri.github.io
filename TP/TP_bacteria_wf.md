@@ -196,7 +196,7 @@ conda activate resfinder_env
 ```bash
 cd ~/TP_AMR/arm 
 git clone https://git@bitbucket.org/genomicepidemiology/resfinder_db.git db_resfinder
-
+```
 ```bash
 cd ~/TP_AMR/arm/db_resfinder
 python3 INSTALL.py
