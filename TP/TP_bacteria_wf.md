@@ -180,7 +180,8 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
     --species "tuberculosis" \
     --prefix barcode01 \
     --output ~/TP_AMR/annotation \
-    --threads 4
+    --threads 4 \
+    --force
 
 ```
 
