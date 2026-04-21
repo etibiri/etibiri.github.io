@@ -184,4 +184,8 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
 ```
 
 
+### 4.5. Identification des AMR
 
+Vous trouverez les ressources nécéssaire sur ce site pour réaliser les analyses [Center for Genomic Epidemiology](https://www.genomicepidemiology.org/)
+
+```bash
