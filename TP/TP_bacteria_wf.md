@@ -174,7 +174,7 @@ conda deactivate
 ```
 ```bash
 # Annotation
-bakta --db ~/TP_AMR/annotation/bakta_db_ligth \
+bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
     --genus "Mycobacterium" \
     --species "tuberculosis" \
     --prefix barcode01 \
