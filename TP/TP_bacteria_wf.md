@@ -191,3 +191,14 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
 Vous trouverez les ressources nécéssaire sur ce site pour réaliser les analyses [Center for Genomic Epidemiology](https://www.genomicepidemiology.org/)
 
 ```bash
+
+run_resfinder.py \
+  -ifa ~/TP_AMR/assembly/barcode01/assembly.fasta \
+  -o ~/TP_AMR/arm \
+  -s "Mycobacterium tuberculosis" \
+  --point \
+  -l 0.6 \
+  -t 0.8
+
+```
+
