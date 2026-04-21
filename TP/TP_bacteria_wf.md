@@ -160,3 +160,28 @@ flye --nano-hq \
     --genome-size 5m \
     --out-dir ~/TP_AMR/assembly/barcode01 \
     --threads 4
+```
+
+### 4.4. Annotation de génome
+
+Les [annotations génomiques](https://www.genoscreen.fr/fr/services-genomiques/bioinformatique/annotation) visent à associer le séquençage d’un génome ou d’un transcriptome à une information biologique exploitable. À partir d’assemblages de haute qualité, GenoScreen fournit des annotations précises qui sont indispensables à la compréhension des fonctions biologiques des organismes.
+
+```bash
+conda activate bakta_env
+# Télécharger la base de donnnée bacterienne
+bakta_db download --output ~/TP_AMR/annotation/bakta_db_ligth --type light 
+conda deactivate
+```
+```bash
+# Annotation
+bakta --db ~/TP_AMR/annotation/bakta_db_ligth \
+    --genus "Mycobacterium" \
+    --species "tuberculosis" \
+    --prefix barcode01 \
+    --output /TP_AMR/annotation \
+    --threads 4
+
+```
+
+
+
