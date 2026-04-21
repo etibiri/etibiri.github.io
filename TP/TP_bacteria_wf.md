@@ -138,11 +138,25 @@ wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 ```
 
 ### 4.2. Evaluer les QC des sequences
- * - Les formats FASTA et FASTQ
-[FASTA](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier))
-[FASTQ](https://fr.wikipedia.org/wiki/FASTQ)
+ * - Les formats 
+      - FASTA [FASTA](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier))
+      - FASTQ [FASTQ](https://fr.wikipedia.org/wiki/FASTQ)
 
 ```bash
 # evaluer la qualité de sequence avec *seqkit*
 conda activate bacterial_tp
 seqkit stats -a ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz
+conda deactivate
+```
+
+### 4.3 Assemblage de genome bacterien
+
+L'[assemblage de génome](https://www.genoscreen.fr/fr/services-genomiques/bioinformatique/assemblage) permet de reconstituer un génome complet à partir des nouvelles techniques de séquençage, soit en s’appuyant sur des génomes de référence, soit dans une démarche _de novo_. Cette reconstruction donne une image plus complète et plus détaillée des données génomiques, pour en faciliter l’interprétation.
+
+```bash
+conda activate flye_env
+flye --nano-hq \
+    ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz \
+    --genome-size 5m \
+    --out-dir ~/TP_AMR/assembly \
+    --threads 4
