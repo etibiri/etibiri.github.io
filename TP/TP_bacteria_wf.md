@@ -192,6 +192,13 @@ Vous trouverez les ressources nécéssaire sur ce site pour réaliser les analys
 
 ```bash
 conda activate resfinder_env
+```
+```bash
+cd ~/TP_AMR/arm 
+git clone https://git@bitbucket.org/genomicepidemiology/resfinder_db.git db_resfinder
+
+```
+```bash
 run_resfinder.py \
   -ifa ~/TP_AMR/assembly/barcode01/assembly.fasta \
   -o ~/TP_AMR/arm \
