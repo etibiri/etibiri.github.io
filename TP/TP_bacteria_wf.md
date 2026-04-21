@@ -158,5 +158,5 @@ conda activate flye_env
 flye --nano-hq \
     ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz \
     --genome-size 5m \
-    --out-dir ~/TP_AMR/assembly \
+    --out-dir ~/TP_AMR/assembly/barcode01 \
     --threads 4
