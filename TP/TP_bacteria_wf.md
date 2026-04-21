@@ -113,7 +113,11 @@ TP_AMR/
 
 ```bash
 # Commande pour créer les differents repertoires
-...
+mkdir ~/TP_AMR/data
+mkdir ~/TP_AMR/annotation
+mkdir ~/TP_AMR/assembly
+mkdir ~/TP_AMR/arm
+tree 
 ```
 ### 4.2. Téléchargement des données brute
 
@@ -132,3 +136,8 @@ tar -xzvf wf-bacterial-genomes-demo.tar.gz
 ```
 
 ### 4.2. Evaluer les QC des sequences
+
+```bash
+# evaluer la qualité de sequence avec *seqkit*
+conda activate bacterial_tp
+
