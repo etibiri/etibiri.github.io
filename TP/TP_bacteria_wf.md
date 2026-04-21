@@ -117,6 +117,7 @@ mkdir ~/TP_AMR/data
 mkdir ~/TP_AMR/annotation
 mkdir ~/TP_AMR/assembly
 mkdir ~/TP_AMR/arm
+cd ~/TP_AMR
 tree 
 ```
 ### 4.2. Téléchargement des données brute
