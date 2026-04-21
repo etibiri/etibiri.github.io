@@ -129,10 +129,10 @@ wget https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-bacterial-gen
 # Commande pour decompresser une archive
 tar -xzvf wf-bacterial-genomes-demo.tar.gz
 # Lister le contenu du repertoire
-....
-# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoir barcode01
-....
-....
+ls -lh ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq
+# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoire 
+head ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
+wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 # Compter le nombre de ligne
 ```
 
