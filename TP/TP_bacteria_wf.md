@@ -195,7 +195,7 @@ conda activate resfinder_env
 run_resfinder.py \
   -ifa ~/TP_AMR/assembly/barcode01/assembly.fasta \
   -o ~/TP_AMR/arm \
-  -db_res ~/TP_AMR/arm/db_resfinder
+  -db_res ~/TP_AMR/arm/db_resfinder \
   -db_disinf \
   --acquired \
   -s "Mycobacterium tuberculosis" \
