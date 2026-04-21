@@ -125,20 +125,24 @@ tree
 ```bash
 # Commande pour télécharger une archive
 ## Deplacez vous dans le repertoire *data* puis lancer la commande ci-dessous
+cd ~/TP_AMR/data
 wget https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-bacterial-genomes/wf-bacterial-genomes-demo.tar.gz
 # Commande pour decompresser une archive
 tar -xzvf wf-bacterial-genomes-demo.tar.gz
 # Lister le contenu du repertoire
 ls -lh ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq
-# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoire 
+# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoire wf-bacterial-genomes-demo
 head ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
-wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 # Compter le nombre de ligne
+wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 ```
 
 ### 4.2. Evaluer les QC des sequences
+ * - Les formats FASTA et FASTQ
+[FASTA](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier))
+[FASTQ](https://fr.wikipedia.org/wiki/FASTQ)
 
 ```bash
 # evaluer la qualité de sequence avec *seqkit*
 conda activate bacterial_tp
-
+seqkit stats -a ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz
