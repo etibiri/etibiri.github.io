@@ -179,7 +179,7 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
     --genus "Mycobacterium" \
     --species "tuberculosis" \
     --prefix barcode01 \
-    --output /TP_AMR/annotation \
+    --output ~/TP_AMR/annotation \
     --threads 4
 
 ```
