@@ -186,6 +186,11 @@ flye --nano-hq \
     --out-dir ~/TP_AMR/assembly/barcode01 \
     --threads 4
 ```
+Explication des paramètres:
+- `--nano-hq` : indique que les lectures ONT sont de haute qualité.
+- `--genome-size 5m` : taille estimée du génome à assembler, ici 5 Mb.
+- `--out-dir` : dossier de sortie.
+- `--threads 4` : nombre de cœurs CPU utilisés.
 
 ### 4.4. Annotation de génome
 
