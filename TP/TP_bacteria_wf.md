@@ -97,7 +97,7 @@ bin/checkm2 -h
 
  * Contexte du TP
 
-L’essor du séquençage à longues lectures, notamment avec les technologies Oxford Nanopore, a profondément transformé l’analyse des génomes bactériens. Il est désormais possible, à partir de fichiers FASTQ bruts, de reconstruire un génome bactérien, de l’annoter, puis d’identifier des déterminants moléculaires de résistance aux antimicrobiens.
+L’essor du séquençage à long reads, notamment avec les technologies Oxford Nanopore, a profondément transformé l’analyse des génomes bactériens. Il est désormais possible, à partir de fichiers FASTQ bruts, de reconstruire un génome bactérien, de l’annoter, puis d’identifier des déterminants moléculaires de résistance aux antimicrobiens.
 
 Dans ce TP, l’étudiant suivra une démarche bioinformatique classique appliquée à des données réelles ou de démonstration :
 
