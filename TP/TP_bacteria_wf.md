@@ -131,7 +131,7 @@ TP_AMR/
 mkdir ~/TP_AMR/data
 mkdir ~/TP_AMR/annotation
 mkdir ~/TP_AMR/assembly
-mkdir ~/TP_AMR/arm
+mkdir ~/TP_AMR/amr
 cd ~/TP_AMR
 tree 
 ```
