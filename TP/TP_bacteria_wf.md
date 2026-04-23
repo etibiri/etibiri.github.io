@@ -231,18 +231,18 @@ La résistance aux antimicrobiens peut être liée :
 conda activate resfinder_env
 ```
 ```bash
-cd ~/TP_AMR/arm 
+cd ~/TP_AMR/amr 
 git clone https://git@bitbucket.org/genomicepidemiology/resfinder_db.git db_resfinder
 ```
 ```bash
-cd ~/TP_AMR/arm/db_resfinder
+cd ~/TP_AMR/amr/db_resfinder
 python3 INSTALL.py
 ```
 ```bash
 run_resfinder.py \
   -ifa ~/TP_AMR/assembly/barcode01/assembly.fasta \
-  -o ~/TP_AMR/arm \
-  -db_res ~/TP_AMR/arm/db_resfinder \
+  -o ~/TP_AMR/amr \
+  -db_res ~/TP_AMR/amr/db_resfinder \
   --acquired \
   -s "Mycobacterium tuberculosis" \
   --point \
