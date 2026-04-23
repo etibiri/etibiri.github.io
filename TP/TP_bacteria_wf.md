@@ -128,10 +128,10 @@ TP_AMR/
 
 ```bash
 # Commande pour créer les differents repertoires
-mkdir ~/TP_AMR/data
-mkdir ~/TP_AMR/annotation
-mkdir ~/TP_AMR/assembly
-mkdir ~/TP_AMR/amr
+mkdir -p ~/TP_AMR/data
+mkdir -p  ~/TP_AMR/annotation
+mkdir -p  ~/TP_AMR/assembly
+mkdir -p ~/TP_AMR/amr
 cd ~/TP_AMR
 tree 
 ```
