@@ -95,22 +95,22 @@ bin/checkm2 -h
 
 ## 4. Données à télécharger et decompression de l'archive
 
- * Contexte du TP
+#### Contexte du TP
 
 L’essor du séquençage à long reads, notamment avec les technologies Oxford Nanopore, a profondément transformé l’analyse des génomes bactériens. Il est désormais possible, à partir de fichiers FASTQ bruts, de reconstruire un génome bactérien, de l’annoter, puis d’identifier des déterminants moléculaires de résistance aux antimicrobiens.
 
 Dans ce TP, l’étudiant suivra une démarche bioinformatique classique appliquée à des données réelles ou de démonstration :
 
-* - organiser un espace de travail ;
-* - télécharger et inspecter les données brutes ;
-* - évaluer sommairement la qualité des séquences ;
-* - assembler le génome bactérien ;
-* - annoter le génome assemblé ;
-* - rechercher des marqueurs de résistance aux antimicrobiens.
+*  organiser un espace de travail ;
+*  télécharger et inspecter les données brutes ;
+*  évaluer sommairement la qualité des séquences ;
+*  assembler le génome bactérien ;
+*  annoter le génome assemblé ;
+*  rechercher des marqueurs de résistance aux antimicrobiens.
 
 Ce TP permet ainsi d’illustrer une chaîne d’analyse complète, depuis les données de séquençage jusqu’à l’interprétation biologique.
 
-l'arborescence du repertoire de travail:
+#### l'arborescence du repertoire de travail:
 
 ```
 TP_AMR/
@@ -149,20 +149,20 @@ ls -lh ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq
 ```
 
 ### 4.2. Evaluer les QC des sequences
-Un read brute correspond à une séquence nucléotidique produite directement par le séquenceur. Dans le cas d’Oxford Nanopore, ces reads sont souvent longues, ce qui facilite l’assemblage, mais elles peuvent contenir davantage d’erreurs qu’avec certaines technologies de short reads.
+Un read brut correspond à une séquence nucléotidique produite directement par le séquenceur. Dans le cas d’Oxford Nanopore, ces reads sont souvent longues, ce qui facilite l’assemblage, mais elles peuvent contenir davantage d’erreurs qu’avec certaines technologies de short reads.
 
- * - Formats FASTA et FASTQ
-      - FASTA: [format simple contenant un identifiant et une séquence](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier)).
-      - FASTQ: [format contenant l’identifiant, la séquence et les scores de qualité de chaque base.](https://fr.wikipedia.org/wiki/FASTQ).
+ *  Formats FASTA et FASTQ :
+     - FASTA: [format simple contenant un identifiant et une séquence](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier)).
+     - FASTQ: [format contenant l’identifiant, la séquence et les scores de qualité de chaque base](https://fr.wikipedia.org/wiki/FASTQ).
 
 [SeqKit](https://bioinf.shenwei.me/seqkit/usage/) prend en charge directement les formats FASTA et FASTQ et détecte automatiquement le format des séquences.
 
 Le contrôle qualité consiste à examiner des indicateurs simples tels que :
 
-* - le nombre de reads ;
-* - la longueur minimale, moyenne et maximale ;
-* - le nombre total de bases ;
-* - éventuellement le contenu en GC et la distribution des longueurs.
+*  le nombre de reads ;
+*  la longueur minimale, moyenne et maximale ;
+*  le nombre total de bases ;
+*  éventuellement le contenu en GC et la distribution des longueurs.
 
 Cette étape permet de vérifier rapidement si les données sont exploitables avant l’assemblage.
 
@@ -206,10 +206,10 @@ Questions à poser
 
 L’annotation consiste à identifier dans le génome assemblé des éléments biologiques tels que :
 
-* - gènes codants ;
-* - ARN ribosomiques ;
-* - ARN de transfert ;
-* - autres éléments fonctionnels.
+*  gènes codants ;
+*  ARN ribosomiques ;
+*  ARN de transfert ;
+*  autres éléments fonctionnels.
 
 [Bakta](https://bakta.readthedocs.io/en/latest/) est un outil d’annotation rapide et standardisée des génomes bactériens, plasmides et MAGs. Sa [base de données](https://bakta.readthedocs.io/en/latest/cli/database.html) existe en version full et en version light ; la version light est utile lorsque l’on souhaite limiter l’espace disque et réduire le temps de calcul.
 
@@ -229,7 +229,6 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
     --output ~/TP_AMR/annotation \
     --threads 4 \
     --force
-
 ```
 Explication des paramètres:
 - `--db PATH`: chemin vers la base de données à utiliser pour l’annotation.
@@ -251,8 +250,8 @@ Questions à poser
 
 La résistance aux antimicrobiens peut être liée :
 
-* - à l’acquisition de gènes de résistance ;
-* - à des mutations ponctuelles dans certains gènes chromosomiques.
+*  à l’acquisition de gènes de résistance ;
+*  à des mutations ponctuelles dans certains gènes chromosomiques.
 
 [ResFinder](https://github.com/cadms/resfinder) identifie principalement des gènes acquis de résistance, tandis que d’autres approches peuvent être nécessaires pour analyser les mutations associées à la résistance.
 
@@ -287,12 +286,12 @@ run_resfinder.py \
 
 Explication des paramètres
 
-    `-ifa` : fichier FASTA d’assemblage en entrée ;
-    `-o` : répertoire de sortie ;
-    `-db_res` : chemin de la base de données ;
-    `--acquired` : recherche des gènes acquis de résistance ;
-    `-s` : nom complet de l’espèce ;
-    `-l 0.6` : seuil minimal de couverture ;
-    `-t 0.8` : seuil minimal d’identité.
+  *  `-ifa` : fichier FASTA d’assemblage en entrée ;
+  *  `-o` : répertoire de sortie ;
+  *  `-db_res` : chemin de la base de données ;
+  *  `--acquired` : recherche des gènes acquis de résistance ;
+  *  `-s` : nom complet de l’espèce ;
+  *  `-l 0.6` : seuil minimal de couverture ;
+  *  `-t 0.8` : seuil minimal d’identité.
 
 La documentation du projet indique bien que l’espèce doit être fournie sous son nom scientifique complet. 
