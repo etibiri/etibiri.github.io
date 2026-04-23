@@ -95,6 +95,21 @@ bin/checkm2 -h
 
 ## 4. Données à télécharger et decompression de l'archive
 
+ * Contexte du TP
+
+L’essor du séquençage à longues lectures, notamment avec les technologies Oxford Nanopore, a profondément transformé l’analyse des génomes bactériens. Il est désormais possible, à partir de fichiers FASTQ bruts, de reconstruire un génome bactérien, de l’annoter, puis d’identifier des déterminants moléculaires de résistance aux antimicrobiens.
+
+Dans ce TP, l’étudiant suivra une démarche bioinformatique classique appliquée à des données réelles ou de démonstration :
+
+* - organiser un espace de travail ;
+* - télécharger et inspecter les données brutes ;
+* - évaluer sommairement la qualité des séquences ;
+* - assembler le génome bactérien ;
+* - annoter le génome assemblé ;
+* - rechercher des marqueurs de résistance aux antimicrobiens.
+
+Ce TP permet ainsi d’illustrer une chaîne d’analyse complète, depuis les données de séquençage jusqu’à l’interprétation biologique.
+
 l'arborescence du repertoire de travail:
 
 ```
@@ -138,9 +153,21 @@ wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 ```
 
 ### 4.2. Evaluer les QC des sequences
- * - Les formats 
-      - FASTA [FASTA](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier))
-      - FASTQ [FASTQ](https://fr.wikipedia.org/wiki/FASTQ)
+Un read brute correspond à une séquence nucléotidique produite directement par le séquenceur. Dans le cas d’Oxford Nanopore, ces reads sont souvent longues, ce qui facilite l’assemblage, mais elles peuvent contenir davantage d’erreurs qu’avec certaines technologies de short reads.
+
+ * - Formats FASTA et FASTQ
+      - FASTA: [format simple contenant un identifiant et une séquence](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier)).
+      - FASTQ: [format contenant l’identifiant, la séquence et les scores de qualité de chaque base.](https://fr.wikipedia.org/wiki/FASTQ)
+[SeqKit](https://bioinf.shenwei.me/seqkit/usage/) prend en charge directement les formats FASTA et FASTQ et détecte automatiquement le format des séquences.
+
+Le contrôle qualité consiste à examiner des indicateurs simples tels que :
+
+* - le nombre de reads ;
+* - la longueur minimale, moyenne et maximale ;
+* - le nombre total de bases ;
+* - éventuellement le contenu en GC et la distribution des longueurs.
+
+Cette étape permet de vérifier rapidement si les données sont exploitables avant l’assemblage.
 
 ```bash
 # evaluer la qualité de sequence avec *seqkit*
@@ -152,6 +179,7 @@ conda deactivate
 ### 4.3 Assemblage de genome bacterien
 
 L'[assemblage de génome](https://www.genoscreen.fr/fr/services-genomiques/bioinformatique/assemblage) permet de reconstituer un génome complet à partir des nouvelles techniques de séquençage, soit en s’appuyant sur des génomes de référence, soit dans une démarche _de novo_. Cette reconstruction donne une image plus complète et plus détaillée des données génomiques, pour en faciliter l’interprétation.
+[Flye](https://github.com/mikolmogorov/Flye) est un assembleur conçu pour les long reads de type PacBio et Oxford Nanopore.
 
 ```bash
 conda activate flye_env
@@ -164,7 +192,14 @@ flye --nano-hq \
 
 ### 4.4. Annotation de génome
 
-Les [annotations génomiques](https://www.genoscreen.fr/fr/services-genomiques/bioinformatique/annotation) visent à associer le séquençage d’un génome ou d’un transcriptome à une information biologique exploitable. À partir d’assemblages de haute qualité, GenoScreen fournit des annotations précises qui sont indispensables à la compréhension des fonctions biologiques des organismes.
+L’annotation consiste à identifier dans le génome assemblé des éléments biologiques tels que :
+
+* - gènes codants ;
+* - ARN ribosomiques ;
+* - ARN de transfert ;
+* - autres éléments fonctionnels.
+
+[Bakta](https://bakta.readthedocs.io/en/latest/) est un outil d’annotation rapide et standardisée des génomes bactériens, plasmides et MAGs. Sa [base de données](https://bakta.readthedocs.io/en/latest/cli/database.html) existe en version full et en version light ; la version light est utile lorsque l’on souhaite limiter l’espace disque et réduire le temps de calcul.
 
 ```bash
 conda activate bakta_env
@@ -186,9 +221,14 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
 ```
 
 
-### 4.5. Identification des AMR
+### 4.5. Résistance aux antimicrobiens (AMR)
 
-Vous trouverez les ressources nécéssaire sur ce site pour réaliser les analyses [Center for Genomic Epidemiology](https://www.genomicepidemiology.org/)
+La résistance aux antimicrobiens peut être liée :
+
+* - à l’acquisition de gènes de résistance ;
+* - à des mutations ponctuelles dans certains gènes chromosomiques.
+
+[ResFinder](https://github.com/cadms/resfinder) identifie principalement des gènes acquis de résistance, tandis que d’autres approches peuvent être nécessaires pour analyser les mutations associées à la résistance.
 
 ```bash
 conda activate resfinder_env
