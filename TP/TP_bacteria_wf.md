@@ -146,10 +146,6 @@ wget https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-bacterial-gen
 tar -xzvf wf-bacterial-genomes-demo.tar.gz
 # Lister le contenu du repertoire
 ls -lh ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq
-# Afficher les 10 prèmières et 10 dernière lignes du fichier qui se trouve dans le repertoire wf-bacterial-genomes-demo
-head ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
-# Compter le nombre de ligne
-wc -l ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_sample_sheet.csv
 ```
 
 ### 4.2. Evaluer les QC des sequences
@@ -157,7 +153,8 @@ Un read brute correspond à une séquence nucléotidique produite directement pa
 
  * - Formats FASTA et FASTQ
       - FASTA: [format simple contenant un identifiant et une séquence](https://fr.wikipedia.org/wiki/FASTA_(format_de_fichier)).
-      - FASTQ: [format contenant l’identifiant, la séquence et les scores de qualité de chaque base.](https://fr.wikipedia.org/wiki/FASTQ)
+      - FASTQ: [format contenant l’identifiant, la séquence et les scores de qualité de chaque base.](https://fr.wikipedia.org/wiki/FASTQ).
+
 [SeqKit](https://bioinf.shenwei.me/seqkit/usage/) prend en charge directement les formats FASTA et FASTQ et détecte automatiquement le format des séquences.
 
 Le contrôle qualité consiste à examiner des indicateurs simples tels que :
@@ -172,7 +169,7 @@ Cette étape permet de vérifier rapidement si les données sont exploitables av
 ```bash
 # evaluer la qualité de sequence avec *seqkit*
 conda activate bacterial_tp
-seqkit stats -a ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz
+seqkit stats ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/myco.fastq.gz
 conda deactivate
 ```
 
