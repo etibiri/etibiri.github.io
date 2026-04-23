@@ -192,6 +192,16 @@ Explication des paramètres:
 - `--out-dir` : dossier de sortie.
 - `--threads 4` : nombre de cœurs CPU utilisés.
 
+Fichier à examiner après assemblage
+
+```bash
+ls -lh ~/TP_AMR/assembly/barcode01
+```
+Questions à poser
+- Quel est le fichier principal produit par Flye ?
+- Combien de contigs ont été générés ?
+- Un petit nombre de contigs est-il toujours synonyme de bon assemblage ?
+
 ### 4.4. Annotation de génome
 
 L’annotation consiste à identifier dans le génome assemblé des éléments biologiques tels que :
@@ -221,6 +231,20 @@ bakta --db ~/TP_AMR/annotation/bakta_db_ligth/db-light \
     --force
 
 ```
+Explication des paramètres:
+- `--db PATH`: chemin vers la base de données à utiliser pour l’annotation.
+- `--genus "Mycobacterium"`: permet d’indiquer le genre de l’organisme analysé.
+- `--species "tuberculosis"`: précise l’espèce de l’organisme
+- `--prefix barcode01` : définit le préfixe des fichiers de sortie générés par Bakta
+- `--output PATH`: chemin du répertoire dans lequel Bakta va écrire les résultats
+- `--threads 4`:  indique à Bakta d’utiliser 4 cœurs CPU pour exécuter l’analyse
+- `--force`: force Bakta à écraser le dossier de sortie s’il existe déjà. 
+
+Questions à poser
+
+ - Quels types de fichiers Bakta produit-il ?
+ -  Quelle différence faites-vous entre un fichier de séquence assemblée et un fichier d’annotation ?
+ -  Pourquoi le renseignement du genre et de l’espèce peut-il être utile ?
 
 
 ### 4.5. Résistance aux antimicrobiens (AMR)
@@ -232,17 +256,23 @@ La résistance aux antimicrobiens peut être liée :
 
 [ResFinder](https://github.com/cadms/resfinder) identifie principalement des gènes acquis de résistance, tandis que d’autres approches peuvent être nécessaires pour analyser les mutations associées à la résistance.
 
+#### Activation de l’environnement
 ```bash
 conda activate resfinder_env
 ```
+#### Téléchargement de la base de données ResFinder
+
 ```bash
 cd ~/TP_AMR/amr 
 git clone https://git@bitbucket.org/genomicepidemiology/resfinder_db.git db_resfinder
 ```
+#### Installation de la base
 ```bash
 cd ~/TP_AMR/amr/db_resfinder
 python3 INSTALL.py
 ```
+#### Lancement de ResFinder
+
 ```bash
 run_resfinder.py \
   -ifa ~/TP_AMR/assembly/barcode01/assembly.fasta \
@@ -255,3 +285,14 @@ run_resfinder.py \
 
 ```
 
+Explication des paramètres
+
+    `-ifa` : fichier FASTA d’assemblage en entrée ;
+    `-o` : répertoire de sortie ;
+    `-db_res` : chemin de la base de données ;
+    `--acquired` : recherche des gènes acquis de résistance ;
+    `-s` : nom complet de l’espèce ;
+    `-l 0.6` : seuil minimal de couverture ;
+    `-t 0.8` : seuil minimal d’identité.
+
+La documentation du projet indique bien que l’espèce doit être fournie sous son nom scientifique complet. 
