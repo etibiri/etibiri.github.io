@@ -245,7 +245,6 @@ run_resfinder.py \
   -db_res ~/TP_AMR/amr/db_resfinder \
   --acquired \
   -s "Mycobacterium tuberculosis" \
-  --point \
   -l 0.6 \
   -t 0.8
 
