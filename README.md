@@ -81,13 +81,7 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 
 ---
 
-## 🧑‍💻 Installation
-Pour commencer avec ce cours en ligne de commande :
-1. Clonez ce dépôt :
-   ```bash
-   git clone https://github.com/etibiri/etibiri.github.io.git
-
 ---
 © 2026 **Ezechiel B. TIBIRI. BURKINA FASO Tous droits réservés.**
 
-Site hébergé sur [GitHub](https://github.com/etibiri).
+Site hébergé sur [GitHub](https://github.com/etibiri/etibiri.github.io).
