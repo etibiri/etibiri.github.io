@@ -148,7 +148,7 @@ tar -xzvf wf-bacterial-genomes-demo.tar.gz
 ls -lh ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq
 ```
 
-### 4.2. Evaluer les QC des sequences
+### 4.3. Evaluer les QC des sequences
 Un read brut correspond à une séquence nucléotidique produite directement par le séquenceur. Dans le cas d’Oxford Nanopore, ces reads sont souvent longues, ce qui facilite l’assemblage, mais elles peuvent contenir davantage d’erreurs qu’avec certaines technologies de short reads.
 
  *  Formats FASTA et FASTQ :
@@ -173,7 +173,7 @@ seqkit stats ~/TP_AMR/data/wf-bacterial-genomes-demo/isolates_fastq/barcode01/my
 conda deactivate
 ```
 
-### 4.3 Assemblage de genome bacterien
+### 4.4. Assemblage de genome bacterien
 
 L'[assemblage de génome](https://www.genoscreen.fr/fr/services-genomiques/bioinformatique/assemblage) permet de reconstituer un génome complet à partir des nouvelles techniques de séquençage, soit en s’appuyant sur des génomes de référence, soit dans une démarche _de novo_. Cette reconstruction donne une image plus complète et plus détaillée des données génomiques, pour en faciliter l’interprétation.
 [Flye](https://github.com/mikolmogorov/Flye) est un assembleur conçu pour les long reads de type PacBio et Oxford Nanopore.
@@ -202,7 +202,7 @@ Questions à poser
 - Combien de contigs ont été générés ?
 - Un petit nombre de contigs est-il toujours synonyme de bon assemblage ?
 
-### 4.4. Annotation de génome
+### 4.5. Annotation de génome
 
 L’annotation consiste à identifier dans le génome assemblé des éléments biologiques tels que :
 
@@ -246,7 +246,7 @@ Questions à poser
  -  Pourquoi le renseignement du genre et de l’espèce peut-il être utile ?
 
 
-### 4.5. Résistance aux antimicrobiens (AMR)
+### 4.6. Résistance aux antimicrobiens (AMR)
 
 La résistance aux antimicrobiens peut être liée :
 
