@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bases de données biologiques | Introduction à la Bioinformatique</title>
+  <meta name="description" content="Bases de données biologiques : bases primaires et secondaires, NCBI, EMBL-EBI, bases spécialisées, recherche de séquences.">
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #1f9d8b;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1d2939;
+      --muted: #667085;
+      --border: #dbe3ec;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 24px 16px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    h1 { color: var(--primary); margin-top: 0; line-height: 1.3; }
+    h2 { color: var(--primary); margin-top: 36px; border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+    h3 { color: var(--accent); }
+    a { color: var(--primary); }
+    .back { display: inline-block; margin-bottom: 16px; }
+    .note {
+      background: #eef5fb;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef5fb; }
+    .table-wrap { overflow-x: auto; }
+    footer { margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 640px) { .container { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html#contenu">← Retour à l’accueil du cours</a>
+
+    <h1>Bases de données biologiques et ressources en ligne</h1>
+    <p>Partie 4.2 du cours. Support de cours : <a href="Bioinfo_bank_etibiri_2025.pdf" target="_blank">diapositives (PDF)</a>.</p>
+
+    <h2>Objectifs</h2>
+    <ul>
+      <li>Comprendre l’organisation des ressources de données du NCBI et de l’EBI.</li>
+      <li>Faire la différence entre une base de données, un outil et un dépôt (<em>repository</em>).</li>
+      <li>Rechercher des données dans une base à l’aide d’un numéro d’accès, d’un nom de gène, etc.</li>
+      <li>Utiliser les ressources du NCBI et de l’EBI.</li>
+    </ul>
+
+    <h2>1. Pourquoi s’y intéresser ?</h2>
+    <p>Il existe un très grand nombre de bases de données et de ressources en ligne. Avant de chercher une donnée, il faut savoir :</p>
+    <ul>
+      <li>quelles bases de données et ressources existent ;</li>
+      <li>quels outils permettent de les exploiter ;</li>
+      <li>quels outils permettent d’y faire des recherches.</li>
+    </ul>
+
+    <h2>2. Qu’est-ce qu’une base de données biologique ?</h2>
+    <p>Une base de données biologique peut être :</p>
+    <ul>
+      <li><strong>publique ou privée</strong> ;</li>
+      <li>consacrée aux <strong>protéines, nucléotides, structures, à la littérature, aux annotations</strong>… ;</li>
+      <li><strong>généraliste ou spécialisée</strong> ;</li>
+      <li>centrée sur la <strong>séquence</strong> (acides aminés ou nucléotides) ou sur le <strong>génome</strong>.</li>
+    </ul>
+
+    <h3>Quelques exemples</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Type d’information</th><th>Exemples de bases</th></tr>
+        <tr><td>Séquences d’acides nucléiques (ADN, ARNm)</td><td>GenBank, ENA (EMBL), DDBJ</td></tr>
+        <tr><td>Séquences d’acides aminés (protéines)</td><td>UniProtKB/Swiss-Prot</td></tr>
+        <tr><td>Structures tridimensionnelles (protéines, ADN)</td><td>PDB (wwPDB)</td></tr>
+        <tr><td>Références bibliographiques</td><td>PubMed</td></tr>
+        <tr><td>Gènes et maladies</td><td>Gene (NCBI), OMIM</td></tr>
+        <tr><td>Classification des espèces</td><td>Taxonomy (NCBI)</td></tr>
+      </table>
+    </div>
+
+    <h2>3. Bases primaires et bases secondaires</h2>
+    <h3>Bases de données primaires</h3>
+    <p>Elles stockent les séquences telles qu’elles ont été déposées par les chercheurs. Les trois grandes bases de séquences nucléotidiques forment l’<strong>INSDC</strong> (<em>International Nucleotide Sequence Database Collaboration</em>) :</p>
+    <ul>
+      <li><strong>GenBank</strong>, au NCBI (États-Unis) ;</li>
+      <li><strong>ENA</strong> (<em>European Nucleotide Archive</em>), à l’EMBL-EBI (Europe) ;</li>
+      <li><strong>DDBJ</strong> (<em>DNA Data Bank of Japan</em>), au Japon.</li>
+    </ul>
+    <p>Les trois bases échangent leurs données quotidiennement : une séquence déposée dans l’une se retrouve dans les deux autres. Chacune a ses propres outils de recherche, mais un même numéro d’accès est valable dans les trois.</p>
+
+    <h3>Bases de données secondaires</h3>
+    <p>Elles sont construites à partir des données primaires et y ajoutent des informations : annotation, curation, classification. Exemples : RefSeq (séquences de référence non redondantes du NCBI), UniProtKB/Swiss-Prot (protéines annotées manuellement), Pfam (familles et domaines protéiques).</p>
+
+    <div class="note">
+      <strong>À retenir :</strong> la base primaire conserve la donnée brute déposée ; la base secondaire apporte une interprétation de cette donnée.
+    </div>
+
+    <h2>4. Les deux grandes ressources : NCBI et EMBL-EBI</h2>
+    <h3>NCBI (<em>National Center for Biotechnology Information</em>)</h3>
+    <p>Le portail <a href="https://www.ncbi.nlm.nih.gov" target="_blank">ncbi.nlm.nih.gov</a> donne accès à plus de 30 bases de données depuis un même champ de recherche, avec un menu déroulant pour choisir la base. Elles se regroupent ainsi :</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Domaine</th><th>Bases du NCBI</th></tr>
+        <tr><td>Littérature</td><td>PubMed, PubMed Central (PMC), Bookshelf</td></tr>
+        <tr><td>Santé</td><td>ClinVar, dbGaP, MedGen, Genetic Testing Registry</td></tr>
+        <tr><td>Génomes</td><td>BioProject, BioSample, Assembly, Genome, Nucleotide, RefSeq, dbSNP, dbVar, SRA</td></tr>
+        <tr><td>Gènes et expression</td><td>Gene, GEO (<em>Gene Expression Omnibus</em>), PopSet</td></tr>
+        <tr><td>Protéines</td><td>Protein, CDD (<em>Conserved Domain Database</em>), Structure (MMDB)</td></tr>
+        <tr><td>Chimie</td><td>PubChem</td></tr>
+      </table>
+    </div>
+
+    <h3>EMBL-EBI (<em>European Bioinformatics Institute</em>)</h3>
+    <p>L’EMBL-EBI, sur <a href="https://www.ebi.ac.uk" target="_blank">ebi.ac.uk</a>, entretient l’une des gammes les plus complètes de bases de données moléculaires libres d’accès (ENA, UniProt, Ensembl, InterPro, PDBe…). Il propose aussi des formations en ligne gratuites pour apprendre à utiliser ses ressources : <a href="https://www.ebi.ac.uk/training" target="_blank">ebi.ac.uk/training</a>.</p>
+
+    <h2>5. Les bases de données spécialisées</h2>
+    <p>Il existe un grand nombre de bases consacrées à un organisme, un pathogène ou un type de données. En général :</p>
+    <ul>
+      <li>la plupart de leurs séquences se trouvent aussi dans GenBank/ENA ;</li>
+      <li>elles peuvent contenir des génomes entiers ;</li>
+      <li>elles offrent des ressources et des outils propres à leur thématique.</li>
+    </ul>
+    <p>Exemples :</p>
+    <ul>
+      <li><a href="https://plasmodb.org/plasmo/app" target="_blank">PlasmoDB</a> : génomes de <em>Plasmodium</em> ;</li>
+      <li><a href="https://www.sanger.ac.uk" target="_blank">Wellcome Sanger Institute</a> : collections spécialisées ;</li>
+      <li><a href="https://hcv.lanl.gov" target="_blank">HCV Database (Los Alamos)</a> : virus de l’hépatite C ;</li>
+      <li><a href="https://www.bv-brc.org" target="_blank">BV-BRC</a> : bactéries et virus, qui intègre l’ancienne base grippe <em>Influenza Research Database</em>.</li>
+    </ul>
+
+    <h2>6. Dessiner des amorces avec Primer-BLAST</h2>
+    <p><a href="https://www.ncbi.nlm.nih.gov/tools/primer-blast/" target="_blank">Primer-BLAST</a> (NCBI) dessine des amorces PCR à partir d’une séquence ou d’un numéro d’accès, puis vérifie par BLAST qu’elles n’amplifient que la cible voulue.</p>
+
+    <h2>7. Exercices</h2>
+    <ol>
+      <li>Sur le NCBI, recherchez le gène <em>16S ribosomal RNA</em> d’<em>Escherichia coli</em> dans la base Nucleotide. Notez le numéro d’accès, la longueur et l’organisme d’une séquence.</li>
+      <li>Retrouvez la même séquence sur l’ENA à partir de son numéro d’accès. Qu’est-ce qui change dans la présentation ?</li>
+      <li>Téléchargez cette séquence au format FASTA. Vous la réutiliserez dans la partie Linux.</li>
+      <li>Sur UniProt, trouvez une protéine de votre choix annotée dans Swiss-Prot. Quelles informations ajoute-t-elle par rapport à la séquence brute ?</li>
+    </ol>
+
+    <h2>À retenir</h2>
+    <ul>
+      <li>Une grande quantité de données biologiques est disponible librement.</li>
+      <li>Les bases primaires stockent les séquences brutes ; les bases secondaires apportent l’annotation.</li>
+      <li>Il est important de savoir comment et où les données sont stockées.</li>
+      <li>Le NCBI et l’EBI sont les deux ressources les plus utilisées pour obtenir des données biologiques.</li>
+    </ul>
+
+    <footer>
+      <p>&copy; 2026 Ezechiel B. TIBIRI. Contenu sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank">CC BY 4.0</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

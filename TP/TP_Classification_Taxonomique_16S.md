@@ -76,12 +76,13 @@ source ~/.bashrc
 Téléchargez les données de démonstration fournies par Oxford Nanopore.
 
 ```bash
+cd ~
 wget -c https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-16s/wf-16s-demo.tar.gz
 tar -xzvf wf-16s-demo.tar.gz
 
 # Organisation du projet
 mkdir -p ~/TP-BMGB/DATA
-cp -r ~/wf-flu-demo/test_data ~/TP-BMGB/DATA
+cp -r ~/wf-16s-demo/test_data ~/TP-BMGB/DATA
 ```
 
 ---
@@ -125,16 +126,20 @@ cd ~/TP-BMGB/DB
 wget https://zenodo.org/record/3986799/files/silva_nr99_v138_wSpecies_train_set.fa.gz
 gunzip -k silva_nr99_v138_wSpecies_train_set.fa.gz
 
-# Nettoyage des headers pour minimap2
-awk '/^>/{split($0,a," "); print a[1]; next} {print}' silva_nr99_v138_wSpecies_train_set.fa | sed 's/[>;]//g' > database_clean.fasta
+# Nettoyage des en-têtes pour minimap2 : chaque en-tête reçoit un identifiant unique
+# (seq1, seq2...) suivi de la taxonomie, avec "_" à la place des ";"
+awk '/^>/{n++; h=substr($0,2); sub(/;$/,"",h); gsub(/;/,"_",h); print ">seq" n "|" h; next} {print}' silva_nr99_v138_wSpecies_train_set.fa > database_clean.fasta
+
+# Vérification : le nombre d'en-têtes doit être identique dans les deux fichiers
+grep -c "^>" silva_nr99_v138_wSpecies_train_set.fa database_clean.fasta
 ```
 
 ### 🔹 Construire une base Kraken2
 
 ```bash
 cd ~/TP-BMGB/DB
-kraken2-build --special silva --db kraken2_16S_db
-kraken2-build --build --db kraken2_16S_db
+# Télécharge SILVA et construit la base en une seule commande
+kraken2-build --special silva --db kraken2_16S_db --threads 4
 ```
 
 ⏳ **Note : Cette étape peut prendre du temps (~20–30 minutes selon votre machine).**
@@ -222,9 +227,15 @@ kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report-zero-counts --output barcode03
 Krona génère une page HTML interactive montrant les taxons détectés.
 
 ```bash
-ktImportTaxonomy barcode01_kraken_report.txt -o barcode01_krona_output.html
-ktImportTaxonomy barcode02_kraken_report.txt -o barcode02_krona_output.html
-ktImportTaxonomy barcode03_kraken_report.txt -o barcode03_krona_output.html
+# La base Kraken2 SILVA utilise ses propres identifiants de taxons, différents de ceux
+# du NCBI utilisés par ktImportTaxonomy : on convertit d'abord le rapport en texte
+# avec KrakenTools, puis on l'importe avec ktImportText.
+git clone https://github.com/jenniferlu717/KrakenTools.git ~/KrakenTools
+
+for b in barcode01 barcode02 barcode03; do
+  python3 ~/KrakenTools/kreport2krona.py -r ${b}_kraken_report.txt -o ${b}_krona.txt
+  ktImportText ${b}_krona.txt -o ${b}_krona_output.html
+done
 ```
 
 Ouvrir les fichiers `.html` dans un navigateur pour explorer la diversité microbienne par échantillon.

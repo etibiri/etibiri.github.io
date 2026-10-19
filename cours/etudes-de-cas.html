@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP Bioinformatique : Classification taxonomique de séquences 16S rDNA</title>
   <style>
     body {
@@ -61,6 +62,7 @@
   </style>
 </head>
 <body>
+  <p style="margin:0 0 16px"><a href="../index.html#contenu">← Retour à l’accueil du cours</a></p>
   <h1>🧬 TP Bioinformatique : Classification taxonomique de séquences 16S rDNA</h1>
   <hr/>
 
@@ -122,12 +124,13 @@ source ~/.bashrc
 
   <h2>📁 Étape 1 : Préparation des données</h2>
   <p>Téléchargez les données de démonstration fournies par Oxford Nanopore.</p>
-  <pre><code>wget -c https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-16s/wf-16s-demo.tar.gz
+  <pre><code>cd ~
+wget -c https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/wf-16s/wf-16s-demo.tar.gz
 tar -xzvf wf-16s-demo.tar.gz
 
 # Organisation du projet
 mkdir -p ~/TP-BMGB/DATA
-cp -r ~/wf-flu-demo/test_data ~/TP-BMGB/DATA
+cp -r ~/wf-16s-demo/test_data ~/TP-BMGB/DATA
   </code></pre>
   <hr/>
 
@@ -163,13 +166,17 @@ cd ~/TP-BMGB/DB
 wget https://zenodo.org/record/3986799/files/silva_nr99_v138_wSpecies_train_set.fa.gz
 gunzip -k silva_nr99_v138_wSpecies_train_set.fa.gz
 
-# Nettoyage des headers pour minimap2
-awk '/^>/{split($0,a," "); print a[1]; next} {print}' silva_nr99_v138_wSpecies_train_set.fa | sed 's/[>;]//g' > database_clean.fasta
+# Nettoyage des en-têtes pour minimap2 : chaque en-tête reçoit un identifiant unique
+# (seq1, seq2...) suivi de la taxonomie, avec "_" à la place des ";"
+awk '/^>/{n++; h=substr($0,2); sub(/;$/,"",h); gsub(/;/,"_",h); print ">seq" n "|" h; next} {print}' silva_nr99_v138_wSpecies_train_set.fa > database_clean.fasta
+
+# Vérification : le nombre d'en-têtes doit être identique dans les deux fichiers
+grep -c "^>" silva_nr99_v138_wSpecies_train_set.fa database_clean.fasta
   </code></pre>
   <h3>🔹 Construire une base Kraken2</h3>
   <pre><code>cd ~/TP-BMGB/DB
-kraken2-build --special silva --db kraken2_16S_db
-kraken2-build --build --db kraken2_16S_db
+# Télécharge SILVA et construit la base en une seule commande
+kraken2-build --special silva --db kraken2_16S_db --threads 4
   </code></pre>
   <p>⏳ <strong>Note :</strong> Cette étape peut prendre du temps (~20–30 minutes selon votre machine).</p>
   <hr/>
@@ -232,9 +239,15 @@ kraken2 --db ~/TP-BMGB/DB/kraken2_16S_db --report-zero-counts --output barcode03
 
   <h2>🌐 Étape 5 : Visualisation avec Krona</h2>
   <p>Krona génère une page HTML interactive montrant les taxons détectés.</p>
-  <pre><code>ktImportTaxonomy barcode01_kraken_report.txt -o barcode01_krona_output.html
-ktImportTaxonomy barcode02_kraken_report.txt -o barcode02_krona_output.html
-ktImportTaxonomy barcode03_kraken_report.txt -o barcode03_krona_output.html
+  <pre><code># La base Kraken2 SILVA utilise ses propres identifiants de taxons, différents de ceux
+# du NCBI utilisés par ktImportTaxonomy : on convertit d'abord le rapport en texte
+# avec KrakenTools, puis on l'importe avec ktImportText.
+git clone https://github.com/jenniferlu717/KrakenTools.git ~/KrakenTools
+
+for b in barcode01 barcode02 barcode03; do
+  python3 ~/KrakenTools/kreport2krona.py -r ${b}_kraken_report.txt -o ${b}_krona.txt
+  ktImportText ${b}_krona.txt -o ${b}_krona_output.html
+done
   </code></pre>
   <p>Ouvrez les fichiers <code>.html</code> dans un navigateur pour explorer la diversité microbienne par échantillon.</p>
   <hr/>
@@ -385,7 +398,7 @@ ktImportTaxonomy barcode03_kraken_report.txt -o barcode03_krona_output.html
 
 <!-- Pied de page -->
   <footer class="footer">
-    <p>&copy; 2025 Ezechiel B. TIBIRI. Tous droits réservés.</p>
+    <p>&copy; 2025 Ezechiel B. TIBIRI. Contenu sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank">CC BY 4.0</a>.</p>
     <p> BURKINA FASO<p>
     <p>Site hébergé sur <a href="https://github.com/etibiri" target="_blank">GitHub</a>.</p>
   </footer>

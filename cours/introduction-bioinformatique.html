@@ -1,98 +1,234 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bioinformatique - Définitions</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        h1, h2 {
-            color: #d35400;
-        }
-        h3 {
-            color: #2980b9;
-        }
-        p {
-            font-size: 18px;
-        }
-        ul {
-            list-style-type: square;
-        }
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Définitions et concepts | Introduction à la Bioinformatique</title>
+  <meta name="description" content="Définitions et concepts de la bioinformatique : bioinformation, pluridisciplinarité, types de données, approche in silico, histoire et applications.">
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #1f9d8b;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1d2939;
+      --muted: #667085;
+      --border: #dbe3ec;
+      --soft: #eef5fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 24px 16px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    h1 { color: var(--primary); margin-top: 0; line-height: 1.3; }
+    h2 { color: var(--primary); margin-top: 36px; border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+    h3 { color: var(--accent); }
+    a { color: var(--primary); }
+    .back { display: inline-block; margin-bottom: 16px; }
+    .note {
+      background: var(--soft);
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .def {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+    .def strong { color: var(--accent); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; background: #fbfdff; }
+    .card h4 { margin: 0 0 6px; color: var(--primary); }
+    .card p { margin: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: var(--soft); }
+    .table-wrap { overflow-x: auto; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px 0; }
+    .flow span { background: var(--soft); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-weight: 600; }
+    .flow b { color: var(--muted); }
+    details { border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+    summary { cursor: pointer; font-weight: 600; }
+    details p { margin: 8px 0 0; }
+    footer { margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 640px) { .container { padding: 20px; } }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Introduction à la Bioinformatique</h1>
-        <p>La bioinformatique est l'application des outils informatiques et des méthodes statistiques à la biologie moléculaire. Son objectif principal est de traiter et d'analyser les grandes quantités de données biologiques.</p>
-        
-        <h2>Concepts clés</h2>
-        <ul>
-            <li><strong>Génomique et séquençage</strong> : Étude complète du matériel génétique d'un organisme.</li>
-            <li><strong>Alignement de séquences</strong> : Comparaison de deux ou plusieurs séquences d'ADN, ARN ou protéines.</li>
-            <li><strong>Banques de données biologiques</strong> : Rechercher et télécharger des séquences.</li>
-            <li><strong>Analyse métagénomique</strong> : Exploration de l'ensemble des génomes présents dans un échantillon environnemental.</li>
-        </ul>
-        
-        <h3>Pour plus d'informations, consultez les ressources :</h3>
-        <ul>
-            <li><a href="https://www.ncbi.nlm.nih.gov" target="_blank">NCBI</a></li>
-            <li><a href="https://www.ensembl.org" target="_blank">Ensembl Genome Browser</a></li>
-        </ul>
-        
-        <h2>Bioinformatique - Concepts - Définitions</h2>
-        
-        <h3>Qu'est-ce que la bioinformatique ?</h3>
-        <p>On trouve un grand nombre de définitions selon l'acception du terme et selon la prépondérance de "bio" sur "informatique" ou l'inverse.
-</p>
-        <p>L'utilisation de l'informatique pour l'analyse de données biologiques.</p>
-        
-        <h3>Un domaine pluridisciplinaire</h3>
-        <ul>
-            <li><span class="highlight">Biologie</span> + Informatique</li>
-            <li><span class="highlight">Biochimie</span> + Informatique</li>
-            <li><span class="highlight">Médecine</span> + Informatique</li>
-            <li><span class="highlight">Pharmacie</span> + Informatique</li>
-            <li><span class="highlight">Mathématiques</span> + Informatique</li>
-            <li><span class="highlight">Statistiques</span> + Informatique</li>
-        </ul>
-        
-        <h3>Définition de la bioinformation</h3>
-        <p>La <span class="highlight">bioinformation</span> est l'information liée aux <span class="highlight">molécules biologiques</span> : séquences, structures, fonctions, interactions et intégration dans la cellule.</p>
-        <p>Une définition de la bioinformatique : analyse de la bioinformation par des moyens informatiques.
+  <div class="container">
+    <a class="back" href="../index.html#contenu">← Retour à l’accueil du cours</a>
 
-Définition selon NCBI (2001) : "Bioinformatics is the field of science in which biology, computer science, and information technology merge into a single discipline."
-</p>
-        <h3>Sources et disciplines associées</h3>
-        <p>Elle est issue de diverses disciplines comme la biochimie, la génétique, la génomique, la transcriptomique, la protéomique, la métabolomique, la biologie structurale et la modélisation moléculaire.</p>
-        
-        <h3>Pourquoi faire ?</h3>
-        <p>Acquérir et stocker les informations biologiques sous forme d'encyclopédies appelées <span class="highlight">bases de données</span>.</p>
-        
-        <h3>Exemples d'application</h3>
-        <ul>
-            <li>Séquençage : ADN, ARN, protéines</li>
-            <li>Structures 3D : ADN, ARN, protéines, sucres</li>
-            <li>Classification des espèces</li>
-            <li>Voies métaboliques</li>
-            <li>Expression des gènes (microarrays)</li>
-            <li>Spectrométrie de masse</li>
-            <li>Publications scientifiques</li>
-        </ul>
+    <h1>Définitions et concepts de la bioinformatique</h1>
+    <p>Partie 4.1 du cours.</p>
+
+    <h2>Objectifs</h2>
+    <p>À la fin de cette partie, vous devez être capable de :</p>
+    <ul>
+      <li>donner une définition de la bioinformatique et de la bioinformation ;</li>
+      <li>expliquer pourquoi la bioinformatique est une discipline pluridisciplinaire ;</li>
+      <li>citer les grands types de données biologiques et leur lien avec le dogme central ;</li>
+      <li>distinguer approche <em>in silico</em> et approche expérimentale, et dire en quoi elles se complètent ;</li>
+      <li>donner des exemples d’application en santé, en agriculture et en environnement.</li>
+    </ul>
+
+    <h2>1. Qu’est-ce que la bioinformatique ?</h2>
+    <p>On trouve un grand nombre de définitions, selon que l’on met l’accent sur « bio » ou sur « informatique ». Toutes partagent la même idée : <strong>utiliser l’informatique pour analyser des données biologiques</strong>.</p>
+
+    <div class="def">
+      <strong>Définition simple.</strong> La bioinformatique est l’application des outils informatiques et des méthodes mathématiques et statistiques à la biologie, pour stocker, organiser, analyser et interpréter les données biologiques.
     </div>
+    <div class="def">
+      <strong>Définition du NCBI (2001).</strong> « <em>Bioinformatics is the field of science in which biology, computer science, and information technology merge into a single discipline.</em> » : la bioinformatique est le domaine où la biologie, l’informatique et les technologies de l’information se rejoignent en une seule discipline.
+    </div>
+
+    <h3>Bioinformatique ou biologie computationnelle ?</h3>
+    <p>Les deux termes sont souvent employés l’un pour l’autre. Quand on les distingue :</p>
+    <ul>
+      <li>la <strong>bioinformatique</strong> désigne plutôt le développement et l’usage d’outils, de bases de données et de logiciels pour gérer et analyser les données ;</li>
+      <li>la <strong>biologie computationnelle</strong> désigne plutôt l’usage de modèles mathématiques et de simulations pour répondre à une question biologique.</li>
+    </ul>
+
+    <h2>2. La bioinformation</h2>
+    <div class="def">
+      <strong>Bioinformation.</strong> C’est l’information portée par les molécules biologiques : leurs séquences, leurs structures, leurs fonctions, leurs interactions et leur intégration dans la cellule.
+    </div>
+    <p>La bioinformatique peut donc se définir comme <strong>l’analyse de la bioinformation par des moyens informatiques</strong>.</p>
+
+    <h3>Du dogme central aux types de données</h3>
+    <p>Le dogme central de la biologie moléculaire décrit le flux de l’information génétique. À chaque étape correspond un type de données et une discipline « omique » :</p>
+    <div class="flow">
+      <span>ADN</span><b>→ transcription →</b><span>ARN</span><b>→ traduction →</b><span>Protéine</span><b>→</b><span>Métabolites</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Niveau</th><th>Discipline</th><th>Exemples de données</th></tr>
+        <tr><td>ADN</td><td>Génomique</td><td>Séquences de génomes, variants (SNP, indels)</td></tr>
+        <tr><td>ARN</td><td>Transcriptomique</td><td>Niveaux d’expression des gènes (RNA-seq)</td></tr>
+        <tr><td>Protéines</td><td>Protéomique, biologie structurale</td><td>Séquences protéiques, structures 3D, spectres de masse</td></tr>
+        <tr><td>Métabolites</td><td>Métabolomique</td><td>Profils de petites molécules</td></tr>
+        <tr><td>Communautés d’organismes</td><td>Métagénomique</td><td>ADN de tous les organismes d’un échantillon (sol, eau, aliment, intestin)</td></tr>
+      </table>
+    </div>
+
+    <h2>3. Un domaine pluridisciplinaire</h2>
+    <p>La bioinformatique se situe au croisement de plusieurs disciplines. Chacune apporte ses questions ou ses méthodes :</p>
+    <div class="grid">
+      <div class="card"><h4>Biologie, biochimie</h4><p>Les questions et l’interprétation des résultats.</p></div>
+      <div class="card"><h4>Médecine, pharmacie</h4><p>Le diagnostic, les pathogènes, les médicaments et leurs cibles.</p></div>
+      <div class="card"><h4>Informatique</h4><p>Le stockage, les algorithmes, les logiciels, le calcul intensif.</p></div>
+      <div class="card"><h4>Mathématiques, statistiques</h4><p>Les modèles, les tests, la mesure de l’incertitude.</p></div>
+    </div>
+    <p>Elle s’appuie sur des données issues de la biochimie, de la génétique, de la génomique, de la transcriptomique, de la protéomique, de la métabolomique, de la biologie structurale et de la modélisation moléculaire.</p>
+
+    <h2>4. Pourquoi faire ?</h2>
+    <p>La bioinformatique répond à trois besoins :</p>
+    <ol>
+      <li><strong>Stocker et organiser</strong> l’information biologique dans des <a href="bases-de-donnees.html">bases de données</a>, de véritables encyclopédies consultables par tous.</li>
+      <li><strong>Analyser</strong> ces données : comparer des séquences, identifier des gènes, prédire une structure, classer des organismes.</li>
+      <li><strong>Interpréter</strong> les résultats pour formuler ou tester une hypothèse biologique.</li>
+    </ol>
+    <div class="note">
+      <strong>Pourquoi maintenant ?</strong> Les technologies de séquençage à haut débit produisent des volumes de données qu’aucun chercheur ne peut traiter à la main. Un seul séquenceur produit aujourd’hui en une journée plus de séquences que tout ce qui avait été déposé dans les bases au début des années 2000.
+    </div>
+
+    <h2>5. Approche <em>in silico</em> et approche expérimentale</h2>
+    <p><em>In silico</em> signifie « réalisé sur ordinateur » (par analogie avec <em>in vitro</em> et <em>in vivo</em>). Les deux approches se complètent :</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th></th><th>Approche expérimentale (<em>wet lab</em>)</th><th>Approche <em>in silico</em> (<em>dry lab</em>)</th></tr>
+        <tr><td>Lieu</td><td>Laboratoire, terrain</td><td>Ordinateur, serveur de calcul</td></tr>
+        <tr><td>Produit</td><td>Des échantillons et des données</td><td>Des analyses, des prédictions, des hypothèses</td></tr>
+        <tr><td>Exemple</td><td>Extraire l’ADN d’un échantillon et le séquencer</td><td>Identifier les bactéries présentes à partir des séquences</td></tr>
+        <tr><td>Limite</td><td>Coûteuse, lente à grande échelle</td><td>Une prédiction doit être confirmée expérimentalement</td></tr>
+      </table>
+    </div>
+    <p>Un projet typique fait des allers-retours : l’expérience produit des données, l’analyse propose une hypothèse, une nouvelle expérience la vérifie.</p>
+
+    <h2>6. Quelques repères historiques</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Année</th><th>Événement</th></tr>
+        <tr><td>1865</td><td>Mendel décrit les lois de l’hérédité.</td></tr>
+        <tr><td>1953</td><td>Watson et Crick, à partir des travaux de Rosalind Franklin, proposent la structure en double hélice de l’ADN.</td></tr>
+        <tr><td>1965</td><td>Margaret Dayhoff publie l’<em>Atlas of Protein Sequence and Structure</em>, première collection de séquences protéiques.</td></tr>
+        <tr><td>1970</td><td>Algorithme d’alignement de Needleman et Wunsch. Le terme « bioinformatique » est proposé par Paulien Hogeweg et Ben Hesper.</td></tr>
+        <tr><td>1977</td><td>Méthode de séquençage de Sanger.</td></tr>
+        <tr><td>1982</td><td>Création de GenBank.</td></tr>
+        <tr><td>1990</td><td>Publication de BLAST, l’outil de recherche de similarité le plus utilisé.</td></tr>
+        <tr><td>1995</td><td>Premier génome complet d’un organisme libre : la bactérie <em>Haemophilus influenzae</em>.</td></tr>
+        <tr><td>2001-2003</td><td>Séquence du génome humain (projet Génome humain).</td></tr>
+        <tr><td>Années 2000-2010</td><td>Séquençage à haut débit (Illumina), puis séquençage de longues lectures (PacBio, Oxford Nanopore).</td></tr>
+        <tr><td>2020-2021</td><td>AlphaFold prédit la structure 3D des protéines avec une précision proche de l’expérience.</td></tr>
+      </table>
+    </div>
+
+    <h2>7. Exemples d’application</h2>
+    <div class="grid">
+      <div class="card"><h4>Santé</h4><p>Identifier un pathogène, suivre une épidémie, détecter des gènes de résistance aux antibiotiques, étudier la résistance du paludisme aux traitements.</p></div>
+      <div class="card"><h4>Agriculture</h4><p>Identifier les virus et ravageurs des cultures, accompagner la sélection de variétés résistantes ou tolérantes à la sécheresse.</p></div>
+      <div class="card"><h4>Environnement</h4><p>Décrire la diversité microbienne d’un sol, d’une eau ou d’un aliment, suivre la biodiversité.</p></div>
+      <div class="card"><h4>Recherche fondamentale</h4><p>Comparer des génomes, reconstruire l’histoire évolutive des espèces, comprendre la fonction des gènes.</p></div>
+    </div>
+    <p>Concrètement, la bioinformatique traite des séquences (ADN, ARN, protéines), des structures 3D (ADN, ARN, protéines, sucres), la classification des espèces, les voies métaboliques, l’expression des gènes, les données de spectrométrie de masse et la littérature scientifique elle-même.</p>
+
+    <h2>8. Testez-vous</h2>
+    <details>
+      <summary>1. Donnez une définition de la bioinformation.</summary>
+      <p>L’information portée par les molécules biologiques : séquences, structures, fonctions, interactions et intégration dans la cellule.</p>
+    </details>
+    <details>
+      <summary>2. Que signifie <em>in silico</em> ? Pourquoi une prédiction <em>in silico</em> ne suffit-elle pas toujours ?</summary>
+      <p>« Réalisé sur ordinateur ». Une prédiction dépend des données et des modèles utilisés : elle formule une hypothèse qu’il faut souvent confirmer par une expérience.</p>
+    </details>
+    <details>
+      <summary>3. À quel niveau du dogme central correspond la transcriptomique ?</summary>
+      <p>À l’ARN : elle mesure quels gènes sont transcrits, et à quel niveau.</p>
+    </details>
+    <details>
+      <summary>4. Citez deux disciplines qui apportent des méthodes à la bioinformatique, et deux qui lui apportent des questions.</summary>
+      <p>Méthodes : informatique, mathématiques, statistiques. Questions : biologie, médecine, pharmacie, agronomie.</p>
+    </details>
+    <details>
+      <summary>5. Proposez une application de la bioinformatique dans votre domaine.</summary>
+      <p>Réponse libre. Exemple : identifier par séquençage le virus responsable d’une maladie observée dans un champ.</p>
+    </details>
+
+    <h2>À retenir</h2>
+    <ul>
+      <li>La bioinformatique, c’est l’analyse de la bioinformation par des moyens informatiques.</li>
+      <li>Elle est née de la rencontre de la biologie, de l’informatique, des mathématiques et des statistiques.</li>
+      <li>Chaque niveau du dogme central (ADN, ARN, protéines) correspond à des types de données et à une discipline « omique ».</li>
+      <li>L’approche <em>in silico</em> complète l’expérience, elle ne la remplace pas.</li>
+      <li>Les logiciels calculent ; l’interprétation biologique reste la responsabilité du chercheur.</li>
+    </ul>
+
+    <h3>Pour aller plus loin</h3>
+    <ul>
+      <li><a href="https://www.ncbi.nlm.nih.gov" target="_blank">NCBI</a> et <a href="https://www.ebi.ac.uk/training" target="_blank">formations en ligne de l’EMBL-EBI</a></li>
+      <li><a href="https://www.ensembl.org" target="_blank">Ensembl Genome Browser</a></li>
+      <li>Partie suivante : <a href="bases-de-donnees.html">Bases de données biologiques</a></li>
+    </ul>
+
+    <footer>
+      <p>&copy; 2026 Ezechiel B. TIBIRI. Contenu sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank">CC BY 4.0</a>.</p>
+    </footer>
+  </div>
 </body>
 </html>

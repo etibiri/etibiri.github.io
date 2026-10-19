@@ -1,8 +1,6 @@
 #  Introduction à la Bioinformatique
 
-Ce cours introduit les concepts fondamentaux de la bioinformatique, en mettant l’accent sur son rôle central dans l’analyse des données biologiques modernes issues des technologies de séquençage à haut débit.
-
-L’objectif est de fournir aux étudiants une compréhension intégrée des données omiques, des outils computationnels et des stratégies analytiques utilisées en génomique, transcriptomique et métagénomique.
+Ce cours propose une première approche de la bioinformatique en quatre parties : les définitions et concepts de base, les bases de données biologiques, l’introduction à Linux et un cas pratique de classification taxonomique de séquences 16S ADNr.
 
 📍 **Accédez au site du cours ici** : [Lien vers le site](https://etibiri.github.io)
 
@@ -12,15 +10,11 @@ L’objectif est de fournir aux étudiants une compréhension intégrée des don
 
 À l’issue de ce cours, les étudiants seront capables de :
 
-1. Comprendre les principes fondamentaux de la bioinformatique.
-2. Interpréter les différents types de données biologiques (ADN, ARN, protéines).
-3. Identifier les formats de fichiers couramment utilisés (FASTA, FASTQ, SAM/BAM, VCF, GFF).
-4. Comprendre les technologies de séquençage et leurs implications analytiques.
-5. Concevoir une stratégie bioinformatique adaptée à une question biologique.
-6. Utiliser des ressources et bases de données publiques
-7. Comprendre les pipelines d’analyse en génomique.
-6. Utiliser des ressources et bases de données publiques
-7. Comprendre les pipelines d’analyse en génomique.
+1. Définir la bioinformatique et la bioinformation, et situer la discipline dans les sciences du vivant.
+2. Distinguer bases de données primaires et secondaires, et utiliser les ressources du NCBI et de l’EBI.
+3. Rechercher et télécharger des séquences à partir d’un numéro d’accès ou d’un nom de gène.
+4. Utiliser la ligne de commande Linux pour manipuler des fichiers biologiques (FASTA, FASTQ).
+5. Réaliser une classification taxonomique de séquences 16S et en interpréter les résultats.
 
 ---
 
@@ -44,33 +38,11 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 ---
 
 ## 📋 Contenu du cours
-### 1. Introduction à la Bioinformatique
-- Définition et concepts clés
-- Rôle de la bioinformatique.
-- Évolution de la génétique vers la bioinformatique
-- Technologies de séquençage
-- Big Data en biologie
-- Bases de données biologiques
-- Formats de données en bioinformatique
-- Pipeline d’analyse en génomique
-- Stratégies d’analyse
-- Annotation des génomes
-- Analyses downstream
-- Science ouverte et reproductibilité
 
-### 2.Travaux pratiques 
-- Installation de l'environnement de travail
- * **Windows + Ubuntu 24.04 LTS** :
-  Installation de WSL (Windows Subsystem for Linux).
- * **Autres systèmes d'exploitation** :
-  Instructions spécifiques pour Linux et macOS.
-#### 2.1. Programmation en bioinformatique
-- Les Commandes de Base de LINUX
-- Commandes de redirection 
-- Métacaractères
-
-#### 2.2. Exploration de bases de données biologiques
-#### 2.3. Introduction aux pipelines bioinformatiques
+1. **Définitions et concepts** : qu’est-ce que la bioinformatique, bioinformation, pluridisciplinarité, applications.
+2. **Bases de données biologiques** : bases primaires (INSDC) et secondaires, NCBI, EMBL-EBI, bases spécialisées, Primer-BLAST.
+3. **Introduction à Linux** : installation de l’environnement (WSL), commandes de base, redirections, métacaractères, puis `sort`, `cut`, `sed`, `awk`.
+4. **Cas pratique** : classification taxonomique 16S ADNr sur données Nanopore (SILVA, minimap2, Kraken2, Krona).
 
 ---
 
@@ -80,8 +52,10 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 - [Guide WSL pour Windows](https://learn.microsoft.com/en-us/windows/wsl/)
 
 ---
+© 2026 **Ezechiel B. TIBIRI**, Burkina Faso.
 
----
-© 2026 **Ezechiel B. TIBIRI. BURKINA FASO Tous droits réservés.**
+## 📄 Licence
+
+Le contenu de ce cours est placé sous licence [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.fr) : vous pouvez le copier, le diffuser et l’adapter, y compris pour un autre cours, à condition de citer l’auteur et d’indiquer les modifications. Texte complet : [LICENSE](LICENSE).
 
 Site hébergé sur [GitHub](https://github.com/etibiri/etibiri.github.io).
