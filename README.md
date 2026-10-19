@@ -1,6 +1,6 @@
 #  Introduction à la Bioinformatique
 
-Ce cours propose une première approche de la bioinformatique en quatre parties : les définitions et concepts de base, les bases de données biologiques, l’introduction à Linux et un cas pratique de classification taxonomique de séquences 16S ADNr.
+Ce cours propose une première approche de la bioinformatique en trois parties : les définitions et concepts de base, les bases de données biologiques et l’introduction à Linux.
 
 📍 **Accédez au site du cours ici** : [Lien vers le site](https://etibiri.github.io)
 
@@ -14,7 +14,6 @@ Ce cours propose une première approche de la bioinformatique en quatre parties 
 2. Distinguer bases de données primaires et secondaires, et utiliser les ressources du NCBI et de l’EBI.
 3. Rechercher et télécharger des séquences à partir d’un numéro d’accès ou d’un nom de gène.
 4. Utiliser la ligne de commande Linux pour manipuler des fichiers biologiques (FASTA, FASTQ).
-5. Réaliser une classification taxonomique de séquences 16S et en interpréter les résultats.
 
 ---
 
@@ -41,8 +40,7 @@ Pour tirer le meilleur parti de ce cours, nous recommandons :
 
 1. **Définitions et concepts** : qu’est-ce que la bioinformatique, bioinformation, pluridisciplinarité, applications.
 2. **Bases de données biologiques** : bases primaires (INSDC) et secondaires, NCBI, EMBL-EBI, bases spécialisées, Primer-BLAST.
-3. **Introduction à Linux** : installation de l’environnement (WSL), commandes de base, redirections, métacaractères, puis `sort`, `cut`, `sed`, `awk`.
-4. **Cas pratique** : classification taxonomique 16S ADNr sur données Nanopore (SILVA, minimap2, Kraken2, Krona).
+3. **Introduction à Linux** : commandes de base, redirections, métacaractères, puis `sort`, `cut`, `sed`, `awk`.
 
 ---
 
