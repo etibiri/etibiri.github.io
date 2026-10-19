@@ -356,7 +356,7 @@
         <li><a href="#presentation">Présentation</a></li>
         <li><a href="#objectifs">Objectifs pédagogiques</a></li>
         <li><a href="#organisation">Organisation du cours</a></li>
-        <li><a href="#contenu">Contenu détaillé</a></li>
+        <li><a href="#contenu">Contenu du cours</a></li>
         <li><a href="#competences">Compétences visées</a></li>
         <li><a href="#prerequis">Prérequis</a></li>
         <li><a href="#evaluation">Évaluation</a></li>
@@ -376,9 +376,9 @@
           <span class="badge">Cours fondamental</span>
           <h2>Introduction à la bioinformatique</h2>
           <p>
-            Ce cours propose une introduction rigoureuse à la bioinformatique moderne, en mettant l’accent sur
-            l’analyse des données biologiques issues des technologies de séquençage à haut débit, des bases de données publiques,
-            des pipelines bioinformatiques et des applications en génomique, transcriptomique et métagénomique.
+            Ce cours propose une première approche de la bioinformatique en quatre parties : les définitions et concepts
+            de base, les bases de données biologiques, l’introduction à Linux et un cas pratique d’analyse de séquences
+            16S ADNr.
           </p>
 
           <div class="hero-grid">
@@ -388,11 +388,11 @@
             </div>
             <div class="hero-card">
               <strong>Format</strong>
-              <span>Cours + TP + projet appliqué</span>
+              <span>Cours + TP + cas pratique</span>
             </div>
             <div class="hero-card">
               <strong>Thématiques</strong>
-              <span>NGS, données, pipelines, annotation</span>
+              <span>Concepts, bases de données, Linux, 16S</span>
             </div>
             <div class="hero-card">
               <strong>Approche</strong>
@@ -425,13 +425,11 @@
         <section id="objectifs">
           <h3>2. Objectifs pédagogiques</h3>
           <ul>
-            <li>Comprendre les fondements conceptuels de la bioinformatique et son rôle dans les sciences du vivant</li>
-            <li>Interpréter les principaux types de données biologiques : ADN, ARN, protéines</li>
-            <li>Identifier et manipuler les formats standards de données (FASTA, FASTQ, SAM/BAM, VCF, GFF, BED)</li>
-            <li>Comprendre les principes, avantages et limites des technologies de séquençage</li>
-            <li>Concevoir une stratégie bioinformatique adaptée à une question biologique</li>
-            <li>Utiliser des bases de données biologiques et des ressources publiques</li>
-            <li>Comprendre la logique des pipelines d’analyse en génomique</li>
+            <li>Définir la bioinformatique, la bioinformation et situer la discipline dans les sciences du vivant</li>
+            <li>Distinguer bases de données primaires et secondaires, et connaître les ressources du NCBI et de l’EBI</li>
+            <li>Rechercher et télécharger des séquences à partir d’un numéro d’accès ou d’un nom de gène</li>
+            <li>Utiliser la ligne de commande Linux pour naviguer et manipuler des fichiers biologiques (FASTA, FASTQ)</li>
+            <li>Réaliser une classification taxonomique de séquences 16S et en interpréter les résultats</li>
             <li>Développer un esprit critique vis-à-vis des outils et des résultats bioinformatiques</li>
           </ul>
         </section>
@@ -442,73 +440,47 @@
           <div class="grid-3">
             <div class="card">
               <h4>3.1 Cours théoriques</h4>
-              <p>Introduction aux concepts, méthodes, algorithmes et infrastructures de la bioinformatique moderne.</p>
+              <p>Définitions et concepts de la bioinformatique, bases de données biologiques.</p>
             </div>
             <div class="card">
               <h4>3.2 Travaux pratiques</h4>
-              <p>Manipulation de formats de données, exploration de bases publiques, contrôle qualité et analyse de séquences.</p>
+              <p>Installation de l’environnement, commandes Linux de base et traitement de fichiers texte.</p>
             </div>
             <div class="card">
-              <h4>3.3 Projet appliqué</h4>
-              <p>Analyse d’un jeu de données réelles et mise en place d’une stratégie bioinformatique reproductible.</p>
+              <h4>3.3 Cas pratique</h4>
+              <p>Classification taxonomique de séquences 16S ADNr issues d’un séquençage Nanopore.</p>
             </div>
           </div>
         </section>
 
         <!-- Content -->
         <section id="contenu">
-          <h3>4. Contenu détaillé du cours</h3>
+          <h3>4. Contenu du cours</h3>
 
           <ol class="course-list">
             <li>
-              <strong>4.1 Introduction à la bioinformatique</strong>
-              Définition, interdisciplinarité, approche <em>in silico</em>, complémentarité avec les approches expérimentales.
+              <strong>4.1 Définitions et concepts</strong>
+              Qu’est-ce que la bioinformatique, bioinformation, pluridisciplinarité, approche <em>in silico</em>, exemples d’application.
+              <br /><a href="cours/introduction-bioinformatique.html">Ouvrir le cours</a>
             </li>
             <li>
-              <strong>4.2 De la génétique à la bioinformatique</strong>
-              Jalons historiques : lois de Mendel, structure de l’ADN, code génétique, algorithmes d’alignement.
+              <strong>4.2 Bases de données biologiques</strong>
+              Bases primaires (INSDC : GenBank, ENA, DDBJ) et secondaires, ressources du NCBI et de l’EBI, bases spécialisées, recherche par numéro d’accès, Primer-BLAST.
+              <br /><a href="cours/bases-de-donnees.html">Ouvrir le cours</a> ·
+              <a href="cours/Bioinfo_bank_etibiri_2025.pdf" target="_blank">Diapositives (PDF)</a>
             </li>
             <li>
-              <strong>4.3 Technologies de séquençage</strong>
-              Sanger, Illumina, Oxford Nanopore Technologies (ONT), PacBio HiFi, comparaisons short reads vs long reads.
+              <strong>4.3 Introduction à Linux</strong>
+              Installation de l’environnement (WSL sous Windows), commandes de base, redirections et métacaractères, puis traitement de fichiers texte (sort, cut, sed, awk).
+              <br /><a href="cours/installation-environnement.html">Installation de l’environnement</a> ·
+              <a href="cours/programmation-bioinformatique.html">Commandes de base de Linux</a> ·
+              <a href="cours/Linux_advanced_command.html">Pour aller plus loin : sort, cut, sed, awk</a>
             </li>
             <li>
-              <strong>4.4 Big Data en biologie</strong>
-              Données omiques, calcul haute performance, clusters, stockage et gestion de données.
+              <strong>4.4 Cas pratique : classification taxonomique 16S ADNr</strong>
+              Données Nanopore de démonstration, base SILVA, alignement avec minimap2, classification avec Kraken2, visualisation avec Krona.
+              <br /><a href="cours/etudes-de-cas.html">Ouvrir le cas pratique</a>
             </li>
-            <li>
-              <strong>4.5 Bases de données biologiques</strong>
-              NCBI, ENA, UniProt, Pfam, PDB, ressources spécialisées et science ouverte.
-            </li>
-            <li>
-              <strong>4.6 Formats de données en bioinformatique</strong>
-              FASTA, FASTQ, SAM/BAM/CRAM, VCF/BCF, GFF/GTF, BED, données et métadonnées.
-            </li>
-            <li>
-              <strong>4.7 Design expérimental et pipeline d’analyse</strong>
-              Question scientifique, stratégie d’échantillonnage, préparation des librairies, séquençage, contrôle qualité.
-            </li>
-            <li>
-              <strong>4.8 Stratégies d’analyse</strong>
-              Mapping, alignement, assemblage de novo, annotation structurale et fonctionnelle.
-            </li>
-            <li>
-              <strong>4.9 Analyses downstream</strong>
-              Génomique des populations, GWAS, phylogénie, métagénomique, pangénomique.
-            </li>
-            <li>
-              <strong>4.10 Reproductibilité et science ouverte</strong>
-              Partage des données, principes FAIR, bonnes pratiques analytiques.
-            </li>
-          </ol>
-
-          <h4>Liens vers les modules / pages du cours</h4>
-          <ol>
-            <li><a href="cours/introduction-bioinformatique.html">Introduction à la bioinformatique</a></li>
-            <li><a href="cours/installation-environnement.html">Installation de l’environnement de travail</a></li>
-            <li><a href="cours/programmation-bioinformatique.html">Programmation en bioinformatique : Bash</a></li>
-            <li><a href="cours/Linux_advanced_command.html">Commandes Linux avancées pour le traitement de texte</a></li>
-            <li><a href="cours/etudes-de-cas.html">Études de cas : analyse de séquences 16S ADNr</a></li>
           </ol>
         </section>
 
@@ -519,17 +491,17 @@
             <div class="card">
               <h4>Compétences scientifiques</h4>
               <ul>
-                <li>Comprendre la logique des analyses omiques</li>
+                <li>Comprendre ce que recouvre la bioinformatique</li>
                 <li>Interpréter les résultats bioinformatiques dans un cadre biologique</li>
-                <li>Choisir une stratégie adaptée à une question scientifique</li>
+                <li>Savoir où chercher une donnée biologique publique</li>
               </ul>
             </div>
             <div class="card">
               <h4>Compétences techniques</h4>
               <ul>
-                <li>Manipuler des formats standards de données</li>
+                <li>Travailler en ligne de commande sous Linux</li>
                 <li>Explorer des bases de données biologiques</li>
-                <li>Appliquer les premières étapes d’un pipeline bioinformatique</li>
+                <li>Mener une classification taxonomique 16S de bout en bout</li>
               </ul>
             </div>
           </div>
@@ -559,7 +531,7 @@
           <ul>
             <li>Participation active aux séances</li>
             <li>Travaux pratiques</li>
-            <li>Mini-projets ou études de cas</li>
+            <li>Cas pratique 16S</li>
             <li>Analyse et interprétation de jeux de données</li>
             <li>Présentation orale ou restitution écrite</li>
           </ul>
@@ -582,15 +554,15 @@
               <ul>
                 <li><a href="https://www.ensembl.org" target="_blank">Ensembl</a></li>
                 <li><a href="https://genome.ucsc.edu" target="_blank">UCSC Genome Browser</a></li>
-		<li><a href="https://www.genomicepidemiology.org/" target="_blank">Center for Genomic Epidemiology</a></li>
+
               </ul>
             </div>
             <div class="card">
               <h4>Documentation utile</h4>
               <ul>
                 <li><a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Guide WSL</a></li>
-                <li><a href="https://snakemake.readthedocs.io" target="_blank">Snakemake</a></li>
-                <li><a href="https://quarto.org" target="_blank">Quarto</a></li>
+                <li><a href="https://www.arb-silva.de" target="_blank">SILVA (ARN ribosomiques)</a></li>
+                <li><a href="https://github.com/DerrickWood/kraken2/wiki" target="_blank">Kraken2</a></li>
               </ul>
             </div>
           </div>
@@ -633,7 +605,7 @@ git clone https://github.com/etibiri/etibiri.github.io.git
         </section>
 
         <div class="footer">
-          <p>&copy; 2026 Ezechiel B. TIBIRI — Tous droits réservés</p>
+          <p>&copy; 2026 Ezechiel B. TIBIRI. Contenu sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank">CC BY 4.0</a> : vous pouvez le réutiliser et l’adapter en citant l’auteur.</p>
           <p>Site hébergé sur <a href="https://github.com/etibiri/etibiri.github.io?tab=readme-ov-file" target="_blank">GitHub</a></p>
         </div>
 
